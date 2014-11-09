@@ -1,0 +1,36 @@
+#!/usr/bin/env zsh
+
+alias df='df -h'
+
+alias grep='grep --color=auto'
+
+alias gvim='mvim'
+
+case $(uname) in
+    Darwin)
+        alias ls='ls -hFG'
+        ;;
+    *)
+        alias ls='ls -hF --color=auto'
+        ;;
+esac
+
+alias ll='ls -l'
+alias la='ls -A'
+alias lal='ls -lA'
+alias ldl='ls -ld'
+
+alias ssh333='TERM=xterm ssh -t csi333 screen -s /usr/bin/zsh'
+
+alias wwwdo='sudo -u www'
+
+alias playlist="mpc playlist -f '[%position% ][[%albumartist%|%artist% - ]%title%]|[%file%]'"
+
+function google {
+    elinks "http://www.google.com/search?q=${*// /+}"
+}
+
+function ignore {
+    $@ &>/dev/null &!
+}
+

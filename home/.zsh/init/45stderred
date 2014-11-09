@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+case $(uname) in
+    Darwin)
+        export DYLD_INSERT_LIBRARIES="/Users/cbouchard/git/stderred/build/libstderred.dylib${DYLD_INSERT_LIBRARIES:+:$DYLD_INSERT_LIBRARIES}"
+        ;;
+esac
+

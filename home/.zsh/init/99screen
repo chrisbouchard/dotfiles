@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+START_SCREEN=1
+
+if [[ "$TERM" = *screen* ]] || [[ $- != *i* ]] || [[ $- != *l* ]] || [[ -e "$HOME/.noscreen" ]]
+then
+    START_SCREEN=0
+fi
+

@@ -1,0 +1,48 @@
+#!/usr/bin/env zsh
+
+export SHELL=$(which zsh)
+
+export MY_ZSH_HOME=${HOME}/.zsh
+export XDG_CONFIG_HOME="${HOME}/.config"
+
+export PYTHONSTARTUP="${HOME}/.pythonrc"
+
+export PATH
+export FPATH
+
+path=(
+    "${HOME}/bin"
+    "${HOME}/.cabal/bin"
+    "${HOME}/.local/bin"
+    "${HOME}/.local/sbin"
+    "${HOME}/opt/flex/bin"
+    "/usr/share/chris/bin"
+    "/usr/local/sbin"
+    "/usr/local/bin"
+    ${path}
+    "/sbin"
+    "/usr/sbin"
+    "/usr/games/bin"
+    )
+
+fpath=(
+    "${MY_ZSH_HOME}/funcs"
+    "${MY_ZSH_HOME}/completions"
+    "/usr/local/share/zsh-completions"
+    ${fpath}
+    )
+
+export WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
+export DISPLAY=":0"
+
+export PAGER="/usr/bin/less"
+export VISUAL="vim -f"
+export EDITOR=${VISUAL}
+
+export WINEARCH=win32
+
+export HOMEBREW_GITHUB_API_TOKEN="d2f67ef18d844c8d1bfa2e5d0b7ce5e105235009"
+
+setopt extendedglob notify ignoreeof interactivecomments noclobber
+limit coredumpsize 0
+

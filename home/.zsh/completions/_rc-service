@@ -1,0 +1,45 @@
+#compdef rc-service
+
+local gentoo_runlevels
+gentoo_runlevels=(/etc/runlevels/*(:t))
+
+_rc_list_service () {
+    local servicelist
+    servicelist=(${(f)"$(/sbin/rc-service -Cl 2>/dev/null)"})
+    _values 'services' $servicelist
+}
+
+# Stuff for rc-service
+_rc-service () {
+    servicelist=${(f)"$(/sbin/rc-service -Cl 2>/dev/null)"}
+    if (( CURRENT == 2 ));then
+        _arguments -s                                                                      \
+            '(-e --exists)'{-e,--exists}"[tests if the service exists or not]"             \
+            '(-l --list)'{-l,--list}'[list all available services]'                        \
+            '(-r --resolve)'{-r,--resolve}'[resolve the service name to an init script]'   \
+            '(-C --nocolor)'{-C,--nocolor}'[Disable color output]'                         \
+            '(-v --verbose)'{-v,--verbose}'[Run verbosely]'                                \
+            '(-q --quiet)'{-q,--quiet}'[Run quietly]'
+        _rc_list_service
+    else
+        case $words[2] in
+            -e|--exists|-r|--resolve)
+                (( CURRENT > 3 )) && return 0
+                _rc_list_service
+                ;;
+            -*)
+                return 0
+                ;;
+            *)
+                _values "action" stop start restart describe zap
+                ;;
+        esac
+    fi
+}
+
+case "$service" in
+    rc-service)
+        _rc-service "$@" && return 0
+        ;;
+esac
+
