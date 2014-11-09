@@ -1,0 +1,72 @@
+[submodule "home/.vim/bundle/a.vim"]
+	path = home/.vim/bundle/a.vim
+	url = https://github.com/vim-scripts/a.vim.git
+[submodule "home/.vim/bundle/cf-utils.vim"]
+	path = home/.vim/bundle/cf-utils.vim
+	url = https://github.com/davejlong/cf-utils.vim.git
+[submodule "home/.vim/bundle/ctrlp.vim"]
+	path = home/.vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "home/.vim/bundle/dbext.vim"]
+	path = home/.vim/bundle/dbext.vim
+	url = https://github.com/vim-scripts/dbext.vim.git
+[submodule "home/.vim/bundle/html5.vim"]
+	path = home/.vim/bundle/html5.vim
+	url = https://github.com/vim-scripts/html5.vim.git
+[submodule "home/.vim/bundle/jedi-vim"]
+	path = home/.vim/bundle/jedi-vim
+	url = https://github.com/davidhalter/jedi-vim.git
+[submodule "home/.vim/bundle/jellybeans.vim"]
+	path = home/.vim/bundle/jellybeans.vim
+	url = https://github.com/nanotech/jellybeans.vim.git
+[submodule "home/.vim/bundle/loremipsum"]
+	path = home/.vim/bundle/loremipsum
+	url = https://github.com/vim-scripts/loremipsum.git
+[submodule "home/.vim/bundle/matchit.zip"]
+	path = home/.vim/bundle/matchit.zip
+	url = https://github.com/vim-scripts/matchit.zip.git
+[submodule "home/.vim/bundle/php.vim"]
+	path = home/.vim/bundle/php.vim
+	url = https://github.com/vim-scripts/php.vim.git
+[submodule "home/.vim/bundle/sudo.vim"]
+	path = home/.vim/bundle/sudo.vim
+	url = https://github.com/vim-scripts/sudo.vim.git
+[submodule "home/.vim/bundle/Syntastic"]
+	path = home/.vim/bundle/Syntastic
+	url = https://github.com/vim-scripts/Syntastic.git
+[submodule "home/.vim/bundle/targets.vim"]
+	path = home/.vim/bundle/targets.vim
+	url = https://github.com/wellle/targets.vim.git
+[submodule "home/.vim/bundle/tcomment_vim"]
+	path = home/.vim/bundle/tcomment_vim
+	url = https://github.com/tomtom/tcomment_vim.git
+[submodule "home/.vim/bundle/vim-eunuch"]
+	path = home/.vim/bundle/vim-eunuch
+	url = https://github.com/tpope/vim-eunuch.git
+[submodule "home/.vim/bundle/vim-fugitive"]
+	path = home/.vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "home/.vim/bundle/vim-indent-object"]
+	path = home/.vim/bundle/vim-indent-object
+	url = https://github.com/michaeljsmith/vim-indent-object.git
+[submodule "home/.vim/bundle/powerline"]
+	path = home/.vim/bundle/powerline
+	url = https://github.com/Lokaltog/powerline.git
+[submodule "home/.vim/bundle/vim-repeat"]
+	path = home/.vim/bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "home/.vim/bundle/vim-surround"]
+	path = home/.vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "home/.vim/bundle/vim-windowswap"]
+	path = home/.vim/bundle/vim-windowswap
+	url = https://github.com/wesQ3/vim-windowswap.git
+[submodule "home/.vim/bundle/vim-yaml"]
+	path = home/.vim/bundle/vim-yaml
+	url = https://github.com/stephpy/vim-yaml.git
+[submodule "home/.vim/bundle/vim-web-indent"]
+	path = home/.vim/bundle/vim-web-indent
+	url = https://github.com/lukaszb/vim-web-indent.git
+[submodule "home/.vim/bundle/xmledit"]
+	path = home/.vim/bundle/xmledit
+	url = https://github.com/sukima/xmledit.git
