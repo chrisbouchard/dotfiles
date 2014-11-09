@@ -73,3 +73,6 @@
 [submodule "home/.zsh/zsh-syntax-highlighting"]
 	path = home/.zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "home/.zsh/stderred"]
+	path = home/.zsh/stderred
+	url = https://github.com/sickill/stderred.git

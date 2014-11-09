@@ -4,5 +4,8 @@ case $(uname) in
     Darwin)
         export DYLD_INSERT_LIBRARIES="/Users/cbouchard/git/stderred/build/libstderred.dylib${DYLD_INSERT_LIBRARIES:+:$DYLD_INSERT_LIBRARIES}"
         ;;
+    *)
+        export LD_PRELOAD="$HOME/.zsh/stderred/build/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
+        ;;
 esac
 

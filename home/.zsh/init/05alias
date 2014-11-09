@@ -4,10 +4,9 @@ alias df='df -h'
 
 alias grep='grep --color=auto'
 
-alias gvim='mvim'
-
 case $(uname) in
     Darwin)
+        alias gvim='mvim'
         alias ls='ls -hFG'
         ;;
     *)
