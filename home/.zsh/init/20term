@@ -2,10 +2,10 @@
 
 bindkey -v
 
-if [[ $(uname) != Darwin ]]
-then
-    setterm -blank 0
-fi
+# if [[ $(uname) != Darwin ]]
+# then
+#     setterm -blank 0
+# fi
 
 stty start ""
 stty stop ""

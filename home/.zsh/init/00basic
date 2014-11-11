@@ -39,7 +39,7 @@ export PAGER="/usr/bin/less"
 export VISUAL="vim -f"
 export EDITOR=${VISUAL}
 
-export WINEARCH=win32
+# export WINEARCH=win32
 
 export HOMEBREW_GITHUB_API_TOKEN="d2f67ef18d844c8d1bfa2e5d0b7ce5e105235009"
 

@@ -49,9 +49,6 @@
 [submodule "home/.vim/bundle/vim-indent-object"]
 	path = home/.vim/bundle/vim-indent-object
 	url = https://github.com/michaeljsmith/vim-indent-object.git
-[submodule "home/.vim/bundle/powerline"]
-	path = home/.vim/bundle/powerline
-	url = https://github.com/Lokaltog/powerline.git
 [submodule "home/.vim/bundle/vim-repeat"]
 	path = home/.vim/bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
@@ -73,3 +70,9 @@
 [submodule "home/.zsh/zsh-syntax-highlighting"]
 	path = home/.zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "home/.zsh/stderred"]
+	path = home/.zsh/stderred
+	url = https://github.com/sickill/stderred.git
+[submodule "home/.vim/bundle/vim-easy-align"]
+	path = home/.vim/bundle/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
