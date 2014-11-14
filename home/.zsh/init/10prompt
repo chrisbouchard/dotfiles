@@ -7,6 +7,12 @@ export PS2='%_ %B%F{blue}>%f%b '
 export PS3='%B%F{blue}%#%b '
 export PS4='%i %B%F{red}+%f%b '
 
+ZSH_THEME_GIT_PROMPT_PREFIX='%F{blue}(%f'
+ZSH_THEME_GIT_PROMPT_SUFFIX='%F{blue})%f'
+ZSH_THEME_GIT_PROMPT_CONFLICTS="%F{red}x"
+ZSH_THEME_GIT_PROMPT_CHANGED="%F{cyan}+"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="?"
+
 # Set the terminal's title.
 function title_escape {
     printf '\e]2;%s\a' $1
