@@ -49,7 +49,7 @@ function set_prompt {
 
     local modepart="${${KEYMAP/vicmd/COMMAND}/(main|viins)/}"
 
-    export PS1="%{$titlepart%}%B%(1j.%F{cyan}[$jobspart]%f .)%(!.%F{red}.%F{green})%n%f%b%F{green}@%f%B%F{green}%m$sshpart%f %F{blue}%(5~,%-1~/.../%3~,%~)%f %(?..%F{red}[%?]%f )%F{blue}%(3L.(i%) .)%f$gitpart%F{blue}%#%f%b "
+    export PS1="%{$titlepart%}%B%(1j.%F{cyan}[$jobspart]%f .)%(!.%F{red}.%F{green})%n%f%b%F{green}@%f%B%F{green}%m$sshpart%f %F{blue}%(5~,%-1~/.../%3~,%~)%f $gitpart%(?..%F{red}[%?]%f )%F{blue}%(2L.(i%) .)%f%F{blue}%#%f%b "
     export RPS1="%B%U$modepart%u%b"
 }
 
