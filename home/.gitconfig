@@ -1,3 +1,5 @@
 [user]
 	email = chris@upliftinglemma.net
 	name = Chris Bouchard
+[push]
+	default = simple
