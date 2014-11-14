@@ -3,6 +3,6 @@
 autoload colors
 colors
 
-[ -f /etc/DIR_COLORS ] && eval $(dircolors -b /etc/DIR_COLORS)
-export ZLSCOLORS="${LS_COLORS}"
+# [ -f /etc/DIR_COLORS ] && eval $(dircolors -b /etc/DIR_COLORS)
+# export ZLSCOLORS="${LS_COLORS}"
 
