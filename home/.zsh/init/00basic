@@ -33,7 +33,7 @@ fpath=(
     )
 
 export WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
-export DISPLAY=":0"
+#export DISPLAY=":0"
 
 export PAGER="/usr/bin/less"
 export VISUAL="vim -f"

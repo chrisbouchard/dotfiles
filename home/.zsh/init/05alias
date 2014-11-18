@@ -1,9 +1,5 @@
 #!/usr/bin/env zsh
 
-alias df='df -h'
-
-alias grep='grep --color=auto'
-
 case $(uname) in
     Darwin)
         alias gvim='mvim'
@@ -13,6 +9,11 @@ case $(uname) in
         alias ls='ls -hF --color=auto'
         ;;
 esac
+
+alias df='df -hT'
+alias du='du -hk'
+
+alias grep='grep --color=auto'
 
 alias ll='ls -l'
 alias la='ls -A'
@@ -24,6 +25,10 @@ alias ssh333='TERM=xterm ssh -t csi333 screen -s /usr/bin/zsh'
 alias wwwdo='sudo -u www'
 
 alias playlist="mpc playlist -f '[%position% ][[%albumartist%|%artist% - ]%title%]|[%file%]'"
+
+function cthulhu {
+    echo "ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn" >&2
+}
 
 function google {
     elinks "http://www.google.com/search?q=${*// /+}"

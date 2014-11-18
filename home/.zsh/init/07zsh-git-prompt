@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+GIT_PROMPT_EXECUTABLE="haskell"
+source $HOME/.zsh/zsh-git-prompt/zshrc.sh
+
