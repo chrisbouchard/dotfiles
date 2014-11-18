@@ -3,3 +3,5 @@
 	name = Chris Bouchard
 [push]
 	default = simple
+[color]
+	ui = true
