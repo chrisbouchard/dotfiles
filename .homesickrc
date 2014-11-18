@@ -1,4 +1,7 @@
+#!/usr/bin/env ruby
+
 Dir.chdir('home/.zsh/hub') do
-    system './scripts/build'
+    system './script/build'
 end
 
+# vim: set ft=ruby:
