@@ -2,6 +2,51 @@
 # MY LIQUID PROMPT THEME #
 ##########################
 
+# Special characters
+if [[ "$(locale -k LC_CTYPE | sed -n 's/^charmap="\(.*\)"/\1/p')" == *"UTF-8"* ]]
+then
+    # If charset is UTF-8.
+    LP_MARK_BATTERY="⌁"        # in front of the battery charge
+    LP_MARK_ADAPTER="⏚"        # displayed when plugged
+    LP_MARK_LOAD="⌂"           # in front of the load
+    LP_MARK_TEMP="θ"           # in front of the temp
+    LP_MARK_PROXY="↥"          # indicate a proxy in use
+    LP_MARK_BZR="↑"            # prompt mark in bzr repositories
+    LP_MARK_HG="☿"             # prompt mark in hg repositories
+    LP_MARK_SVN="‡"            # prompt mark in svn repositories
+    LP_MARK_GIT="±"            # prompt mark in git repositories
+    LP_MARK_FOSSIL="⌘"         # prompt mark in fossil repositories
+    LP_MARK_DISABLED="⌀"       # prompt mark in directory with disabled VCS info
+    LP_MARK_UNTRACKED="*"      # if git has untracked files
+    LP_MARK_STASH="+"          # if git has stashs
+    LP_MARK_SHORTEN_PATH=" … " # prompt mark in shortened paths
+else
+    # If charset is anything else, fallback to ASCII chars
+    LP_MARK_BATTERY="b"
+    LP_MARK_ADAPTER="p"
+    LP_MARK_LOAD="c"
+    LP_MARK_TEMP="T"
+    LP_MARK_PROXY="^"
+    LP_MARK_HG="b"
+    LP_MARK_HG="m"
+    LP_MARK_SVN="="
+    LP_MARK_GIT="+"
+    LP_MARK_FOSSIL="f"
+    LP_MARK_DISABLED="!"
+    LP_MARK_UNTRACKED="*"
+    LP_MARK_STASH="+"
+    LP_MARK_SHORTEN_PATH=" ... "
+fi
+
+LP_MARK_BRACKET_OPEN="["  # open bracket
+LP_MARK_BRACKET_CLOSE="]" # close bracket
+#LP_MARK_DEFAULT=""        # default prompt mark
+LP_MARK_PREFIX=" "        # prompt mark prefix
+LP_PS1_PREFIX=""
+LP_PS1_POSTFIX=""
+
+# Colors
+
 # Current working directory
 LP_COLOR_PATH="$BOLD"         # as normal user
 LP_COLOR_PATH_ROOT="$BOLD_YELLOW"   # as root
