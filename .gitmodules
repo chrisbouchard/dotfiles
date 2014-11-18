@@ -85,3 +85,6 @@
 [submodule "home/.vim/bundle/lightline.vim"]
 	path = home/.vim/bundle/lightline.vim
 	url = https://github.com/itchyny/lightline.vim.git
+[submodule "home/.zsh/hub"]
+	path = home/.zsh/hub
+	url = git://github.com/github/hub.git

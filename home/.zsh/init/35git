@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+# Add github's hub to our path
+path+="$HOME/.zsh/hub"
+
+# Set up the github git alias
+eval "$(hub alias -s)"
+
