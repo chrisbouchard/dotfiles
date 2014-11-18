@@ -1,86 +1,88 @@
 #!/usr/bin/env zsh
 
-unsetopt transient_rprompt
+source $HOME/.zsh/liquidprompt/liquidprompt
 
-# These prompts don't change, so we'll just define them straight up.
-export PS2='%_ %B%F{blue}>%f%b '
-export PS3='%B%F{blue}%#%b '
-export PS4='%i %B%F{red}+%f%b '
-
-ZSH_THEME_GIT_PROMPT_PREFIX='%F{blue}(%f'
-ZSH_THEME_GIT_PROMPT_SUFFIX='%F{blue})%f'
-ZSH_THEME_GIT_PROMPT_STAGED="%F{cyan}●"
-ZSH_THEME_GIT_PROMPT_CONFLICTS="%F{red}x"
-ZSH_THEME_GIT_PROMPT_CHANGED="%F{yellow}+"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="?"
-
-# Set the terminal's title.
-function title_escape {
-    printf '\e]2;%s\a' $1
-}
-
-# Update the prompts.
-function set_prompt {
-    local titlepart=''
-    local sshpart=''
-
-    if [ -z "$SSH_CONNECTION" ]
-    then
-        titlepart=$(title_escape '%n@%m:%1~')
-        sshpart=''
-    else
-        titlepart=$(title_escape '%n@%m:%1~ (ssh)')
-        sshpart='%F{cyan} (ssh)%f'
-    fi
-
-    local -a jobspart
-    local a
-
-    for a in ${(k)jobstates}
-    do
-        local j=$jobstates[$a]
-        local i="${${(@s,:,)j}[2]}"
-
-        jobspart+=($a${i//[^+-]/})
-    done
-
-    local gitpart=$(git_super_status)
-    [[ -n $gitpart ]] && gitpart="$gitpart "
-
-    local modepart="${${KEYMAP/vicmd/COMMAND}/(main|viins)/}"
-
-    export PS1="%{$titlepart%}%B%(1j.%F{cyan}[$jobspart]%f .)%(!.%F{red}.%F{green})%n%f%b%F{green}@%f%B%F{green}%m$sshpart%f %F{blue}%(5~,%-1~/.../%3~,%~)%f $gitpart%(?..%F{red}[%?]%f )%F{blue}%(2L.(i%) .)%f%F{blue}%#%f%b "
-    export RPS1="%B%U$modepart%u%b"
-}
-
-# If I am using vi keys, I want to know what mode I'm currently using.
-# zle-keymap-select is executed every time KEYMAP changes.
-# From http://zshwiki.org/home/examples/zlewidgets
-function zle-keymap-select {
-    set_prompt
-    zle reset-prompt
-}
-
-zle -N zle-keymap-select
-
-function precmd {
-    set_prompt
-}
-
-function preexec {
-    local HOSTNAME="$(hostname)"
-    local CMD=${2[(wr)^(*=*|sudo|exec|command|nocorrect|noglob|-*)]}
-
-    if [ "$CMD" = 'fg' ] && [ -n "$jobstates" ]
-    then
-        CMD=$(jobs %+ | awk '{print $4}')
-    fi
-
-    if [ -z "$SSH_CONNECTION" ]
-    then
-        echo -ne "\e]2;$CMD\a"
-    else
-        echo -ne "\e]2;$HOSTNAME:$CMD\a"
-    fi
-}
+# unsetopt transient_rprompt
+#
+# # These prompts don't change, so we'll just define them straight up.
+# export PS2='%_ %B%F{blue}>%f%b '
+# export PS3='%B%F{blue}%#%b '
+# export PS4='%i %B%F{red}+%f%b '
+#
+# ZSH_THEME_GIT_PROMPT_PREFIX='%F{blue}(%f'
+# ZSH_THEME_GIT_PROMPT_SUFFIX='%F{blue})%f'
+# ZSH_THEME_GIT_PROMPT_STAGED="%F{cyan}●"
+# ZSH_THEME_GIT_PROMPT_CONFLICTS="%F{red}x"
+# ZSH_THEME_GIT_PROMPT_CHANGED="%F{yellow}+"
+# ZSH_THEME_GIT_PROMPT_UNTRACKED="?"
+#
+# # Set the terminal's title.
+# function title_escape {
+#     printf '\e]2;%s\a' $1
+# }
+#
+# # Update the prompts.
+# function set_prompt {
+#     local titlepart=''
+#     local sshpart=''
+#
+#     if [ -z "$SSH_CONNECTION" ]
+#     then
+#         titlepart=$(title_escape '%n@%m:%1~')
+#         sshpart=''
+#     else
+#         titlepart=$(title_escape '%n@%m:%1~ (ssh)')
+#         sshpart='%F{cyan} (ssh)%f'
+#     fi
+#
+#     local -a jobspart
+#     local a
+#
+#     for a in ${(k)jobstates}
+#     do
+#         local j=$jobstates[$a]
+#         local i="${${(@s,:,)j}[2]}"
+#
+#         jobspart+=($a${i//[^+-]/})
+#     done
+#
+#     local gitpart=$(git_super_status)
+#     [[ -n $gitpart ]] && gitpart="$gitpart "
+#
+#     local modepart="${${KEYMAP/vicmd/COMMAND}/(main|viins)/}"
+#
+#     export PS1="%{$titlepart%}%B%(1j.%F{cyan}[$jobspart]%f .)%(!.%F{red}.%F{green})%n%f%b%F{green}@%f%B%F{green}%m$sshpart%f %F{blue}%(5~,%-1~/.../%3~,%~)%f $gitpart%(?..%F{red}[%?]%f )%F{blue}%(2L.(i%) .)%f%F{blue}%#%f%b "
+#     export RPS1="%B%U$modepart%u%b"
+# }
+#
+# # If I am using vi keys, I want to know what mode I'm currently using.
+# # zle-keymap-select is executed every time KEYMAP changes.
+# # From http://zshwiki.org/home/examples/zlewidgets
+# function zle-keymap-select {
+#     set_prompt
+#     zle reset-prompt
+# }
+#
+# zle -N zle-keymap-select
+#
+# function precmd {
+#     set_prompt
+# }
+#
+# function preexec {
+#     local HOSTNAME="$(hostname)"
+#     local CMD=${2[(wr)^(*=*|sudo|exec|command|nocorrect|noglob|-*)]}
+#
+#     if [ "$CMD" = 'fg' ] && [ -n "$jobstates" ]
+#     then
+#         CMD=$(jobs %+ | awk '{print $4}')
+#     fi
+#
+#     if [ -z "$SSH_CONNECTION" ]
+#     then
+#         echo -ne "\e]2;$CMD\a"
+#     else
+#         echo -ne "\e]2;$HOSTNAME:$CMD\a"
+#     fi
+# }
 

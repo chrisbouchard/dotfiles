@@ -3,10 +3,10 @@
 ##################################
 
 # Load in my theme
-source "$HOME/.liquidfont/chrisbouchard.theme"
+source "$HOME/.liquidprompt/chrisbouchard.theme"
 
 # Set up the prompt order
-LP_PS1_FILE="$HOME/.liquidfont/chrisbouchard.ps1"
+LP_PS1_FILE="$HOME/.liquidprompt/chrisbouchard.ps1"
 
 #############
 # BEHAVIOUR #
