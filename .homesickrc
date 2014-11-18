@@ -1,0 +1,4 @@
+Dir.chdir('home/.zsh/hub') do
+    system './scripts/build'
+end
+
