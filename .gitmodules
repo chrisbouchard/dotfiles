@@ -79,3 +79,6 @@
 [submodule "home/.zsh/zsh-git-prompt"]
 	path = home/.zsh/zsh-git-prompt
 	url = https://github.com/chrisbouchard/zsh-git-prompt.git
+[submodule "home/.zsh/liquidprompt"]
+	path = home/.zsh/liquidprompt
+	url = https://github.com/nojhan/liquidprompt.git
