@@ -19,7 +19,11 @@ LP_PS1="${LP_PS1}${LP_RUNTIME}${LP_ERR}${LP_MARK_PREFIX}${LP_MARK}${LP_PS1_POSTF
 
 # "invisible" parts
 # Get the current prompt on the fly and make it a title
-LP_TITLE="$(_lp_title "$LP_PS1")"
+# Added by Chris Bouchard: And filter out the escape sequences.
+LP_TITLE_PS1="$(echo -n "$LP_PS1" | \
+    sed 's/'$(echo -e -n '\033')'\[[0-9;]*m//g' | \
+    sed 's/'$(echo -e -n '\033')'(B//g')"
+LP_TITLE="$(_lp_title "$LP_TITLE_PS1")"
 
 # Insert it in the prompt
 LP_PS1="${LP_TITLE}${LP_PS1}"
