@@ -3,8 +3,8 @@
 source $HOME/.zsh/liquidprompt/liquidprompt
 
 function preexec {
-    local HOSTNAME="$(hostname)"
     local CMD=${2[(wr)^(*=*|sudo|exec|command|nocorrect|noglob|-*)]}
+    local CONTEXT
 
     if [ "$CMD" = 'fg' ] && [ -n "$jobstates" ]
     then
@@ -13,9 +13,13 @@ function preexec {
 
     if [ -z "$SSH_CONNECTION" ]
     then
-        printf '\033]0;%s\007' $CMD
+        CONTEXT=$(print -P '%~')
+        #printf '\033]0;%s\007' $CMD
     else
-        printf '\033]0;%s:%s\007' $CMD $HOSTNAME
+        CONTEXT=$(print -P '%m:%~')
+        #printf '\033]0;%s:%s\007' $CMD $HOSTNAME
     fi
+
+    printf '\033]0;%s (%s)\007' $CMD $CONTEXT
 }
 
