@@ -4,7 +4,12 @@ set nocompatible
 set encoding=utf-8
 set updatecount=0
 set autoread
+
 set title
+"if &term == "screen" || &term == "screen-color" || &term == "screen-256-color"
+    set t_ts="]2;"
+    set t_fs="\\"
+"endif
 
 filetype plugin indent on
 
