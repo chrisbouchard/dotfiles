@@ -8,6 +8,12 @@ source "$HOME/.liquidprompt/chrisbouchard.theme"
 # Set up the prompt order
 LP_PS1_FILE="$HOME/.liquidprompt/chrisbouchard.ps1"
 
+if [ -n "$TMUX" ]
+then
+    LP_SCREEN_TITLE_OPEN=$(printf '\033]2;')
+    LP_SCREEN_TITLE_CLOSE=$(printf '\033\\')
+fi
+
 #############
 # BEHAVIOUR #
 #############
