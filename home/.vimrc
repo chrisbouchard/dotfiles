@@ -5,11 +5,11 @@ set encoding=utf-8
 set updatecount=0
 set autoread
 
+if &term =~ "screen.*" && len($TMUX) > 0
+    set t_ts=]2;
+    set t_fs=\\
+endif
 set title
-"if &term == "screen" || &term == "screen-color" || &term == "screen-256-color"
-    set t_ts="]2;"
-    set t_fs="\\"
-"endif
 
 filetype plugin indent on
 
