@@ -4,6 +4,7 @@ set nocompatible
 set encoding=utf-8
 set updatecount=0
 set autoread
+set title
 
 filetype plugin indent on
 
