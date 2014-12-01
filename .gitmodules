@@ -13,9 +13,6 @@
 [submodule "home/.vim/bundle/html5.vim"]
 	path = home/.vim/bundle/html5.vim
 	url = https://github.com/vim-scripts/html5.vim.git
-[submodule "home/.vim/bundle/jedi-vim"]
-	path = home/.vim/bundle/jedi-vim
-	url = https://github.com/davidhalter/jedi-vim.git
 [submodule "home/.vim/bundle/jellybeans.vim"]
 	path = home/.vim/bundle/jellybeans.vim
 	url = https://github.com/nanotech/jellybeans.vim.git
