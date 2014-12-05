@@ -88,3 +88,6 @@
 [submodule "home/.zsh/zsh-bd"]
 	path = home/.zsh/zsh-bd
 	url = https://github.com/Tarrasch/zsh-bd.git
+[submodule "home/.vim/bundle/scratch.vim"]
+	path = home/.vim/bundle/scratch.vim
+	url = https://github.com/mtth/scratch.vim.git
