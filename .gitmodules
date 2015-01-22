@@ -91,3 +91,6 @@
 [submodule "home/.vim/bundle/scratch.vim"]
 	path = home/.vim/bundle/scratch.vim
 	url = https://github.com/mtth/scratch.vim.git
+[submodule "home/.vim/bundle/vim-gitgutter"]
+	path = home/.vim/bundle/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
