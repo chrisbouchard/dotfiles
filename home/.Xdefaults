@@ -1,3 +1,4 @@
+URxvt*termName: rxvt-256color
 URxvt*loginShell: false
 URxvt*meta: ignore
 URxvt*utmpInhibit: true
