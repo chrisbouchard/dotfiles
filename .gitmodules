@@ -1,96 +1,128 @@
 [submodule "home/.vim/bundle/a.vim"]
 	path = home/.vim/bundle/a.vim
 	url = https://github.com/vim-scripts/a.vim.git
+	ignore = dirty
 [submodule "home/.vim/bundle/cf-utils.vim"]
 	path = home/.vim/bundle/cf-utils.vim
 	url = https://github.com/davejlong/cf-utils.vim.git
+	ignore = dirty
 [submodule "home/.vim/bundle/ctrlp.vim"]
 	path = home/.vim/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
+	ignore = dirty
 [submodule "home/.vim/bundle/dbext.vim"]
 	path = home/.vim/bundle/dbext.vim
 	url = https://github.com/vim-scripts/dbext.vim.git
+	ignore = dirty
 [submodule "home/.vim/bundle/html5.vim"]
 	path = home/.vim/bundle/html5.vim
 	url = https://github.com/vim-scripts/html5.vim.git
+	ignore = dirty
 [submodule "home/.vim/bundle/jellybeans.vim"]
 	path = home/.vim/bundle/jellybeans.vim
 	url = https://github.com/nanotech/jellybeans.vim.git
+	ignore = dirty
 [submodule "home/.vim/bundle/loremipsum"]
 	path = home/.vim/bundle/loremipsum
 	url = https://github.com/vim-scripts/loremipsum.git
+	ignore = dirty
 [submodule "home/.vim/bundle/matchit.zip"]
 	path = home/.vim/bundle/matchit.zip
 	url = https://github.com/vim-scripts/matchit.zip.git
+	ignore = dirty
 [submodule "home/.vim/bundle/php.vim"]
 	path = home/.vim/bundle/php.vim
 	url = https://github.com/vim-scripts/php.vim.git
+	ignore = dirty
 [submodule "home/.vim/bundle/sudo.vim"]
 	path = home/.vim/bundle/sudo.vim
 	url = https://github.com/vim-scripts/sudo.vim.git
+	ignore = dirty
 [submodule "home/.vim/bundle/Syntastic"]
 	path = home/.vim/bundle/Syntastic
 	url = https://github.com/vim-scripts/Syntastic.git
+	ignore = dirty
 [submodule "home/.vim/bundle/targets.vim"]
 	path = home/.vim/bundle/targets.vim
 	url = https://github.com/wellle/targets.vim.git
+	ignore = dirty
 [submodule "home/.vim/bundle/tcomment_vim"]
 	path = home/.vim/bundle/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim.git
+	ignore = dirty
 [submodule "home/.vim/bundle/vim-eunuch"]
 	path = home/.vim/bundle/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch.git
+	ignore = dirty
 [submodule "home/.vim/bundle/vim-fugitive"]
 	path = home/.vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+	ignore = dirty
 [submodule "home/.vim/bundle/vim-indent-object"]
 	path = home/.vim/bundle/vim-indent-object
 	url = https://github.com/michaeljsmith/vim-indent-object.git
+	ignore = dirty
 [submodule "home/.vim/bundle/vim-repeat"]
 	path = home/.vim/bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
+	ignore = dirty
 [submodule "home/.vim/bundle/vim-surround"]
 	path = home/.vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+	ignore = dirty
 [submodule "home/.vim/bundle/vim-windowswap"]
 	path = home/.vim/bundle/vim-windowswap
 	url = https://github.com/wesQ3/vim-windowswap.git
+	ignore = dirty
 [submodule "home/.vim/bundle/vim-yaml"]
 	path = home/.vim/bundle/vim-yaml
 	url = https://github.com/stephpy/vim-yaml.git
+	ignore = dirty
 [submodule "home/.vim/bundle/vim-web-indent"]
 	path = home/.vim/bundle/vim-web-indent
 	url = https://github.com/lukaszb/vim-web-indent.git
+	ignore = dirty
 [submodule "home/.vim/bundle/xmledit"]
 	path = home/.vim/bundle/xmledit
 	url = https://github.com/sukima/xmledit.git
+	ignore = dirty
 [submodule "home/.zsh/zsh-syntax-highlighting"]
 	path = home/.zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+	ignore = dirty
 [submodule "home/.zsh/stderred"]
 	path = home/.zsh/stderred
 	url = https://github.com/sickill/stderred.git
+	ignore = dirty
 [submodule "home/.vim/bundle/vim-easy-align"]
 	path = home/.vim/bundle/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align.git
+	ignore = dirty
 [submodule "home/.zsh/zsh-git-prompt"]
 	path = home/.zsh/zsh-git-prompt
 	url = https://github.com/chrisbouchard/zsh-git-prompt.git
+	ignore = dirty
 [submodule "home/.zsh/liquidprompt"]
 	path = home/.zsh/liquidprompt
 	url = https://github.com/nojhan/liquidprompt.git
+	ignore = dirty
 [submodule "home/.vim/bundle/lightline.vim"]
 	path = home/.vim/bundle/lightline.vim
 	url = https://github.com/itchyny/lightline.vim.git
+	ignore = dirty
 [submodule "home/.zsh/hub"]
 	path = home/.zsh/hub
 	url = git://github.com/github/hub.git
+	ignore = dirty
 [submodule "home/.zsh/zsh-bd"]
 	path = home/.zsh/zsh-bd
 	url = https://github.com/Tarrasch/zsh-bd.git
+	ignore = dirty
 [submodule "home/.vim/bundle/scratch.vim"]
 	path = home/.vim/bundle/scratch.vim
 	url = https://github.com/mtth/scratch.vim.git
+	ignore = dirty
 [submodule "home/.vim/bundle/vim-gitgutter"]
 	path = home/.vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
+	ignore = dirty
