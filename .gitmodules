@@ -126,3 +126,7 @@
 	path = home/.vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
 	ignore = dirty
+[submodule "home/.vim/bundle/vim-syntax-extra"]
+	path = home/.vim/bundle/vim-syntax-extra
+	url = https://github.com/justinmk/vim-syntax-extra.git
+	ignore = dirty
