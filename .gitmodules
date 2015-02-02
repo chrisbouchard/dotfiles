@@ -130,3 +130,7 @@
 	path = home/.vim/bundle/vim-syntax-extra
 	url = https://github.com/justinmk/vim-syntax-extra.git
 	ignore = dirty
+[submodule "home/.vim/bundle/pgsql.vim"]
+	path = home/.vim/bundle/pgsql.vim
+	url = https://github.com/exu/pgsql.vim.git
+	ignore = dirty
