@@ -178,7 +178,6 @@ let &makeprg = 'if [ -f Makefile ]; then make; else make -C ..; fi'
 noremap ; :
 inoremap jj <Esc>
 inoremap kk <Esc>
-inoremap <Esc> <nop>
 
 "nmap <silent> . .`[
 
@@ -190,6 +189,8 @@ map! <silent> <F1> <nop>
 
 " inoremap <silent> <tab> <C-n>
 " inoremap <silent> <S-tab> <C-p>
+
+vmap <silent> <leader>e c<C-r>=<C-r>"<CR><ESC>
 
 nmap <silent> <leader>d <Plug>DashSearch
 
