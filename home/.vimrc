@@ -98,7 +98,7 @@ set laststatus=2
 "set statusline=%<%F%m%r\ %y[%{&ff}]%{PrintWrap()}%{PrintSpell()}%h%w%=L%l/%L\ C%c%V\ %P
 set showtabline=0
 
-set directory=~/.vim/swap
+set directory=~/.vim/swap,/tmp,/var/tmp
 
 set tabpagemax=15
 
