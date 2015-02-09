@@ -134,3 +134,7 @@
 	path = home/.vim/bundle/pgsql.vim
 	url = https://github.com/exu/pgsql.vim.git
 	ignore = dirty
+[submodule "home/.vim/bundle/evaluate.vim"]
+	path = home/.vim/bundle/evaluate.vim
+	url = https://github.com/chrisbouchard/evaluate.vim.git
+	ignore = dirty
