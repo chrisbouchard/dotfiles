@@ -76,17 +76,19 @@ set cursorline
 set ttymouse=xterm2
 set mouse=a
 
-set guioptions-=T
-set guioptions-=m
-set guioptions-=l
-set guioptions-=L
-set guioptions-=r
-set guioptions-=R
-set guioptions-=b
-set guioptions+=c
+if has("gui_running")
+    set guioptions-=T
+    set guioptions-=m
+    set guioptions-=l
+    set guioptions-=L
+    set guioptions-=r
+    set guioptions-=R
+    set guioptions-=b
+    set guioptions+=c
 
-if !has("gui_macvim")
     set guifont=Terminus\ 8
+
+    set lines=50 columns=140
 endif
 
 set shortmess=lnrxI
@@ -192,7 +194,7 @@ map! <silent> <F1> <nop>
 " inoremap <silent> <tab> <C-n>
 " inoremap <silent> <S-tab> <C-p>
 
-vmap <silent> <leader>e c<C-r>=<C-r>"<CR><ESC>
+" vmap <silent> <leader>e c<C-r>=<C-r>"<CR><ESC>
 
 nmap <silent> <leader>d <Plug>DashSearch
 
@@ -474,3 +476,4 @@ endfunction
 
 command! Kwbd call s:Kwbd(1)
 "nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
+
