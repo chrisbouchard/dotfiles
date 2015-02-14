@@ -134,3 +134,6 @@
 	path = home/.vim/bundle/evaluate.vim
 	url = https://github.com/chrisbouchard/evaluate.vim.git
 	ignore = dirty
+[submodule "home/.zsh/hub"]
+	path = home/.zsh/hub
+	url = https://github.com/github/hub.git
