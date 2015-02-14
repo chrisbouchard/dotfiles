@@ -110,10 +110,6 @@
 	path = home/.vim/bundle/lightline.vim
 	url = https://github.com/itchyny/lightline.vim.git
 	ignore = dirty
-[submodule "home/.zsh/hub"]
-	path = home/.zsh/hub
-	url = git://github.com/github/hub.git
-	ignore = dirty
 [submodule "home/.zsh/zsh-bd"]
 	path = home/.zsh/zsh-bd
 	url = https://github.com/Tarrasch/zsh-bd.git
