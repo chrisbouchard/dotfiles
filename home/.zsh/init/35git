@@ -5,5 +5,6 @@ if which hub &>/dev/null
 then
     # Set up the github git alias
     eval "$(hub alias -s)"
+    #fpath+=( "${MY_ZSH_HOME}/hub/etc" )
 fi
 

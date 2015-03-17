@@ -138,3 +138,7 @@
 	path = home/.vim/bundle/vim-haml
 	url = https://github.com/tpope/vim-haml.git
 	ignore = dirty
+[submodule "home/.zsh/hub"]
+	path = home/.zsh/hub
+	url = https://github.com/github/hub.git
+	ignore = dirty
