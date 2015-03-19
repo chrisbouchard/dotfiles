@@ -30,6 +30,8 @@ au BufNewFile,BufRead *.rabl  setf ruby
 
 au FileType make setlocal noexpandtab
 
+au FileType ruby setlocal sw=2
+
 "au FileType tex setlocal makeprg=pdflatex\ -interaction\ nonstopmode\ $*\ %
 
 let $PAGER=''
