@@ -28,6 +28,9 @@ au BufNewFile,BufRead *.nice  setf nice
 au BufNewFile,BufRead *.psql  setf psql
 au BufNewFile,BufRead *.rabl  setf ruby
 
+au FileType java set omnifunc=javacomplete#Complete
+au FileType java compiler gradle
+
 au FileType make setlocal noexpandtab
 
 au FileType ruby setlocal sw=2
@@ -66,10 +69,12 @@ let g:jedi#use_tabs_not_buffers = 0
 let g:syntastic_python_python_exe = 'python3'
 let g:syntastic_python_checkers = ['pylint']
 
+let g:JavaComplete_LibsPath = 'lib'
+
 set background=dark
 colorscheme ir_black
 
-set autochdir
+"set autochdir
 set nobackup
 set shell=zsh
 set hidden
@@ -88,7 +93,7 @@ if has("gui_running")
     set guioptions-=b
     set guioptions+=c
 
-    set guifont=Terminus\ 8
+    set guifont=Liberation\ Mono\ 8
 
     set lines=50 columns=140
 endif
@@ -283,7 +288,7 @@ inoremap  <S-Left>   <Left>
 inoremap  <S-Right>  <Right>
 
 
-function! WinMove(key) 
+function! WinMove(key)
     let t:curwin = winnr()
     exec "wincmd " . a:key
     if (t:curwin == winnr()) "we havent moved

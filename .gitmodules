@@ -38,10 +38,6 @@
 	path = home/.vim/bundle/sudo.vim
 	url = https://github.com/vim-scripts/sudo.vim.git
 	ignore = dirty
-[submodule "home/.vim/bundle/Syntastic"]
-	path = home/.vim/bundle/Syntastic
-	url = https://github.com/vim-scripts/Syntastic.git
-	ignore = dirty
 [submodule "home/.vim/bundle/targets.vim"]
 	path = home/.vim/bundle/targets.vim
 	url = https://github.com/wellle/targets.vim.git
@@ -142,3 +138,18 @@
 	path = home/.zsh/hub
 	url = https://github.com/github/hub.git
 	ignore = dirty
+[submodule "home/.zsh/git-flow-completion"]
+	path = home/.zsh/git-flow-completion
+	url = https://github.com/bobthecow/git-flow-completion.git
+[submodule "home/.vim/bundle/rust.vim"]
+	path = home/.vim/bundle/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git
+[submodule "home/.vim/bundle/vim-javacomplete2"]
+	path = home/.vim/bundle/vim-javacomplete2
+	url = https://github.com/artur-shaik/vim-javacomplete2.git
+[submodule "home/.vim/vim-gradle"]
+	path = home/.vim/bundle/vim-gradle
+	url = https://github.com/tfnico/vim-gradle.git
+[submodule "home/.vim/bundle/typescript-vim"]
+	path = home/.vim/bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
