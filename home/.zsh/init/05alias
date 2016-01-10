@@ -18,9 +18,9 @@ alias grep='grep --color=auto'
 alias ll='ls -l'
 alias la='ls -A'
 alias lal='ls -lA'
+alias lla='ls -lA'
 alias ldl='ls -ld'
-
-alias ssh333='TERM=xterm ssh -t csi333 screen -s /usr/bin/zsh'
+alias lld='ls -ld'
 
 alias wwwdo='sudo -u www'
 
