@@ -1,5 +1,8 @@
 call pathogen#infect()
 
+set exrc
+set secure
+
 set nocompatible
 set encoding=utf-8
 set updatecount=0
@@ -49,6 +52,9 @@ let g:EnhCommentifyUseSyntax='yes'
 
 let g:buffergator_suppress_keymaps=1
 let g:buffergator_autoexpand_on_split=0
+let g:buffergator_sort_regime="filepath"
+let g:buffergator_display_regime="basename"
+let g:buffergator_show_full_directory_path=0
 
 let g:SuperTabDefaultCompletionType = 'context'
 
@@ -167,8 +173,8 @@ set listchars=tab:▸\ ,trail:⋅,nbsp:∘
 "set colorcolumn=80
 "highlight colorcolumn ctermbg=233 guibg=#050505
 
-highlight OverLength ctermbg=darkred ctermfg=white guibg=#441111
-match OverLength /\%81v.\+/
+"highlight OverLength ctermbg=darkred ctermfg=white guibg=#441111
+"match OverLength /\%81v.\+/
 
 command! W w !sudo tee % >/dev/null
 
