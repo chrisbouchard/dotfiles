@@ -62,8 +62,8 @@ let g:SuperTabDefaultCompletionType = 'context'
 
 let g:snips_author = 'Chris J. Bouchard'
 
-let g:Powerline_symbols = 'unicode'
-let g:Powerline_dividers_override = ['▖', '┊', '▗', '┊']
+"let g:Powerline_symbols = 'unicode'
+"let g:Powerline_dividers_override = ['▖', '┊', '▗', '┊']
 
 "let g:indent_guides_start_level = 2
 "let g:indent_guides_guide_size = 1
@@ -102,9 +102,9 @@ if has("gui_running")
     set guioptions-=b
     set guioptions+=c
 
-    set guifont=Liberation\ Mono\ 8
+    set guifont=Iosevka\ 8
 
-    set lines=50 columns=140
+    set lines=50 columns=160
 endif
 
 set shortmess=lnrxI
