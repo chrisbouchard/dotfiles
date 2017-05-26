@@ -13,8 +13,11 @@ export FPATH
 path=(
     "${HOME}/bin"
     "${HOME}/.cabal/bin"
+    "${HOME}/.cargo/bin"
     "${HOME}/.local/bin"
     "${HOME}/.local/sbin"
+    "${HOME}/liquibase"
+    "${HOME}/maude"
     "${HOME}/opt/flex/bin"
     "/usr/share/chris/bin"
     "/opt/gradle/latest/bin"
@@ -46,6 +49,6 @@ export EDITOR=${VISUAL}
 
 export HOMEBREW_GITHUB_API_TOKEN="d2f67ef18d844c8d1bfa2e5d0b7ce5e105235009"
 
-setopt extendedglob notify ignoreeof interactivecomments noclobber
+setopt extendedglob notify ignoreeof interactivecomments clobber
 limit coredumpsize 0
 

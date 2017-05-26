@@ -1,18 +1,24 @@
 #!/usr/bin/env zsh
 
-source $HOME/.zsh/liquidprompt/liquidprompt
+if command -v powerline-daemon &>/dev/null
+then
+    powerline-daemon -q
+    . /usr/share/powerline/zsh/powerline.zsh
+else
+    source $HOME/.zsh/liquidprompt/liquidprompt
 
-function preexec {
-    local cmd=${1[(wr)^(*=*|sudo|exec|builtin|command|nocorrect|noglob|-*)]}
-    local job
+    function preexec {
+        local cmd=${1[(wr)^(*=*|sudo|exec|builtin|command|nocorrect|noglob|-*)]}
+        local job
 
-    if [[ $cmd == 'fg' && -n $jobstates ]]
-    then
-        job=$(jobs %+ | cut -d ' ' -f5-)
-        preexec $job
-        return $?
-    fi
+        if [[ $cmd == 'fg' && -n $jobstates ]]
+        then
+            job=$(jobs %+ | cut -d ' ' -f5-)
+            preexec $job
+            return $?
+        fi
 
-    printf '\033]0;%s %s\007' ${(%%)LP_TITLE_PS1} $cmd
-}
+        printf '\033]0;%s %s\007' ${(%%)LP_TITLE_PS1} $cmd
+    }
+fi
 

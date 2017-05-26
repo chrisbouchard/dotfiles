@@ -38,6 +38,8 @@ au FileType make setlocal noexpandtab
 
 au FileType ruby setlocal sw=2
 
+au FileType text setlocal nocindent nosmartindent
+
 "au FileType tex setlocal makeprg=pdflatex\ -interaction\ nonstopmode\ $*\ %
 
 let $PAGER=''
@@ -82,6 +84,7 @@ colorscheme ir_black
 
 "set autochdir
 set nobackup
+set backupcopy=yes
 set shell=zsh
 set hidden
 set cursorline
@@ -181,6 +184,8 @@ command! W w !sudo tee % >/dev/null
 command! Make make -C ..
 
 let &makeprg = 'if [ -f Makefile ]; then make; else make -C ..; fi'
+
+cabbr <expr> %% expand('%:p:h')
 
 " Disable middle-click-to-paste, middle-double-click-to-paste, ...
 :map <MiddleMouse> <Nop>

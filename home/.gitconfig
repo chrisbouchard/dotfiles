@@ -1,8 +1,11 @@
 [user]
 	email = chris@upliftinglemma.net
 	name = Chris Bouchard
+	signingkey = A274105E
 [push]
 	default = simple
 [color]
 	ui = true
 [hub]
+[commit]
+	gpgsign = true
