@@ -141,15 +141,28 @@
 [submodule "home/.zsh/git-flow-completion"]
 	path = home/.zsh/git-flow-completion
 	url = https://github.com/bobthecow/git-flow-completion.git
+	ignore = dirty
 [submodule "home/.vim/bundle/rust.vim"]
 	path = home/.vim/bundle/rust.vim
 	url = https://github.com/rust-lang/rust.vim.git
+	ignore = dirty
 [submodule "home/.vim/bundle/vim-javacomplete2"]
 	path = home/.vim/bundle/vim-javacomplete2
 	url = https://github.com/artur-shaik/vim-javacomplete2.git
+	ignore = dirty
 [submodule "home/.vim/vim-gradle"]
 	path = home/.vim/bundle/vim-gradle
 	url = https://github.com/tfnico/vim-gradle.git
+	ignore = dirty
 [submodule "home/.vim/bundle/typescript-vim"]
 	path = home/.vim/bundle/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
+	ignore = dirty
+[submodule "home/.tmux/plugins/tpm"]
+	path = home/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+	ignore = dirty
+[submodule "home/.vim/bundle/vim-tmux"]
+	path = home/.vim/bundle/vim-tmux
+	url = https://github.com/tmux-plugins/vim-tmux.git
+	ignore = dirty
