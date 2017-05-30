@@ -158,11 +158,11 @@
 	path = home/.vim/bundle/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
 	ignore = dirty
-[submodule "home/.tmux/plugins/tpm"]
-	path = home/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
-	ignore = dirty
 [submodule "home/.vim/bundle/vim-tmux"]
 	path = home/.vim/bundle/vim-tmux
 	url = https://github.com/tmux-plugins/vim-tmux.git
+	ignore = dirty
+[submodule "home/.tmux/plugins/tpm"]
+	path = home/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
 	ignore = dirty
