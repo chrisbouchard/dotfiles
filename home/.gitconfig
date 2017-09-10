@@ -1,7 +1,7 @@
 [user]
 	email = chris@upliftinglemma.net
 	name = Chris Bouchard
-	signingkey = A274105E
+	signingkey = 5993C7C995C99E57ADEEF6AD702A573BA274105E
 [push]
 	default = simple
 [color]
