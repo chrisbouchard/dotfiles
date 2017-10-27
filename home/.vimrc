@@ -82,7 +82,7 @@ let g:JavaComplete_LibsPath = 'lib'
 set background=dark
 colorscheme ir_black
 
-"set autochdir
+set autochdir
 set nobackup
 set backupcopy=yes
 set shell=zsh
