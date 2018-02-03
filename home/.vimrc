@@ -12,7 +12,10 @@ if &term =~ "screen.*" && len($TMUX) > 0
     set t_ts=]2;
     set t_fs=\\
 endif
+
 set title
+set titleold=""
+set titlestring=VIM:\ %F
 
 filetype plugin indent on
 
