@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+if type ng &> /dev/null
+then
+    eval $(ng completion --zsh)
+fi
+
