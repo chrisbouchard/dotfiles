@@ -1,9 +1,0 @@
-#compdef evince
-
-local curcontext="$curcontext"
-typeset -A opt_args
-
-_arguments \
-    '*::file: _files -g "*.(eps|ps|pdf)"'
-
-
