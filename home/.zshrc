@@ -92,6 +92,7 @@ plugins=(
   ssh-agent
   thefuck
   vi-mode
+  zsh_reload
   zsh-syntax-highlighting
 )
 
