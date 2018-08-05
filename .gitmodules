@@ -178,3 +178,7 @@
 	path = home/.tmux/plugins/tmux-yank
 	url = https://git::@github.com/tmux-plugins/tmux-yank
 	ignore=dirty
+[submodule "home/.vim/bundle/vim-hilinks"]
+	path = home/.vim/bundle/vim-hilinks
+	url = https://github.com/kergoth/vim-hilinks.git
+	ignore=dirty

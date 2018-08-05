@@ -50,3 +50,5 @@ zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found --\e[0m'
 compdef pkill=kill
 compdef pkill=killall
 
+$(pip completion --zsh)
+

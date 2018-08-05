@@ -16,6 +16,7 @@ path=(
     "${HOME}/.cargo/bin"
     "${HOME}/.local/bin"
     "${HOME}/.local/sbin"
+    "${HOME}/.rbenv/bin"
     "${HOME}/liquibase"
     "${HOME}/maude"
     "${HOME}/opt/flex/bin"
