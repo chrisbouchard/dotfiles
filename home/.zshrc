@@ -82,14 +82,20 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  # Autocompletion
+  pip
+  ng
+  npm
+  # Functional
   bd
   common-aliases
   gpg-agent
-  ng
   nvm
   powerline
   rbenv
+  sdkman
   ssh-agent
+  tmux
   thefuck
   vi-mode
   zsh_reload
