@@ -83,7 +83,7 @@
 	url = https://github.com/sukima/xmledit.git
 	ignore = dirty
 [submodule "home/.zsh/zsh-syntax-highlighting"]
-	path = home/.zsh/zsh-syntax-highlighting
+	path = home/.oh-my-zsh-custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 	ignore = dirty
 [submodule "home/.zsh/stderred"]
@@ -107,7 +107,7 @@
 	url = https://github.com/itchyny/lightline.vim.git
 	ignore = dirty
 [submodule "home/.zsh/zsh-bd"]
-	path = home/.zsh/zsh-bd
+	path = home/.oh-my-zsh-custom/plugins/bd
 	url = https://github.com/Tarrasch/zsh-bd.git
 	ignore = dirty
 [submodule "home/.vim/bundle/scratch.vim"]
