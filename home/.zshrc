@@ -88,13 +88,13 @@ plugins=(
   npm
   # Functional
   bd
+  command-not-found
   common-aliases
   gpg-agent
   nvm
   powerline
   rbenv
   sdkman
-  ssh-agent
   tmux
   thefuck
   vi-mode
