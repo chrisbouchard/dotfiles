@@ -1,8 +1,58 @@
-call pathogen#infect()
+" ********** POWERLINE **********
 
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
+
+
+" ********** FILE TYPES **********
+
+filetype plugin indent on
+
+au BufNewFile,BufRead *.as    setf actionscript
+au BufNewFile,BufRead *.h     setf c
+au BufNewFile,BufRead *.mal   setf mips
+au BufNewFile,BufRead *.maude setf maude
+au BufNewFile,BufRead *.mxml  setf mxml
+au BufNewFile,BufRead *.mysql setf mysql
+au BufNewFile,BufRead *.nice  setf nice
+au BufNewFile,BufRead *.psql  setf psql
+au BufNewFile,BufRead *.rabl  setf ruby
+
+au FileType make setlocal noexpandtab
+
+au FileType ruby setlocal sw=2
+
+au FileType text setlocal nocindent nosmartindent
+
+
+" ********** PLUGIN SETTINGS **********
+
+let $PAGER=''
+
+let mapleader=","
+let vimpager_use_gvim=1
+
+let g:EnhCommentifyRespectIndent='yes'
+let g:EnhCommentifyPretty='yes'
+let g:EnhCommentifyMultiPartBlocks='yes'
+let g:EnhCommentifyUseSyntax='yes'
+
+let g:buffergator_suppress_keymaps=1
+let g:buffergator_autoexpand_on_split=0
+let g:buffergator_sort_regime="filepath"
+let g:buffergator_display_regime="basename"
+let g:buffergator_show_full_directory_path=0
+
+let g:snips_author = 'Chris J. Bouchard'
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
+" ********** RANDOM VIM SETTINGS **********
 
 set exrc
 set secure
@@ -21,71 +71,6 @@ set title
 set titleold=""
 set titlestring=VIM:\ %F
 
-filetype plugin indent on
-
-" autocmd! bufwritepost .vimrc source ~/.vimrc
-" autocmd bufwritepost .vimrc colorscheme ir_black
-
-"au BufAdd,BufNewFile * nested tab sball
-
-au BufNewFile,BufRead *.as    setf actionscript
-au BufNewFile,BufRead *.h     setf c
-au BufNewFile,BufRead *.mal   setf mips
-au BufNewFile,BufRead *.maude setf maude
-au BufNewFile,BufRead *.mxml  setf mxml
-au BufNewFile,BufRead *.mysql setf mysql
-au BufNewFile,BufRead *.nice  setf nice
-au BufNewFile,BufRead *.psql  setf psql
-au BufNewFile,BufRead *.rabl  setf ruby
-
-au FileType java set omnifunc=javacomplete#Complete
-au FileType java compiler gradle
-
-au FileType make setlocal noexpandtab
-
-au FileType ruby setlocal sw=2
-
-au FileType text setlocal nocindent nosmartindent
-
-"au FileType tex setlocal makeprg=pdflatex\ -interaction\ nonstopmode\ $*\ %
-
-let $PAGER=''
-
-let mapleader=","
-let vimpager_use_gvim=1
-
-let g:EnhCommentifyRespectIndent='yes'
-let g:EnhCommentifyPretty='yes'
-let g:EnhCommentifyMultiPartBlocks='yes'
-let g:EnhCommentifyUseSyntax='yes'
-
-let g:buffergator_suppress_keymaps=1
-let g:buffergator_autoexpand_on_split=0
-let g:buffergator_sort_regime="filepath"
-let g:buffergator_display_regime="basename"
-let g:buffergator_show_full_directory_path=0
-
-let g:SuperTabDefaultCompletionType = 'context'
-
-let g:snips_author = 'Chris J. Bouchard'
-
-"let g:Powerline_symbols = 'unicode'
-"let g:Powerline_dividers_override = ['▖', '┊', '▗', '┊']
-
-"let g:indent_guides_start_level = 2
-"let g:indent_guides_guide_size = 1
-
-let g:dbext_default_profile_aptify = 'type=ODBC:integratedlogin=1:srvname=nyahsasql-01'
-
-let g:xmledit_enable_html = 1
-
-let g:jedi#use_tabs_not_buffers = 0
-
-let g:syntastic_python_python_exe = 'python3'
-let g:syntastic_python_checkers = ['pylint']
-
-let g:JavaComplete_LibsPath = 'lib'
-
 set background=dark
 colorscheme ir_black
 
@@ -95,7 +80,6 @@ set backupcopy=yes
 set shell=zsh
 set hidden
 set cursorline
-"set lazyredraw
 set ttymouse=xterm2
 set mouse=a
 
@@ -116,11 +100,9 @@ endif
 
 set shortmess=lnrxI
 set noshowmode
-"set showmode
 set showcmd
 set modeline
 set laststatus=2
-"set statusline=%<%F%m%r\ %y[%{&ff}]%{PrintWrap()}%{PrintSpell()}%h%w%=L%l/%L\ C%c%V\ %P
 set showtabline=0
 
 set directory=~/.vim/swap,/tmp,/var/tmp
@@ -168,7 +150,6 @@ set incsearch
 set magic
 set gdefault
 
-"set whichwrap=h,l,~,[,]
 set whichwrap=~,[,]
 
 set showmatch
@@ -180,19 +161,14 @@ set cino=:0,g0,t0,(0,j1,+0
 set list
 set listchars=tab:▸\ ,trail:⋅,nbsp:∘
 
-"set colorcolumn=80
-"highlight colorcolumn ctermbg=233 guibg=#050505
-
-"highlight OverLength ctermbg=darkred ctermfg=white guibg=#441111
-"match OverLength /\%81v.\+/
-
 command! W w !sudo tee % >/dev/null
 
-command! Make make -C ..
-
-let &makeprg = 'if [ -f Makefile ]; then make; else make -C ..; fi'
-
 cabbr <expr> %% expand('%:p:h')
+
+
+" ********** KEY BINDINGS **********
+
+let mapleader=","
 
 " Disable middle-click-to-paste, middle-double-click-to-paste, ...
 :map <MiddleMouse> <Nop>
@@ -204,11 +180,8 @@ cabbr <expr> %% expand('%:p:h')
 :map <4-MiddleMouse> <Nop>
 :imap <4-MiddleMouse> <Nop>
 
-noremap ; :
 inoremap jj <Esc>
 inoremap kk <Esc>
-
-"nmap <silent> . .`[
 
 nnoremap ' `
 nnoremap ` '
@@ -216,15 +189,12 @@ nnoremap ` '
 map <silent> <F1> <nop>
 map! <silent> <F1> <nop>
 
-" inoremap <silent> <tab> <C-n>
-" inoremap <silent> <S-tab> <C-p>
-
 " vmap <silent> <leader>e c<C-r>=<C-r>"<CR><ESC>
 
 nmap <silent> <leader>d <Plug>DashSearch
 
 map <silent> <leader>bl :BuffergatorToggle<cr>
-map <silent> <leader>bd :<C-u>Kwbd<cr>
+map <silent> <leader>bd <Plug>Kwbd
 
 nmap <silent> <leader>tw :call ToggleWrap()<CR>
 nmap <silent> <leader>ts :call ToggleSpell()<CR>
@@ -265,54 +235,13 @@ map <silent> <leader>gc :Gcommit<cr>
 " map <silent> <leader>bwd :Kwbd<cr>:wincmd q<cr>
 " map <silent> <leader>bwc :Kwbd<cr>:wincmd q<cr>
 
-
-" Arrow key remapping: Up/Dn = move line up/dn; Left/Right = indent/unindent
-" normal mode
-nmap <silent> <Left> <<gv
-nmap <silent> <Right> >>gv
-nnoremap <silent> <Up> <Esc>:call DelEmptyLineAbove()<CR>
-nnoremap <silent> <Down>  <Esc>:call AddEmptyLineAbove()<CR>
-nnoremap <silent> <C-Up> <Esc>:call DelEmptyLineBelow()<CR>
-nnoremap <silent> <C-Down> <Esc>:call AddEmptyLineBelow()<CR>
-
-" visual mode
-vmap <silent> <Left> <gv
-vmap <silent> <Right> >gv
-vnoremap <silent> <Up> <Esc>:call DelEmptyLineAbove()<CR>gv
-vnoremap <silent> <Down>  <Esc>:call AddEmptyLineAbove()<CR>gv
-vnoremap <silent> <C-Up> <Esc>:call DelEmptyLineBelow()<CR>gv
-vnoremap <silent> <C-Down> <Esc>:call AddEmptyLineBelow()<CR>gv
-
-" insert mode
-imap <silent> <Left> <C-D>
-imap <silent> <Right> <C-T>
-inoremap <silent> <Up> <Esc>:call DelEmptyLineAbove()<CR>a
-inoremap <silent> <Down> <Esc>:call AddEmptyLineAbove()<CR>a
-inoremap <silent> <C-Up> <Esc>:call DelEmptyLineBelow()<CR>a
-inoremap <silent> <C-Down> <Esc>:call AddEmptyLineBelow()<CR>a
-
-" disable modified versions we are not using
-nnoremap  <S-Up>     <Up>
-nnoremap  <S-Down>   <Down>
-nnoremap  <S-Left>   <Left>
-nnoremap  <S-Right>  <Right>
-vnoremap  <S-Up>     <Up>
-vnoremap  <S-Down>   <Down>
-vnoremap  <S-Left>   <Left>
-vnoremap  <S-Right>  <Right>
-inoremap  <S-Up>     <Up>
-inoremap  <S-Down>   <Down>
-inoremap  <S-Left>   <Left>
-inoremap  <S-Right>  <Right>
-
-
 function! WinMove(key)
     let t:curwin = winnr()
     exec "wincmd " . a:key
     if (t:curwin == winnr()) "we havent moved
         if (match(a:key,'[jk]')) "were we going up/down
             wincmd v
-        else 
+        else
             wincmd s
         endif
         exec "wincmd ".a:key
@@ -399,47 +328,6 @@ function! SwitchToNextBuffer(incr)
     endwhile
 endfunction
 
-function! DelEmptyLineAbove()
-    if line(".") == 1
-        return
-    endif
-    let l:line = getline(line(".") - 1)
-    if l:line =~ '^\s*$'
-        let l:colsave = col(".")
-        .-1d
-        silent normal! <C-y>
-        call cursor(line("."), l:colsave)
-    endif
-endfunction
- 
-function! AddEmptyLineAbove()
-    let l:scrolloffsave = &scrolloff
-    " Avoid jerky scrolling with ^E at top of window
-    set scrolloff=0
-    call append(line(".") - 1, "")
-    if winline() != winheight(0)
-        silent normal! <C-e>
-    endif
-    let &scrolloff = l:scrolloffsave
-endfunction
- 
-function! DelEmptyLineBelow()
-    if line(".") == line("$")
-        return
-    endif
-    let l:line = getline(line(".") + 1)
-    if l:line =~ '^\s*$'
-        let l:colsave = col(".")
-        .+1d
-        ''
-        call cursor(line("."), l:colsave)
-    endif
-endfunction
- 
-function! AddEmptyLineBelow()
-    call append(line("."), "")
-endfunction
-
 "here is a more exotic version of my original Kwbd script
 "delete the buffer; keep windows; create a scratch buffer if no buffers left
 function! s:Kwbd(kwbdStage)
@@ -499,6 +387,41 @@ endif
   endif
 endfunction
 
+" TODO: Figure out what this is.
 command! Kwbd call s:Kwbd(1)
-"nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
+nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
+
+
+" ********** PLUGINS **********
+
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
+
+" Features
+Plug 'airblade/vim-gitgutter'
+Plug 'chrisbouchard/evaluate.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'kergoth/vim-hilinks'
+Plug 'lukaszb/vim-web-indent'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'plytophogy/vim-virtualenv'
+Plug 'tmhedberg/matchit'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/sudo.vim'
+Plug 'vim-syntastic/syntastic'
+Plug 'wellle/targets.vim'
+Plug 'wesQ3/vim-windowswap'
+
+" Syntax
+Plug 'justinmk/vim-syntax-extra'
+Plug 'rust-lang/rust.vim'
+Plug 'stephpy/vim-yaml'
+Plug 'tmux-plugins/vim-tmux'
+
+" Initialize plugin system
+call plug#end()
 
