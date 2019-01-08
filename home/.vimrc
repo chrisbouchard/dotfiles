@@ -95,7 +95,7 @@ if has("gui_running")
 
     set guifont=Iosevka\ 8
 
-    set lines=50 columns=160
+    set lines=40 columns=160
 endif
 
 set shortmess=lnrxI

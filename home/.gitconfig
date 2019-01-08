@@ -6,6 +6,7 @@
 	default = simple
 [color]
 	ui = true
-[hub]
 [commit]
 	gpgsign = true
+[gpg]
+	program = gpg2
