@@ -1,8 +1,10 @@
 " ********** POWERLINE **********
 
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
+if has('python')
+    python3 from powerline.vim import setup as powerline_setup
+    python3 powerline_setup()
+    python3 del powerline_setup
+endif
 
 
 " ********** FILE TYPES **********
@@ -77,11 +79,14 @@ colorscheme ir_black
 set autochdir
 set nobackup
 set backupcopy=yes
-set shell=zsh
 set hidden
 set cursorline
 set ttymouse=xterm2
 set mouse=a
+
+if !has('win32')
+    set shell=zsh
+endif
 
 if has("gui_running")
     set guioptions-=T
@@ -93,7 +98,11 @@ if has("gui_running")
     set guioptions-=b
     set guioptions+=c
 
-    set guifont=Iosevka\ 8
+    if has('win32')
+        set guifont=Iosevka:h8:cANSI
+    else
+        set guifont=Iosevka\ 8
+    endif
 
     set lines=40 columns=160
 endif
@@ -395,7 +404,11 @@ nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
 " ********** PLUGINS **********
 
 " Specify a directory for plugins
-call plug#begin('~/.vim/plugged')
+if has('win32')
+    call plug#begin('~/vimfiles/plugged')
+else
+    call plug#begin('~/.vim/plugged')
+endif
 
 " Features
 Plug 'airblade/vim-gitgutter'
