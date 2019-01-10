@@ -84,7 +84,9 @@ set cursorline
 set ttymouse=xterm2
 set mouse=a
 
-if !has('win32')
+if has("win32")
+    set shell=\"C:\Program\ Files\Git\git-bash.exe\"
+else
     set shell=zsh
 endif
 
