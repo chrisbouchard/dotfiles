@@ -30,21 +30,21 @@ au FileType text setlocal nocindent nosmartindent
 
 " ********** PLUGIN SETTINGS **********
 
-let $PAGER=''
+let $PAGER = ''
 
-let mapleader=","
-let vimpager_use_gvim=1
+let mapleader = ","
+let vimpager_use_gvim = 1
 
-let g:EnhCommentifyRespectIndent='yes'
-let g:EnhCommentifyPretty='yes'
-let g:EnhCommentifyMultiPartBlocks='yes'
-let g:EnhCommentifyUseSyntax='yes'
+let g:EnhCommentifyRespectIndent = 'yes'
+let g:EnhCommentifyPretty = 'yes'
+let g:EnhCommentifyMultiPartBlocks = 'yes'
+let g:EnhCommentifyUseSyntax = 'yes'
 
-let g:buffergator_suppress_keymaps=1
-let g:buffergator_autoexpand_on_split=0
-let g:buffergator_sort_regime="filepath"
-let g:buffergator_display_regime="basename"
-let g:buffergator_show_full_directory_path=0
+let g:buffergator_suppress_keymaps = 1
+let g:buffergator_autoexpand_on_split = 0
+let g:buffergator_sort_regime = "filepath"
+let g:buffergator_display_regime = "basename"
+let g:buffergator_show_full_directory_path = 0
 
 let g:snips_author = 'Chris J. Bouchard'
 
