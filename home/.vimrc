@@ -413,6 +413,7 @@ endif
 " Features
 Plug 'airblade/vim-gitgutter'
 Plug 'chrisbouchard/evaluate.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'kergoth/vim-hilinks'
 Plug 'lukaszb/vim-web-indent'
