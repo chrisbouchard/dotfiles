@@ -1,7 +1,10 @@
 [user]
-	email = chris@upliftinglemma.net
+	email = cbouchard@automate.com
 	name = Chris Bouchard
-	signingkey = 5993C7C995C99E57ADEEF6AD702A573BA274105E
+	signingkey = AEE7680917BE03244A45967603F0DC3D261D6D8E
+[core]
+	autocrlf = true
+	editor = gvim -f
 [push]
 	default = simple
 [color]
@@ -10,3 +13,17 @@
 	gpgsign = true
 [gpg]
 	program = gpg2
+[diff]
+	tool = bc
+[difftool "bc"]
+	path = /mnt/c/Program Files/Beyond Compare 4/BComp.exe
+[merge]
+	tool = bc
+[mergetool "bc"]
+	path = /mnt/c/Program Files/Beyond Compare 4/BComp.exe
+[difftool]
+	prompt = false
+[mergetool]
+	prompt = false
+[rerere]
+	enabled = 1

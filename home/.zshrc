@@ -106,6 +106,12 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+if [ $(umask) = '000' ]
+then
+    # Sometimes WSL doesn't set the umask correctly.
+    umask 022
+fi
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -118,6 +124,7 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
+export DISPLAY=${DISPLAY:-':0'}
 export PAGER=$(which less)
 export VISUAL="vim -f"
 export EDITOR=${VISUAL}
