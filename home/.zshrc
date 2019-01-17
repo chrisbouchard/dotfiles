@@ -2,23 +2,14 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 path=(
-  "${HOME}/bin"
-  "${HOME}/.cabal/bin"
-  "${HOME}/.cargo/bin"
-  "${HOME}/.local/bin"
-  "${HOME}/.local/sbin"
-  "${HOME}/.rbenv/bin"
-  "${HOME}/liquibase"
-  "${HOME}/maude"
-  "${HOME}/opt/flex/bin"
-  "/usr/share/chris/bin"
-  "/opt/gradle/latest/bin"
-  "/usr/local/sbin"
-  "/usr/local/bin"
-  ${path}
-  "/sbin"
-  "/usr/sbin"
-  "/usr/games/bin"
+  $HOME/bin
+  $HOME/.cabal/bin
+  $HOME/.cargo/bin
+  $HOME/.local/bin
+  $HOME/.local/sbin
+  $HOME/.rbenv/bin
+  $HOME/maude
+  $path
 )
 
 # Path to your oh-my-zsh installation.
@@ -64,7 +55,7 @@ COMPLETION_WAITING_DOTS="true"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -72,7 +63,7 @@ COMPLETION_WAITING_DOTS="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
@@ -130,7 +121,7 @@ export SHELL=$(which zsh)
 
 export PAGER=$(which less)
 export VISUAL="vim -f"
-export EDITOR=${VISUAL}
+export EDITOR=$VISUAL
 
 # Set JAVA_HOME if we can get it automatically from Java
 if which javac &>/dev/null
