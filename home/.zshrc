@@ -106,6 +106,16 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+if [ $(umask) = '000' ]
+then
+    # Sometimes WSL doesn't set the umask correctly.
+    umask 022
+fi
+
+# Sometimes WSL doesn't set the shell correctly. I don't see any reason not to
+# set it explicitly.
+export SHELL=$(which zsh)
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -121,6 +131,12 @@ source $ZSH/oh-my-zsh.sh
 export PAGER=$(which less)
 export VISUAL="vim -f"
 export EDITOR=${VISUAL}
+
+# Set JAVA_HOME if we can get it automatically from Java
+if which javac &>/dev/null
+then
+    export JAVA_HOME=$(readlink -f $(which javac) | sed 's:/bin/javac$::')
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
