@@ -119,6 +119,7 @@ export SHELL=$(which zsh)
 #   export EDITOR='mvim'
 # fi
 
+export DISPLAY=${DISPLAY:-':0'}
 export PAGER=$(which less)
 export VISUAL="vim -f"
 export EDITOR=$VISUAL
