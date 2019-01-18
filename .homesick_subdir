@@ -1,3 +1,4 @@
 .config
 .config/gtk-3.0
 .fonts
+.local/share/applications
