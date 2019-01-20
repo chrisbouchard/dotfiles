@@ -21,11 +21,9 @@ au BufNewFile,BufRead *.nice  setf nice
 au BufNewFile,BufRead *.psql  setf psql
 au BufNewFile,BufRead *.rabl  setf ruby
 
-au FileType make setlocal noexpandtab
-
-au FileType ruby setlocal sw=2
-
-au FileType text setlocal nocindent nosmartindent
+au FileType make      setlocal noexpandtab
+au FileType ruby      setlocal sw=2
+au FileType text      setlocal nocindent nosmartindent
 
 
 " ********** PLUGIN SETTINGS **********
