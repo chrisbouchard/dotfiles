@@ -434,10 +434,12 @@ Plug 'wellle/targets.vim'
 Plug 'wesQ3/vim-windowswap'
 
 " Syntax
+Plug 'sheerun/vim-polyglot'
 Plug 'justinmk/vim-syntax-extra'
-Plug 'rust-lang/rust.vim'
-Plug 'stephpy/vim-yaml'
-Plug 'tmux-plugins/vim-tmux'
+
+" FZF
+Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf.vim'
 
 " Initialize plugin system
 call plug#end()
