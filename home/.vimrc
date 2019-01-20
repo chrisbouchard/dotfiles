@@ -20,9 +20,9 @@ au BufNewFile,BufRead *.nice  setf nice
 au BufNewFile,BufRead *.psql  setf psql
 au BufNewFile,BufRead *.rabl  setf ruby
 
-au FileType make      setlocal noexpandtab
-au FileType ruby      setlocal sw=2
-au FileType text      setlocal nocindent nosmartindent
+au FileType make setlocal noexpandtab
+au FileType ruby setlocal sw=2
+au FileType text setlocal nocindent nosmartindent
 
 
 " ********** PLUGIN SETTINGS **********
@@ -32,18 +32,11 @@ let $PAGER = ''
 let mapleader = ","
 let vimpager_use_gvim = 1
 
-let g:EnhCommentifyRespectIndent = 'yes'
-let g:EnhCommentifyPretty = 'yes'
-let g:EnhCommentifyMultiPartBlocks = 'yes'
-let g:EnhCommentifyUseSyntax = 'yes'
-
 let g:buffergator_suppress_keymaps = 1
 let g:buffergator_autoexpand_on_split = 0
 let g:buffergator_sort_regime = "filepath"
 let g:buffergator_display_regime = "basename"
 let g:buffergator_show_full_directory_path = 0
-
-let g:snips_author = 'Chris J. Bouchard'
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
@@ -71,7 +64,7 @@ set titleold=""
 set titlestring=VIM:\ %F
 
 set background=dark
-colorscheme ir_black
+colorscheme gotham
 
 set autochdir
 set nobackup
@@ -433,6 +426,9 @@ Plug 'wesQ3/vim-windowswap'
 " Syntax
 Plug 'sheerun/vim-polyglot'
 Plug 'justinmk/vim-syntax-extra'
+
+" Colors
+Plug 'whatyouhide/vim-gotham'
 
 " FZF
 Plug '/usr/bin/fzf'
