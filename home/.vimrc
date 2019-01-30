@@ -6,7 +6,6 @@ if has('python3')
     python3 del powerline_setup
 endif
 
-
 " ********** FILE TYPES **********
 
 filetype plugin indent on
