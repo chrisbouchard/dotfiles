@@ -89,6 +89,10 @@ if has("gui_running")
     set guioptions-=b
     set guioptions+=c
 
+    set guioptions-=a
+    set guioptions-=A
+    set guioptions-=aA
+
     if has('win32')
         set guifont=Iosevka:h8:cANSI
     else
