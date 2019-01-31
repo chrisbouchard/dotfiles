@@ -64,7 +64,6 @@ set titleold=""
 set titlestring=VIM:\ %F
 
 set background=dark
-colorscheme gotham
 
 set autochdir
 set nobackup
@@ -436,4 +435,7 @@ Plug 'junegunn/fzf.vim'
 
 " Initialize plugin system
 call plug#end()
+
+" Don't try to load the color scheme until *after* the plugin is loaded.
+colorscheme gotham
 
