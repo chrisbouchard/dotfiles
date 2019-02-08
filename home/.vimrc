@@ -102,6 +102,10 @@ if has("gui_running")
     set lines=40 columns=160
 endif
 
+if has("termguicolors")
+    set termguicolors
+endif
+
 set shortmess=lnrxI
 set noshowmode
 set showcmd
@@ -431,7 +435,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'justinmk/vim-syntax-extra'
 
 " Colors
-Plug 'whatyouhide/vim-gotham'
+Plug 'twerth/ir_black'
 
 " FZF
 Plug '/usr/bin/fzf'
@@ -441,5 +445,5 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " Don't try to load the color scheme until *after* the plugin is loaded.
-colorscheme gotham
+colorscheme ir_black
 
