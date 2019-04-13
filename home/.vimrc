@@ -29,19 +29,14 @@ au FileType text setlocal nocindent nosmartindent
 
 let $PAGER = ''
 
-let mapleader = ","
 let vimpager_use_gvim = 1
 
-let g:buffergator_suppress_keymaps = 1
 let g:buffergator_autoexpand_on_split = 0
-let g:buffergator_sort_regime = "filepath"
 let g:buffergator_display_regime = "basename"
 let g:buffergator_show_full_directory_path = 0
+let g:buffergator_sort_regime = "filepath"
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:rustfmt_autosave = 1
 
 
 " ********** RANDOM VIM SETTINGS **********
@@ -94,9 +89,9 @@ if has("gui_running")
     set guioptions-=aA
 
     if has('win32')
-        set guifont=Iosevka:h8:cANSI
+        set guifont=Iosevka:h9:cANSI
     else
-        set guifont=Iosevka\ 8
+        set guifont=Iosevka\ 9
     endif
 
     set lines=40 columns=160
@@ -133,7 +128,9 @@ set smartindent
 set cindent
 set copyindent
 
-set completeopt=longest,menuone,preview
+set completeopt-=preview
+set completeopt+=menu,menuone,noinsert,noselect
+"set omnifunc=syntaxcomplete#Complete
 
 set scrolloff=2
 set sidescrolloff=2
@@ -199,16 +196,14 @@ map! <silent> <F1> <nop>
 
 " vmap <silent> <leader>e c<C-r>=<C-r>"<CR><ESC>
 
-nmap <silent> <leader>d <Plug>DashSearch
-
-map <silent> <leader>bl :BuffergatorToggle<cr>
-map <silent> <leader>bd <Plug>Kwbd
+" map <silent> <leader>bl :BuffergatorToggle<cr>
+" map <silent> <leader>bd <Plug>Kwbd
 
 nmap <silent> <leader>tw :call ToggleWrap()<CR>
 nmap <silent> <leader>ts :call ToggleSpell()<CR>
 
-nmap <silent> <leader>[ :call SwitchToNextBuffer(-1)<CR>
-nmap <silent> <leader>] :call SwitchToNextBuffer(1)<CR>
+" nmap <silent> <leader>[ :call SwitchToNextBuffer(-1)<CR>
+" nmap <silent> <leader>] :call SwitchToNextBuffer(1)<CR>
 
 " Window creation mappings
 map <silent> <leader>h :call WinMove('h')<cr>
@@ -231,17 +226,6 @@ map <silent> <leader>wr <C-W>r
 map <silent> <leader>gs :Gstatus<cr>
 map <silent> <leader>gc :Gcommit<cr>
 
-" Buffer mappings
-" map          <leader>b   <nop>
-" map          <leader>be  :e<space>
-" map          <leader>bs  :sp<space>
-" map          <leader>bv  :vsp<space>
-" map          <leader>bb  :b<space>
-" map <silent> <leader>bp  :bp<cr>
-" map <silent> <leader>bn  :bn<cr>
-" map <silent> <leader>bd  :Kwbd<cr>
-" map <silent> <leader>bwd :Kwbd<cr>:wincmd q<cr>
-" map <silent> <leader>bwc :Kwbd<cr>:wincmd q<cr>
 
 function! WinMove(key)
     let t:curwin = winnr()
@@ -416,6 +400,7 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'kergoth/vim-hilinks'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'lukaszb/vim-web-indent'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'plytophogy/vim-virtualenv'
@@ -426,7 +411,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/sudo.vim'
-Plug 'vim-syntastic/syntastic'
+Plug 'w0rp/ale'
 Plug 'wellle/targets.vim'
 Plug 'wesQ3/vim-windowswap'
 
@@ -443,6 +428,9 @@ Plug 'junegunn/fzf.vim'
 
 " Initialize plugin system
 call plug#end()
+
+
+" ********** COLORSCHEME **********
 
 " Don't try to load the color scheme until *after* the plugin is loaded.
 colorscheme ir_black
