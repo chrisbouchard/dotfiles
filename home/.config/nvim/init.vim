@@ -82,7 +82,6 @@ colorscheme ir_black
 set encoding=utf-8
 set updatecount=0
 set autoread
-set autochdir
 set nobackup
 set backupcopy=yes
 set hidden
