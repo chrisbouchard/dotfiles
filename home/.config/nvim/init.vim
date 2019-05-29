@@ -17,7 +17,6 @@ if dein#load_state('~/.cache/dein')
     call dein#add('junegunn/vim-easy-align')
     call dein#add('kergoth/vim-hilinks')
     call dein#add('Lenovsky/nuake')
-    call dein#add('ludovicchabant/vim-gutentags')
     call dein#add('lukaszb/vim-web-indent')
     call dein#add('michaeljsmith/vim-indent-object')
     call dein#add('nathanaelkane/vim-indent-guides')
@@ -39,9 +38,9 @@ if dein#load_state('~/.cache/dein')
 
     " LSP
     call dein#add('autozimu/LanguageClient-neovim', {
-        \ 'rev': 'next',
-        \ 'build': 'bash install.sh',
-        \ })
+                \ 'rev': 'next',
+                \ 'build': 'bash install.sh',
+                \ })
     call dein#add('Shougo/deoplete.nvim')
     call dein#add('Shougo/echodoc.vim')
 
@@ -162,13 +161,14 @@ let g:deoplete#enable_at_startup = 1
 let g:echodoc#enable_at_startup = 1
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rls']
-    \ }
+            \ 'python': ['/mnt/c/Program Files/Python37/Scripts/pyls.exe'],
+            \ 'rust': ['rls']
+            \ }
 
 augroup LangaugeClient_config
     autocmd!
     autocmd User LanguageClientStarted nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>
     autocmd User LanguageClientStarted nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
-    autocmd User LanguageClientStarted nnoremap <buffer> <silent> <A-CR> :call LanguageClient#contextMenu()<CR>
+    autocmd User LanguageClientStarted nnoremap <buffer> <silent> <A-CR> :call LanguageClient_contextMenu()<CR>
 augroup END
 
