@@ -34,6 +34,7 @@ plugins=(
   bd
   command-not-found
   gpg-agent
+  homeshick
   fzf
   nvm
   rbenv
@@ -43,10 +44,9 @@ plugins=(
   vi-mode
   zsh_reload
   zsh-syntax-highlighting
+  # Powerline (must be last because it will inspect ZSH settings)
   powerline
 )
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.homesick/repos/homeshick/homeshick.sh
-source $HOME/.zshrc.local
 
