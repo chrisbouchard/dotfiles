@@ -48,5 +48,7 @@ plugins=(
   powerline
 )
 
+alias homesick="homeshick"
+
 source $ZSH/oh-my-zsh.sh
 

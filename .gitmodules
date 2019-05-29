@@ -51,7 +51,7 @@
 	url = https://github.com/kergoth/vim-hilinks.git
 	ignore=dirty
 [submodule "home/.oh-my-zsh"]
-	path = home/.oh-my-zsh
+	path = .oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
 	ignore=dirty
 [submodule "home/.gotham-contrib"]
