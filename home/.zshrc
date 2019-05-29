@@ -47,5 +47,6 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.homesick/repos/homeshick/homeshick.sh
 source $HOME/.zshrc.local
 
