@@ -8,18 +8,19 @@ if dein#load_state('~/.cache/dein')
     call dein#begin('~/.cache/dein')
 
     " Colors
-    call dein#add('twerth/ir_black')
+    call dein#add('morhetz/gruvbox')
 
     " Features
     call dein#add('airblade/vim-gitgutter')
     call dein#add('chrisbouchard/evaluate.vim')
-    "call dein#add('jeetsukumaran/vim-buffergator')
     call dein#add('jiangmiao/auto-pairs')
     call dein#add('junegunn/vim-easy-align')
     call dein#add('kergoth/vim-hilinks')
+    call dein#add('Lenovsky/nuake')
     call dein#add('ludovicchabant/vim-gutentags')
     call dein#add('lukaszb/vim-web-indent')
     call dein#add('michaeljsmith/vim-indent-object')
+    call dein#add('nathanaelkane/vim-indent-guides')
     call dein#add('plytophogy/vim-virtualenv')
     call dein#add('tmhedberg/matchit')
     call dein#add('tpope/vim-commentary')
@@ -74,7 +75,9 @@ if has("termguicolors")
 endif
 
 set background=dark
-colorscheme ir_black
+let g:gruvbox_italic=1
+let g:gruvbox_improved_warnings=1
+colorscheme gruvbox
 
 
 " ********** SETTINGS **********
@@ -122,11 +125,6 @@ set signcolumn=yes
 
 " ********** PLUGIN SETTINGS **********
 
-let g:buffergator_autoexpand_on_split = 0
-let g:buffergator_display_regime = "basename"
-let g:buffergator_show_full_directory_path = 0
-let g:buffergator_sort_regime = "filepath"
-
 let g:rustfmt_autosave = 1
 
 
@@ -150,6 +148,10 @@ nmap <leader>h :History<CR>
 nmap <leader>H :Helptags!<CR>
 nmap <leader>: :History:<CR>
 nmap <leader>/ :History/<CR>
+
+nnoremap <F4> :Nuake<CR>
+inoremap <F4> <C-\><C-n>:Nuake<CR>
+tnoremap <F4> <C-\><C-n>:Nuake<CR>
 
 
 " ********** AUTOCOMPLETION AND LSP SETTINGS **********
