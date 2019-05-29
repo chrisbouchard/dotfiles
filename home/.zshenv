@@ -26,7 +26,7 @@ export SHELL=$(which zsh)
 
 export DISPLAY=${DISPLAY:-':0'}
 export PAGER=$(which less)
-export VISUAL="vim -f"
+export VISUAL=nvim
 export EDITOR=$VISUAL
 
 # Set JAVA_HOME if we can get it automatically from Java
