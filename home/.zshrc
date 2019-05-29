@@ -36,7 +36,6 @@ plugins=(
   gpg-agent
   fzf
   nvm
-  powerline
   rbenv
   sdkman
   tmux
@@ -44,6 +43,7 @@ plugins=(
   vi-mode
   zsh_reload
   zsh-syntax-highlighting
+  powerline
 )
 
 source $ZSH/oh-my-zsh.sh
