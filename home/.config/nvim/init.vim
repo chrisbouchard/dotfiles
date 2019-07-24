@@ -1,3 +1,8 @@
+" ********** PYTHON 3 **********
+
+" Disable Python 2
+let g:loaded_python_provider = 1
+
 " ********** PLUGINS **********
 
 " Bootstrap the dein plugin system. This plugin must already be cloned in
@@ -33,6 +38,7 @@ if dein#load_state('~/.cache/dein')
     call dein#add('wesQ3/vim-windowswap')
 
     " Syntax
+    call dein#add('lervag/vimtex')
     call dein#add('sheerun/vim-polyglot')
     call dein#add('justinmk/vim-syntax-extra')
 
@@ -45,8 +51,10 @@ if dein#load_state('~/.cache/dein')
     call dein#add('Shougo/echodoc.vim')
 
     " FZF
-    " This plugin must be installed externally.
-    call dein#add('~/.fzf')
+    " This plugin must be installed externally. If it is, add it.
+    if isdirectory($HOME . "/fzf")
+        call dein#add($HOME . '/fzf')
+    endif
     call dein#add('junegunn/fzf.vim')
 
     call dein#end()
@@ -97,6 +105,7 @@ set showcmd
 set modeline
 set laststatus=2
 set showtabline=0
+set wildmode=list:longest
 
 set number
 set noerrorbells
@@ -125,7 +134,9 @@ set signcolumn=yes
 
 " ********** PLUGIN SETTINGS **********
 
+let g:polyglot_disabled = ['latex']
 let g:rustfmt_autosave = 1
+let g:tex_flavor = 'latex'
 
 
 " ********** MAPPINGS **********
@@ -155,8 +166,6 @@ tnoremap <F4> <C-\><C-n>:Nuake<CR>
 
 
 " ********** AUTOCOMPLETION AND LSP SETTINGS **********
-set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
-
 let g:deoplete#enable_at_startup = 1
 let g:echodoc#enable_at_startup = 1
 
@@ -170,5 +179,6 @@ augroup LangaugeClient_config
     autocmd User LanguageClientStarted nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>
     autocmd User LanguageClientStarted nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
     autocmd User LanguageClientStarted nnoremap <buffer> <silent> <A-CR> :call LanguageClient_contextMenu()<CR>
+    autocmd User LanguageClientStarted setlocal formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 augroup END
 
