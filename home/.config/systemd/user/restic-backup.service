@@ -1,3 +1,7 @@
+# Based on service described at:
+#     https://fedoramagazine.org/automate-backups-with-restic-and-systemd/
+#
+
 [Unit]
 Description=Restic backup service
 
