@@ -1,0 +1,12 @@
+[Service]
+Environment="BACKUP_PATHS=/home/chris"
+Environment="BACKUP_EXCLUDES=--exclude-file=/home/chris/.restic_excludes --exclude-if-present=.exclude_from_backup"
+
+Environment="FORGET_RETENTION=--keep-daily=7 --keep-weekly=4 --keep-monthly=6 --keep-yearly=3"
+
+Environment="B2_ACCOUNT_ID=XXXXXXXXXXXXXXXXXXXXXXXXX"
+Environment="B2_ACCOUNT_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+Environment="RESTIC_REPOSITORY=b2:XXXXXXXXXXXXXXXXXX:/"
+Environment="RESTIC_PASSWORD=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+# vi: ft=systemd
