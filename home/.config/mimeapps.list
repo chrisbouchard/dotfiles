@@ -1,0 +1,10 @@
+[Default Applications]
+text/html=Firefox Developer Edition.desktop
+x-scheme-handler/http=Firefox Developer Edition.desktop
+x-scheme-handler/https=Firefox Developer Edition.desktop
+x-scheme-handler/about=Firefox Developer Edition.desktop
+x-scheme-handler/unknown=Firefox Developer Edition.desktop
+x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
+
+[Added Associations]
+application/vnd.sqlite3=nvim.desktop;
