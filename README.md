@@ -1,22 +1,45 @@
-dotfiles
-========
+# dotfiles
 
-My various configuration files, arranged to be symlinked by [homesick](https://github.com/technicalpickles/homesick).
+My various configuration files, arranged to be cloned and symlinked by
+[Homeshick][homeshick]. In addittion to a standard Fedora install, this setup
+assumes the following external dependencies, which are not currently installed
+by the install script:
 
-To install, first install homesick.
+* Powerline
+* Restic
+* ZSH
 
-    $ gem install homesick
 
-Then clone this repository.
+## Bootstrapping
 
-    $ homesick clone chrisbouchard/dotfiles
+Download and run `bin/install.zsh`, or run it directly from GitHub:
 
-This will automatically pull down all the subprojects as well. You will have to compile [stderred](https://github.com/sickill/stderred) and [hub](https://github.com/github/hub). This is handled by the rc file.
+    $ curl https://raw.githubusercontent.com/chrisbouchard/dotfiles/master/bin/install.zsh | zsh
 
-    $ homesick rc dotfiles
 
-Note: You'll have to have the proper development tools available -- glibc-devel for stderred and go for hub. Finally, symlink the dotfiles.
+## Setting up Restic Backups
 
-    $ homesick symlink dotfiles
+This setup includes Systemd services to create daily external backups, using
+[Restic][restic] in a [Backblaze B2][backblaze-b2] bucket. After bootstrapping,
+create the following `.conf` files based on the existing `.conf.sample`
+files:
 
-The goal is that the configuration should take care of itself, but that is not the case yet. There are currently all sorts of hard-coded paths and filenames and configuration options.
+* `~/.config/systemd/user/restic-backup.service.d/local.conf`
+* `~/.config/systemd/user/restic-prune.service.d/local.conf`
+
+Then run
+
+    $ systemctl --user daemon-reload
+
+to load the services and timers into Systemd.
+
+These backup services are based on the ones described in [_Automate backups
+with restic and systemd_ in Fedora Magazine][automate-backups], but modified to
+fit my setup.
+
+
+[automate-backups]: https://fedoramagazine.org/automate-backups-with-restic-and-systemd/
+[backblaze-b2]: https://www.backblaze.com/b2/cloud-storage.html
+[homeshick]: https://github.com/andsens/homeshick
+[restic]: https://restic.net/
+
