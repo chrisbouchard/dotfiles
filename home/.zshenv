@@ -2,14 +2,20 @@
 export ZSH=$HOME/.oh-my-zsh
 
 path=(
-  $HOME/bin
-  $HOME/.local/sbin
-  $HOME/.local/bin
-  $HOME/.cabal/bin
-  $HOME/.cargo/bin
-  $HOME/.rbenv/bin
-  $HOME/maude
-  $path
+    $HOME/bin
+    $HOME/.local/sbin
+    $HOME/.local/bin
+    $HOME/.cabal/bin
+    $HOME/.cargo/bin
+    $HOME/.rbenv/bin
+    $HOME/maude
+    $path
+)
+
+fpath=(
+    # Add homeshick's completions to the function path
+    $HOME/.homesick/repos/homeshick/completions
+    $fpath
 )
 
 export LANG=en_US.UTF-8
