@@ -33,6 +33,7 @@ if dein#load_state('~/.cache/dein')
     call dein#add('tpope/vim-fugitive')
     call dein#add('tpope/vim-repeat')
     call dein#add('tpope/vim-surround')
+    call dein#add('tpope/vim-unimpaired')
     call dein#add('vim-scripts/sudo.vim')
     call dein#add('wellle/targets.vim')
     call dein#add('wesQ3/vim-windowswap')
@@ -174,11 +175,16 @@ let g:LanguageClient_serverCommands = {
             \ 'rust': ['rls']
             \ }
 
-augroup LangaugeClient_config
-    autocmd!
-    autocmd User LanguageClientStarted nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>
-    autocmd User LanguageClientStarted nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
-    autocmd User LanguageClientStarted nnoremap <buffer> <silent> <A-CR> :call LanguageClient_contextMenu()<CR>
-    autocmd User LanguageClientStarted setlocal formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
-augroup END
+function LanguageClient_config()
+    if has_key(g:LanguageClient_serverCommands, &filetype)
+        nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>
+        nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
+        nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+        nnoremap <buffer> <silent> <A-CR> :call LanguageClient#textDocument_codeAction()<CR>
+        nnoremap <buffer> <silent> <C-Space> :call LanguageClient_contextMenu()<CR>
+        setlocal formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+    endif
+endfunction
+
+autocmd FileType * call LanguageClient_config()
 
