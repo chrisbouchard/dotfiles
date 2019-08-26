@@ -55,3 +55,8 @@ alias homesick="homeshick"
 
 source $ZSH/oh-my-zsh.sh
 
+# Oh-My-ZSH turns on history sharing by default, which means all shells update
+# each-others histories (reverse search, up arrow, etc.). This is a bit
+# obnoxious, so let's disable it again.
+unsetopt share_history
+
