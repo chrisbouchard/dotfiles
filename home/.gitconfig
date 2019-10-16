@@ -9,15 +9,15 @@
 [color]
 	ui = true
 [diff]
-        tool = vimdiff
+	tool = vimdiff
 [difftool]
-        prompt = false
+	prompt = false
 [merge]
-        tool = vimdiff
+	tool = vimdiff
 [mergetool]
-        prompt = true
+	prompt = true
 [mergetool "vimdiff"]
-        cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
+	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [commit]
 	gpgsign = true
 [gpg]
