@@ -1,0 +1,5 @@
+# vim: set ft=gitignore
+
+# IntelliJ directory-based configuration
+.idea
+

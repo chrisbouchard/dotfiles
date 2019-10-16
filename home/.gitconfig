@@ -4,6 +4,7 @@
 	signingkey = 5993C7C995C99E57ADEEF6AD702A573BA274105E
 [core]
 	abbrev = 8
+	excludesfile = ~/.gitignore_global
 [push]
 	default = simple
 [color]
