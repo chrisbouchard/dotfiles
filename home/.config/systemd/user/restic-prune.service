@@ -8,5 +8,6 @@ OnFailure=restic-notify-failure@%i.service
 
 [Service]
 Type=oneshot
-ExecStart=restic prune --verbose
+# Delete data that is no longer necessary (the backup has been forgotten).
+ExecStart=/usr/bin/restic prune --verbose
 
