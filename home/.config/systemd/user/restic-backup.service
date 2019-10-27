@@ -4,6 +4,7 @@
 
 [Unit]
 Description=Restic backup service
+OnFailure=restic-notify-failure@%i.service
 
 [Service]
 Type=oneshot

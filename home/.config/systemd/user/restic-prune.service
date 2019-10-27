@@ -4,6 +4,7 @@
 
 [Unit]
 Description=Restic backup service (data pruning)
+OnFailure=restic-notify-failure@%i.service
 
 [Service]
 Type=oneshot
