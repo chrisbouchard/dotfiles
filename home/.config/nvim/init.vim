@@ -16,9 +16,9 @@ if dein#load_state('~/.cache/dein')
     call dein#add('morhetz/gruvbox')
 
     " Features
+    call dein#add('AaronLasseigne/yank-code')
     call dein#add('airblade/vim-gitgutter')
     call dein#add('chrisbouchard/evaluate.vim')
-    call dein#add('jiangmiao/auto-pairs')
     call dein#add('junegunn/vim-easy-align')
     call dein#add('kergoth/vim-hilinks')
     call dein#add('Lenovsky/nuake')
@@ -28,6 +28,7 @@ if dein#load_state('~/.cache/dein')
     call dein#add('plytophogy/vim-virtualenv')
     call dein#add('rliang/termedit.nvim')
     call dein#add('tmhedberg/matchit')
+    call dein#add('tmsvg/pear-tree')
     call dein#add('tpope/vim-commentary')
     call dein#add('tpope/vim-eunuch')
     call dein#add('tpope/vim-fugitive')
@@ -135,6 +136,10 @@ set signcolumn=yes
 
 " ********** PLUGIN SETTINGS **********
 
+let g:pear_tree_smart_openers = 1
+let g:pear_tree_smart_closers = 1
+let g:pear_tree_smart_backspace = 1
+
 let g:polyglot_disabled = ['latex']
 let g:rustfmt_autosave = 1
 let g:tex_flavor = 'latex'
@@ -160,6 +165,8 @@ nmap <leader>h :History<CR>
 nmap <leader>H :Helptags!<CR>
 nmap <leader>: :History:<CR>
 nmap <leader>/ :History/<CR>
+
+map <leader>y <plug>YankCode
 
 nnoremap <F4> :Nuake<CR>
 inoremap <F4> <C-\><C-n>:Nuake<CR>
