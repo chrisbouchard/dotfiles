@@ -3,5 +3,10 @@ Description=Notify user restic backup failed
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/notify-send --urgency=critical 'Backup Failure' 'Service %i has failed.'
+SyslogIdentifier=notify-send.sh
+ExecStart=/usr/bin/env notify-send.sh \
+              --urgency=critical \
+              --default-action='gnome-terminal-run systemctl --user status %i' \
+              'Backup Failure' \
+              'Service %i has failed.'
 
