@@ -18,18 +18,29 @@ repo_names=(
 )
 
 
-# Function to print a colored message at each step.
-echo_step() {
+# Function to print a colored message at the start of each step.
+step_start() {
     local bold=$(tput bold)
     local green=$(tput setaf 2)
     local white=$(tput setaf 7)
     local reset=$(tput sgr0)
 
-    echo "$bold$green==> $white$1...$reset"
+    echo "${bold}${green}>>> ${white}$1...${reset}"
+}
+
+# Function to print a colored message at the end of each step.
+step_end() {
+    local bold=$(tput bold)
+    local green=$(tput setaf 2)
+    local white=$(tput setaf 7)
+    local reset=$(tput sgr0)
+
+    echo "${bold}${green}>>> ${white}Done${reset}"
+    echo
 }
 
 
-echo_step 'Installing Homeshick'
+step_start 'Installing Homeshick'
 
 # Install Homeshick (Shell-based Homesick replacement). If it's already
 # installed we'll skip this step. We assume it's installed if $repo_dir already
@@ -39,13 +50,14 @@ then
     mkdir -p $repo_dir
     git clone https://github.com/andsens/homeshick.git $repo_dir/homeshick
 else
-    echo "    Repository directory $repo_dir already exists, skipping installation."
+    echo -e "\tRepository directory $repo_dir already exists, skipping installation."
 fi
 
 source $repo_dir/homeshick/homeshick.sh
 
-echo
-echo_step 'Installing Repositories'
+step_end
+
+step_start 'Installing Repositories'
 
 # Clone each repository
 for repo_name in $repo_names
@@ -53,9 +65,19 @@ do
     homeshick clone --batch $repo_name
 done
 
-echo
-echo_step 'Linking'
+step_end
+
+step_start 'Linking'
 
 # Install dotfiles via Homeshick.
 homeshick link --force
+
+step_end
+
+if [[ -x systemctl ]]
+then
+    step_start 'Reloading systemd configuration'
+    systemctl --user daemon-reload
+    step_end
+fi
 
