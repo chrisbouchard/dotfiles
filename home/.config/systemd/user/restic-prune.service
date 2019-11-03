@@ -4,6 +4,7 @@
 
 [Unit]
 Description=Restic backup service (data pruning)
+After=restic-backup.service
 OnFailure=restic-notify-failure@%i.service
 
 [Service]

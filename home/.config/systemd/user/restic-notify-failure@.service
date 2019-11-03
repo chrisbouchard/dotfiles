@@ -3,6 +3,7 @@ Description=Notify user restic backup failed
 
 [Service]
 Type=oneshot
+RemainAfterExit=true
 SyslogIdentifier=notify-send.sh
 ExecStart=/usr/bin/env notify-send.sh \
               --urgency=critical \

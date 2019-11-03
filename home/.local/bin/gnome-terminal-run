@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 
-gnome-terminal -- sh -c "$@; exec $SHELL -i"
+gnome-terminal -- zsh -c "$* ; exec $SHELL -i"
 
