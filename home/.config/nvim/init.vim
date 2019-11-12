@@ -133,6 +133,8 @@ set completeopt-=preview
 set completeopt+=menu,menuone
 set signcolumn=yes
 
+set title
+
 
 " ********** PLUGIN SETTINGS **********
 
