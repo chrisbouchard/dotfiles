@@ -26,6 +26,7 @@ if dein#load_state('~/.cache/dein')
     call dein#add('lukaszb/vim-web-indent')
     call dein#add('michaeljsmith/vim-indent-object')
     call dein#add('nathanaelkane/vim-indent-guides')
+    call dein#add('nixon/vim-vmath')
     call dein#add('plytophogy/vim-virtualenv')
     call dein#add('rliang/termedit.nvim')
     call dein#add('tmhedberg/matchit')
@@ -175,6 +176,9 @@ map <leader>y <plug>YankCode
 nnoremap <F4> :Nuake<CR>
 inoremap <F4> <C-\><C-n>:Nuake<CR>
 tnoremap <F4> <C-\><C-n>:Nuake<CR>
+
+vmap <expr>  ++  VMATH_YankAndAnalyse()
+nmap         ++  vip++
 
 
 " ********** AUTOCOMPLETION AND LSP SETTINGS **********
