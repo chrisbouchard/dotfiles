@@ -21,6 +21,7 @@ if dein#load_state('~/.cache/dein')
     call dein#add('chrisbouchard/evaluate.vim')
     call dein#add('junegunn/vim-easy-align')
     call dein#add('kergoth/vim-hilinks')
+    call dein#add('lambdalisue/suda.vim')
     call dein#add('Lenovsky/nuake')
     call dein#add('lukaszb/vim-web-indent')
     call dein#add('michaeljsmith/vim-indent-object')
@@ -144,6 +145,7 @@ let g:pear_tree_smart_backspace = 1
 
 let g:polyglot_disabled = ['latex']
 let g:rustfmt_autosave = 1
+let g:suda_smart_edit = 1
 let g:tex_flavor = 'latex'
 
 
