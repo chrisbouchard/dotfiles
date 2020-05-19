@@ -7,6 +7,7 @@ path=(
     $HOME/.local/bin
     $HOME/.cabal/bin
     $HOME/.cargo/bin
+    $HOME/.poetry/bin
     $HOME/.rbenv/bin
     $HOME/maude
     $path

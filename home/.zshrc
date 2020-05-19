@@ -36,6 +36,7 @@ plugins=(
   # Functional
   bd
   command-not-found
+  direnv
   gpg-agent
   homeshick
   fzf

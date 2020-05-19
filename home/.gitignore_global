@@ -1,5 +1,8 @@
 # vim: set ft=gitignore
 
+# Direnv files
+.envrc
+
 # IntelliJ directory-based configuration
 .idea
 

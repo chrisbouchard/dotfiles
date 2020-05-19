@@ -37,6 +37,8 @@ if dein#load_state('~/.cache/dein')
     call dein#add('tpope/vim-repeat')
     call dein#add('tpope/vim-surround')
     call dein#add('tpope/vim-unimpaired')
+    call dein#add('tpope/vim-vinegar')
+    call dein#add('vim-airline/vim-airline')
     call dein#add('vim-scripts/sudo.vim')
     call dein#add('wellle/targets.vim')
     call dein#add('wesQ3/vim-windowswap')
@@ -91,6 +93,9 @@ let g:gruvbox_italic=1
 let g:gruvbox_improved_warnings=1
 colorscheme gruvbox
 
+" TODO: Remove this once Neovide can read ginit.vim
+set guifont=Iosevka:h9
+
 
 " ********** SETTINGS **********
 
@@ -140,6 +145,8 @@ set title
 
 " ********** PLUGIN SETTINGS **********
 
+let g:airline_powerline_fonts = 1
+
 let g:pear_tree_smart_openers = 1
 let g:pear_tree_smart_closers = 1
 let g:pear_tree_smart_backspace = 1
@@ -186,7 +193,7 @@ let g:deoplete#enable_at_startup = 1
 let g:echodoc#enable_at_startup = 1
 
 let g:LanguageClient_serverCommands = {
-            \ 'python': ['/mnt/c/Program Files/Python37/Scripts/pyls.exe'],
+            \ 'python': ['pyls'],
             \ 'rust': ['rls']
             \ }
 
