@@ -10,6 +10,8 @@ repo_names=(
 
     # Other utilities that my dotfiles use (via symlink)
     lukechilds/zsh-nvm
+    rbenv/rbenv
+    rbenv/ruby-build
     robbyrussell/oh-my-zsh
     Shougo/dein.vim
     Tarrasch/zsh-bd
