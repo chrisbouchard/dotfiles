@@ -5,11 +5,9 @@ repo_dir=$HOME/.homesick/repos
 
 # Names of repositories we want to install
 repo_names=(
-    # My dotfiles
-    chrisbouchard/dotfiles
-
     # Other utilities that my dotfiles use (via symlink)
     lukechilds/zsh-nvm
+    nvm-sh/nvm
     rbenv/rbenv
     rbenv/ruby-build
     robbyrussell/oh-my-zsh
@@ -18,6 +16,9 @@ repo_names=(
     tmux-plugins/tpm
     vlevit/notify-send.sh
     zsh-users/zsh-syntax-highlighting
+
+    # My dotfiles
+    chrisbouchard/dotfiles
 )
 
 

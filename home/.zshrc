@@ -35,7 +35,6 @@ plugins=(
   npm
   # Functional
   bd
-  command-not-found
   direnv
   gpg-agent
   homeshick
@@ -46,7 +45,6 @@ plugins=(
   tmux
   thefuck
   vi-mode
-  zsh-nvm
   zsh_reload
   zsh-syntax-highlighting
   # Powerline (must be last because it will inspect ZSH settings)

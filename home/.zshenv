@@ -8,6 +8,7 @@ path=(
     $HOME/.cabal/bin
     $HOME/.cargo/bin
     $HOME/.poetry/bin
+    $HOME/.rbenv/shims
     $HOME/.rbenv/bin
     $HOME/maude
     $path
@@ -52,7 +53,6 @@ fi
 export NVIM_GTK_NO_HEADERBAR=1
 export NVIM_GTK_PREFER_DARK_THEME=1
 
-# zsh-nvm setup
-export NVM_COMPLETION=true
-export NVM_LAZY_LOAD=true
+# NVM requires $NVM_DIR not to be a symlink, so we'll use the resolved path.
+export NVM_DIR=$(realpath $HOME/.nvm)
 
