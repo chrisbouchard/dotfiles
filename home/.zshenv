@@ -1,19 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-path=(
-    $HOME/bin
-    $HOME/.local/sbin
-    $HOME/.local/bin
-    $HOME/.cabal/bin
-    $HOME/.cargo/bin
-    $HOME/.poetry/bin
-    $HOME/.rbenv/shims
-    $HOME/.rbenv/bin
-    $HOME/maude
-    $path
-)
-
 fpath=(
     # Add homeshick's completions to the function path
     $HOME/.homesick/repos/homeshick/completions
