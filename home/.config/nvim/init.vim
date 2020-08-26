@@ -49,12 +49,9 @@ if dein#load_state('~/.cache/dein')
     call dein#add('justinmk/vim-syntax-extra')
 
     " LSP
-    call dein#add('autozimu/LanguageClient-neovim', {
-                \ 'rev': 'next',
-                \ 'build': 'bash install.sh',
-                \ })
+    call dein#add("neovim/nvim-lsp")
     call dein#add('Shougo/deoplete.nvim')
-    call dein#add('Shougo/echodoc.vim')
+    call dein#add('Shougo/deoplete-lsp')
 
     " FZF
     " This plugin must be installed externally. If it is, add it.
@@ -94,7 +91,7 @@ let g:gruvbox_improved_warnings=1
 colorscheme gruvbox
 
 " TODO: Remove this once Neovide can read ginit.vim
-set guifont=Iosevka:h9
+"set guifont=Iosevka:h9
 
 
 " ********** SETTINGS **********
@@ -190,23 +187,57 @@ nmap         ++  vip++
 
 " ********** AUTOCOMPLETION AND LSP SETTINGS **********
 let g:deoplete#enable_at_startup = 1
-let g:echodoc#enable_at_startup = 1
 
-let g:LanguageClient_serverCommands = {
-            \ 'python': ['pyls'],
-            \ 'rust': ['rls']
-            \ }
+lua << EOF
+local nvim_lsp = require'nvim_lsp'
 
-function LanguageClient_config()
-    if has_key(g:LanguageClient_serverCommands, &filetype)
-        nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>
-        nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
-        nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-        nnoremap <buffer> <silent> <A-CR> :call LanguageClient#textDocument_codeAction()<CR>
-        nnoremap <buffer> <silent> <C-Space> :call LanguageClient_contextMenu()<CR>
-        setlocal formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
-    endif
-endfunction
+if vim.fn.executable('bash-language-server') then
+    nvim_lsp.bashls.setup{}
+end
 
-autocmd FileType * call LanguageClient_config()
+if vim.fn.executable('css-languageserver') then
+    nvim_lsp.cssls.setup{}
+end
+
+if vim.fn.executable('html-languageserver') then
+    nvim_lsp.html.setup{}
+end
+
+if vim.fn.executable('pyls') then
+    nvim_lsp.pyls.setup{}
+end
+
+if vim.fn.executable('rustup') then
+    nvim_lsp.rust_analyzer.setup{
+        cmd = { 'rustup', 'run', 'nightly', 'rust-analyzer' }
+    }
+end
+
+if vim.fn.executable('solargraph') then
+    nvim_lsp.solargraph.setup{}
+end
+
+if vim.fn.executable('texlab') then
+    nvim_lsp.texlab.setup{}
+end
+
+if vim.fn.executable('typescript-language-server') then
+    nvim_lsp.tsserver.setup{}
+end
+
+if vim.fn.executable('vim-language-server') then
+    nvim_lsp.vimls.setup{}
+end
+EOF
+
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gR    <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 
