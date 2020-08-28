@@ -1,0 +1,17 @@
+# Ignore directories that contain transient or easily recoverable data
+$HOME/.cache
+$HOME/.cargo
+$HOME/.cups
+$HOME/.dropbox
+$HOME/.dropbox-dist
+$HOME/.gem
+$HOME/.homesick
+$HOME/.local/share/containers
+$HOME/.oh-my-zsh
+$HOME/.nvm
+$HOME/.rbenv
+$HOME/.tmp
+$HOME/.var
+$HOME/Downloads
+$HOME/Dropbox
+

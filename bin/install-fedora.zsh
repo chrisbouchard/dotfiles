@@ -28,6 +28,7 @@ dnf_packages=(
     postgresql
     postgresql-contrib
     postgresql-server
+    restic
     texlive
     thefuck
     tmux
