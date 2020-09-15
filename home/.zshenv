@@ -7,7 +7,7 @@ fpath=(
     $fpath
 )
 
-export LANG=en_US.UTF-8
+# export LANG=en_US.UTF-8
 
 if [ $(umask) = '000' ]
 then
@@ -15,11 +15,11 @@ then
     umask 022
 fi
 
-# Sometimes WSL doesn't set the shell correctly. I don't see any reason not to
-# set it explicitly.
-export SHELL=$(which zsh)
+# # Sometimes WSL doesn't set the shell correctly. I don't see any reason not to
+# # set it explicitly.
+# export SHELL=$(which zsh)
 
-export DISPLAY=${DISPLAY:-':0'}
+# export DISPLAY=${DISPLAY:-':0'}
 export PAGER=$(which less)
 export VISUAL=${VISUAL:-nvim}
 export EDITOR=${EDITOR:-nvim}

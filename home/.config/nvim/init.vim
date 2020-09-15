@@ -90,9 +90,6 @@ let g:gruvbox_italic=1
 let g:gruvbox_improved_warnings=1
 colorscheme gruvbox
 
-" TODO: Remove this once Neovide can read ginit.vim
-"set guifont=Iosevka:h9
-
 
 " ********** SETTINGS **********
 
@@ -187,48 +184,7 @@ nmap         ++  vip++
 
 " ********** AUTOCOMPLETION AND LSP SETTINGS **********
 let g:deoplete#enable_at_startup = 1
-
-lua << EOF
-local nvim_lsp = require'nvim_lsp'
-
-if vim.fn.executable('bash-language-server') then
-    nvim_lsp.bashls.setup{}
-end
-
-if vim.fn.executable('css-languageserver') then
-    nvim_lsp.cssls.setup{}
-end
-
-if vim.fn.executable('html-languageserver') then
-    nvim_lsp.html.setup{}
-end
-
-if vim.fn.executable('pyls') then
-    nvim_lsp.pyls.setup{}
-end
-
-if vim.fn.executable('rustup') then
-    nvim_lsp.rust_analyzer.setup{
-        cmd = { 'rustup', 'run', 'nightly', 'rust-analyzer' }
-    }
-end
-
-if vim.fn.executable('solargraph') then
-    nvim_lsp.solargraph.setup{}
-end
-
-if vim.fn.executable('texlab') then
-    nvim_lsp.texlab.setup{}
-end
-
-if vim.fn.executable('typescript-language-server') then
-    nvim_lsp.tsserver.setup{}
-end
-
-if vim.fn.executable('vim-language-server') then
-    nvim_lsp.vimls.setup{}
-end
-EOF
+lua require 'lsp_config'
 
 nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>

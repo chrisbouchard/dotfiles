@@ -1,0 +1,7 @@
+[Unit]
+Description=Restic mount service
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/restic mount %h/%I
+
