@@ -50,7 +50,7 @@ plugins=(
   powerline
 )
 
-alias homesick="homeshick"
+# alias homesick="homeshick"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -58,4 +58,7 @@ source $ZSH/oh-my-zsh.sh
 # each-others histories (reverse search, up arrow, etc.). This is a bit
 # obnoxious, so let's disable it again.
 unsetopt share_history
+
+
+alias latexmk='podman run -it --rm --security-opt label=disable -v $PWD:/home danteev/texlive latexmk'
 
