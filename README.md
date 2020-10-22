@@ -21,11 +21,9 @@ Download and run `bin/install.zsh`, or run it directly from GitHub:
 
 This setup includes Systemd services to create daily external backups, using
 [Restic][restic] in a [Backblaze B2][backblaze-b2] bucket. After bootstrapping,
-create the following `.conf` files based on the existing `.conf.sample`
-files:
+create the following `.conf` file based on the existing `.conf.sample` file:
 
-* `~/.config/systemd/user/restic-backup.service.d/local.conf`
-* `~/.config/systemd/user/restic-prune.service.d/local.conf`
+* `~/.config/systemd/user/restic-.service.d/local.conf`
 
 Then run
 
