@@ -1,6 +1,11 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+# Work-around until GNOME stops overriding $PATH
+if ! [[ $PATH = *$HOME/.local/bin* ]] then
+    source $HOME/.config/environment.d/10-path.conf
+fi
+
 fpath=(
     # Add homeshick's completions to the function path
     $HOME/.homesick/repos/homeshick/completions
