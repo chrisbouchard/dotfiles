@@ -49,9 +49,12 @@ if dein#load_state('~/.cache/dein')
     call dein#add('justinmk/vim-syntax-extra')
 
     " LSP
-    call dein#add("neovim/nvim-lsp")
-    call dein#add('Shougo/deoplete.nvim')
-    call dein#add('Shougo/deoplete-lsp')
+    call dein#add("neovim/nvim-lspconfig")
+    call dein#add("nvim-lua/completion-nvim")
+    call dein#add("nvim-lua/diagnostic-nvim")
+    call dein#add("tjdevries/lsp_extensions.nvim")
+    "call dein#add('Shougo/deoplete.nvim')
+    "call dein#add('Shougo/deoplete-lsp')
 
     " FZF
     " This plugin must be installed externally. If it is, add it.
@@ -95,6 +98,7 @@ colorscheme gruvbox
 
 set encoding=utf-8
 set updatecount=0
+set updatetime=300
 set autoread
 set nobackup
 set backupcopy=yes
@@ -130,8 +134,7 @@ set sidescrolloff=2
 set list
 set listchars=tab:▸\ ,trail:⋅,nbsp:∘
 
-set completeopt-=preview
-set completeopt+=menu,menuone
+set completeopt=menuone,noinsert,noselect
 set signcolumn=yes
 
 set title
@@ -186,6 +189,18 @@ nmap         ++  vip++
 let g:deoplete#enable_at_startup = 1
 lua require 'lsp_config'
 
+" Visualize diagnostics
+let g:diagnostic_enable_virtual_text = 1
+let g:diagnostic_trimmed_virtual_text = '40'
+" Don't show diagnostics while in insert mode
+let g:diagnostic_insert_delay = 1
+
+" Show diagnostic popup on cursor hold
+autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
+autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
+            \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
+
+
 nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
@@ -196,4 +211,10 @@ nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gR    <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+"TODO: Needs work
+"nnoremap <silent> <F5>  <cmd>lua vim.lsp.buf_request(0, 'textDocument/build', {textDocument = vim.lsp.util.make_text_document_params()})<CR>
+
+" Goto previous/next diagnostic warning/error
+nnoremap <silent> g[ <cmd>PrevDiagnosticCycle<cr>
+nnoremap <silent> g] <cmd>NextDiagnosticCycle<cr>
 

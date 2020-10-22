@@ -1,22 +1,52 @@
 local nvim_lsp = require 'nvim_lsp'
 
-nvim_lsp.bashls.setup {}
-nvim_lsp.cssls.setup {}
-nvim_lsp.html.setup {}
-nvim_lsp.pyls.setup {}
+local on_attach = function (client)
+    require'completion'.on_attach(client)
+    require'diagnostic'.on_attach(client)
+end
+
+
+nvim_lsp.bashls.setup {
+    on_attach=on_attach,
+}
+
+nvim_lsp.cssls.setup {
+    on_attach=on_attach,
+}
+nvim_lsp.html.setup {
+    on_attach=on_attach,
+}
+
+nvim_lsp.pyls.setup {
+    on_attach=on_attach,
+}
 
 nvim_lsp.rust_analyzer.setup {
+    on_attach=on_attach,
     on_new_config = function (config)
         if vim.fn.executable('rustup') > 0 then
             config.cmd = { 'rustup', 'run', 'nightly', 'rust-analyzer' }
         end
-    end
+    end,
 }
 
-nvim_lsp.solargraph.setup {}
-nvim_lsp.texlab.setup {}
+nvim_lsp.solargraph.setup {
+    on_attach=on_attach,
+}
+
+nvim_lsp.texlab.setup {
+    on_attach=on_attach,
+    settings = {
+        latex = {
+            build = {
+                args = { "-pdfxe", "-interaction=nonstopmode" }
+            }
+        }
+    }
+}
 
 nvim_lsp.tsserver.setup {
+    on_attach=on_attach,
     on_new_config = function (config)
         -- TODO: Use root_dir when nvim-lspconfig#301 is merged
         local sdk_dir = vim.fn.getcwd() .. '/.yarn/sdks'
@@ -30,5 +60,7 @@ nvim_lsp.tsserver.setup {
     end
 }
 
-nvim_lsp.vimls.setup {}
+nvim_lsp.vimls.setup {
+    on_attach=on_attach,
+}
 
