@@ -26,7 +26,6 @@ pip_packages=(
     powerline-pyenv
     powerline-status
     pyls
-    pynvim
 )
 
 
