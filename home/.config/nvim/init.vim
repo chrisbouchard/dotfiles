@@ -103,21 +103,12 @@ colorscheme gruvbox
 
 " ********** SETTINGS **********
 
-set encoding=utf-8
-set updatecount=0
-set updatetime=300
-set autoread
-set nobackup
-set backupcopy=yes
 set hidden
 set cursorline
 set mouse=a
 
-set shortmess=lnrxIc
+set shortmess=flnrxIc
 set noshowmode
-set showcmd
-set modeline
-set laststatus=2
 set showtabline=0
 set wildmode=list:longest
 
@@ -132,8 +123,6 @@ set shiftround
 set expandtab
 set autoindent
 set smartindent
-set cindent
-set copyindent
 
 set scrolloff=2
 set sidescrolloff=2
