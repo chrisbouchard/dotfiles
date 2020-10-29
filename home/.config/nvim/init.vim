@@ -62,7 +62,7 @@ Plug 'wellle/targets.vim'
 Plug 'wesQ3/vim-windowswap'
 
 " Syntax
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', { 'for': ['latex', 'tex'] }
 Plug 'sheerun/vim-polyglot'
 Plug 'justinmk/vim-syntax-extra'
 
