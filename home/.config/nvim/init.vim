@@ -33,6 +33,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'chrisbouchard/evaluate.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kergoth/vim-hilinks'
+Plug 'kevinoid/vim-jsonc'
 Plug 'lambdalisue/suda.vim'
 Plug 'Lenovsky/nuake'
 Plug 'lukaszb/vim-web-indent'
@@ -87,7 +88,9 @@ colorscheme gruvbox
 set hidden
 set cursorline
 set mouse=a
+set updatetime=300
 
+set cmdheight=2
 set shortmess=flnrxIc
 set noshowmode
 set showtabline=0
