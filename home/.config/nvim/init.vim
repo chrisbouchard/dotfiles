@@ -7,12 +7,6 @@ let g:loaded_python_provider = 1
 
 let g:airline_powerline_fonts = 1
 
-" Visualize diagnostics
-let g:diagnostic_enable_virtual_text = 1
-let g:diagnostic_trimmed_virtual_text = '40'
-" Don't show diagnostics while in insert mode
-let g:diagnostic_insert_delay = 1
-
 let g:gruvbox_italic=1
 let g:gruvbox_improved_warnings=1
 
@@ -66,29 +60,16 @@ Plug 'lervag/vimtex', { 'for': ['latex', 'tex'] }
 Plug 'sheerun/vim-polyglot'
 Plug 'justinmk/vim-syntax-extra'
 
-" LSP
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/diagnostic-nvim'
-Plug 'tjdevries/lsp_extensions.nvim'
+" Completion
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " FZF
 " This plugin will be installed externally. If it is, add it.
 if isdirectory($HOME . '/.fzf')
     Plug $HOME . '/.fzf'
 endif
-Plug 'junegunn/fzf.vim'
 
 call plug#end()
-
-
-" " ********** POWERLINE **********
-" 
-" if has('python3')
-"     python3 from powerline.vim import setup as powerline_setup
-"     python3 powerline_setup()
-"     python3 del powerline_setup
-" endif
 
 
 " ********** COLORSCHEME **********
@@ -136,6 +117,13 @@ set signcolumn=yes
 set title
 
 
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Prettier` command to format current buffer with Prettier specifically.
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+
 " ********** MAPPINGS **********
 
 let mapleader=","
@@ -149,14 +137,6 @@ nnoremap ` '
 map <silent> <F1> <nop>
 map! <silent> <F1> <nop>
 
-nmap <leader>b :Buffers<CR>
-nmap <leader>f :GFiles<CR>
-nmap <leader>F :Files<CR>
-nmap <leader>h :History<CR>
-nmap <leader>H :Helptags!<CR>
-nmap <leader>: :History:<CR>
-nmap <leader>/ :History/<CR>
-
 map <leader>y <plug>YankCode
 
 nnoremap <F4> :Nuake<CR>
@@ -167,29 +147,92 @@ vmap <expr>  ++  VMATH_YankAndAnalyse()
 nmap         ++  vip++
 
 
-" ********** AUTOCOMPLETION AND LSP SETTINGS **********
-lua require 'lsp_config'
+" ********** COC MAPPINGS **********
 
-" Show diagnostic popup on cursor hold
-autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
-autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
-            \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
+nmap <Leader>c [coc]
+xmap <Leader>c [coc]
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+    if (index(['vim', 'help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    elseif (coc#rpc#ready())
+        call CocActionAsync('doHover')
+    else
+        execute '!' . &keywordprg . " " . expand('<cword>')
+    endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap [coc]rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap [coc]f  <Plug>(coc-format-selected)
+nmap [coc]f  <Plug>(coc-format-selected)
+
+" Applying codeAction to the selected region.
+" Example: `[coc]aap` for current paragraph
+xmap [coc]a  <Plug>(coc-codeaction-selected)
+nmap [coc]a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap [coc]ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap [coc]qf  <Plug>(coc-fix-current)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+" Note coc#float#scroll works on neovim >= 0.4.3 or vim >= 8.2.0750
+nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
 
 
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> gR    <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-"TODO: Needs work
-"nnoremap <silent> <F5>  <cmd>lua vim.lsp.buf_request(0, 'textDocument/build', {textDocument = vim.lsp.util.make_text_document_params()})<CR>
+" ********** COC-FZF-PREVIEW MAPPINGS **********
 
-" Goto previous/next diagnostic warning/error
-nnoremap <silent> g[ <cmd>PrevDiagnosticCycle<cr>
-nnoremap <silent> g] <cmd>NextDiagnosticCycle<cr>
+nmap <Leader>f [fzf-p]
+xmap <Leader>f [fzf-p]
+
+nnoremap <silent> [fzf-p]p     :<C-u>CocCommand fzf-preview.FromResources project_mru git<CR>
+nnoremap <silent> [fzf-p]gs    :<C-u>CocCommand fzf-preview.GitStatus<CR>
+nnoremap <silent> [fzf-p]ga    :<C-u>CocCommand fzf-preview.GitActions<CR>
+nnoremap <silent> [fzf-p]b     :<C-u>CocCommand fzf-preview.Buffers<CR>
+nnoremap <silent> [fzf-p]B     :<C-u>CocCommand fzf-preview.AllBuffers<CR>
+nnoremap <silent> [fzf-p]o     :<C-u>CocCommand fzf-preview.FromResources buffer project_mru<CR>
+nnoremap <silent> [fzf-p]<C-o> :<C-u>CocCommand fzf-preview.Jumps<CR>
+nnoremap <silent> [fzf-p]g;    :<C-u>CocCommand fzf-preview.Changes<CR>
+nnoremap <silent> [fzf-p]/     :<C-u>CocCommand fzf-preview.Lines --add-fzf-arg=--no-sort --add-fzf-arg=--query="'"<CR>
+nnoremap <silent> [fzf-p]*     :<C-u>CocCommand fzf-preview.Lines --add-fzf-arg=--no-sort --add-fzf-arg=--query="'<C-r>=expand('<cword>')<CR>"<CR>
+nnoremap          [fzf-p]gr    :<C-u>CocCommand fzf-preview.ProjectGrep<Space>
+xnoremap          [fzf-p]gr    "sy:CocCommand   fzf-preview.ProjectGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
+nnoremap <silent> [fzf-p]t     :<C-u>CocCommand fzf-preview.BufferTags<CR>
+nnoremap <silent> [fzf-p]q     :<C-u>CocCommand fzf-preview.QuickFix<CR>
+nnoremap <silent> [fzf-p]l     :<C-u>CocCommand fzf-preview.LocationList<CR>
 
