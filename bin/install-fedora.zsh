@@ -9,44 +9,48 @@ dnf_repos=(
 
 dnf_coprs=(
     agriffis/neovim-nightly
-    jdoss/wireguard
 )
 
 dnf_packages=(
+    @development-tools
     autossh
+    bat
+    buildah
     chrome-gnome-shell
-    dropbox
+    cmake
     figlet
     fzf
+    g++
+    gnome-shell-extension-appindicator
+    gnome-tweak-tool
     httpie
     ImageMagick
-    java-1.8.0-openjdk
-    java-11-openjdk
+    make
     neovim
     podman
-    podman-docker
-    postgresql
-    postgresql-contrib
-    postgresql-server
+    python-neovim
     restic
-    texlive
+    ripgrep
+    rpkg
+    texlive-scheme-full
     thefuck
     tmux
     wine
-    wireguard-dkms
     wireguard-tools
 )
 
-flatpak_packages=(
+flatpak_flathub_packages=(
+    chat.rocket.RocketChat
     com.discordapp.Discord
-    com.googleplaymusicdesktopplayer.GPMDP
+    com.dropbox.Client
+    com.github.tchx84.Flatseal
     com.mojang.Minecraft
+    com.slack.Slack
     com.valvesoftware.Steam
     org.freedesktop.Platform.ffmpeg
     org.gimp.GIMP
     org.inkscape.Inkscape
     org.keepassxc.KeePassXC
-    org.mozilla.FirefoxDevEdition
     org.signal.Signal
     org.videolan.VLC
 )
@@ -77,7 +81,7 @@ step_end() {
 step_start 'Adding required DNF repositories'
 
     sudo dnf install -y $dnf_repos
-    
+
     for dnf_copr in $dnf_coprs
     do
         sudo dnf copr enable -y $dnf_copr
@@ -93,18 +97,27 @@ step_start 'Installing packages from DNF'
 step_end
 
 
-step_start 'Adding required Flatpak repositories'
+step_start 'Installing packages from Flathub'
 
-    # TODO: Move this to an array?
-    flatpak remote-add --from org.mozilla.FirefoxRepo \
-        https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxRepo.flatpakrepo
+    flatpak install -y flathub $flatpak_flathub_packages
 
 step_end
 
 
-step_start 'Installing packages from Flatpak'
+step_start 'Installing Firefox Developer Edition'
 
-    flatpak install -y $flatpak_packages
+    flatpak remote-add --from org.mozilla.FirefoxRepo \
+        https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxRepo.flatpakrepo
+    flatpak install -y org.mozilla.FirefoxRepo org.mozilla.FirefoxDevEdition
+
+step_end
+
+
+step_start 'Installing Mullvad VPN'
+
+    wget --output-document=$HOME/Downloads/mullvad-latest.rpm \
+        https://mullvad.net/download/app/rpm/latest
+    sudo dnf install -y ~/Downloads/mullvad-latest.rpm
 
 step_end
 

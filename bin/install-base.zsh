@@ -9,9 +9,12 @@ repo_names=(
     junegunn/vim-plug
     lukechilds/zsh-nvm
     nvm-sh/nvm
+    rbenv/rbenv
+    rbenv/ruby-build
     robbyrussell/oh-my-zsh
     Tarrasch/zsh-bd
     tmux-plugins/tpm
+    vlevit/notify-send.sh
     zsh-users/zsh-syntax-highlighting
 
     # My dotfiles
@@ -20,8 +23,10 @@ repo_names=(
 
 pip_packages=(
     powerline-gitstatus
+    powerline-inject
     powerline-pyenv
     powerline-status
+    pyls
 )
 
 
