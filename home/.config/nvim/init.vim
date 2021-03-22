@@ -10,9 +10,9 @@ let g:airline_powerline_fonts = 1
 let g:gruvbox_italic=1
 let g:gruvbox_improved_warnings=1
 
-let g:pear_tree_smart_openers = 1
-let g:pear_tree_smart_closers = 1
-let g:pear_tree_smart_backspace = 1
+"let g:pear_tree_smart_openers = 1
+"let g:pear_tree_smart_closers = 1
+"let g:pear_tree_smart_backspace = 1
 
 let g:polyglot_disabled = ['latex']
 let g:rustfmt_autosave = 1
@@ -52,7 +52,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-scripts/sudo.vim'
 Plug 'wellle/targets.vim'
 Plug 'wesQ3/vim-windowswap'
 
@@ -151,6 +150,8 @@ nmap         ++  vip++
 
 
 " ********** COC MAPPINGS **********
+nnoremap [coc] <Nop>
+xnoremap [coc] <Nop>
 
 nmap <Leader>c [coc]
 xmap <Leader>c [coc]
@@ -194,6 +195,9 @@ nmap [coc]ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap [coc]qf  <Plug>(coc-fix-current)
 
+nmap [coc][ <Plug>(coc-diagnostic-prev)
+nmap [coc]] <Plug>(coc-diagnostic-next)
+
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xmap if <Plug>(coc-funcobj-i)
@@ -219,6 +223,8 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 
 
 " ********** COC-FZF-PREVIEW MAPPINGS **********
+nnoremap [fzf-p] <Nop>
+xnoremap [fzf-p] <Nop>
 
 nmap <Leader>f [fzf-p]
 xmap <Leader>f [fzf-p]

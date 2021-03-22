@@ -59,6 +59,3 @@ source $ZSH/oh-my-zsh.sh
 # obnoxious, so let's disable it again.
 unsetopt share_history
 
-
-alias latexmk='podman run -it --rm --security-opt label=disable -v $PWD:/home danteev/texlive latexmk'
-
