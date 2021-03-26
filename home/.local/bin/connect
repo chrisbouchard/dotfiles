@@ -1,0 +1,55 @@
+#!/usr/bin/env zsh
+
+PROG_NAME=$(basename $0)
+
+print_help() {
+    cat <<EOF
+$PROG_NAME [OPTIONS...] [USER@]SERVER [-- SSH_OPTIONS...]
+
+Options:
+  -s,--session=SESSION    Specify the tmux session name (default is "connect")
+  -h,--help               Show this help message
+EOF
+}
+
+die_with_help() {
+    [[ -n $1 ]] && echo $1
+    echo
+    print_help
+    exit 1
+} >&2
+
+args=$(getopt --options=s:h --long=session:,help -- "$@") \
+    || die_with_help
+
+eval set -- $args
+
+session_name='connect'
+
+while true
+do
+    case "$1" in
+        -s|--session)
+            session_name=$2
+            shift 2
+            ;;
+        -h|--help)
+            print_help
+            exit 0
+            ;;
+        --)
+            shift
+            break
+            ;;
+        *)
+            die_with_help "Error: Unhandled option: $1"
+            ;;
+    esac
+done
+
+ssh_args=$@
+
+# TODO: Use the echo port?
+autossh -M0 -t $ssh_args -- \
+    tmux new-session -A -s $session_name
+
