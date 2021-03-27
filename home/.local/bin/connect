@@ -47,9 +47,7 @@ do
     esac
 done
 
-ssh_args=$@
-
 # TODO: Use the echo port?
-autossh -M0 -t $ssh_args -- \
+autossh -M0 -t $@ -- \
     tmux new-session -A -s $session_name
 
