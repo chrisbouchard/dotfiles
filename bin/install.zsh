@@ -23,6 +23,7 @@ repo_names=(
 
 pip_packages=(
     powerline-gitstatus
+    powerline-inject
     powerline-pyenv
     powerline-status
     pyls
