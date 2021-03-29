@@ -149,7 +149,7 @@ inoremap <F4> <cmd>Nuake<CR>
 tnoremap <F4> <cmd>Nuake<CR>
 
 vnoremap <expr> ++ VMATH_YankAndAnalyse()
-    nmap        ++ vip++
+nmap            ++ vip++
 
 
 " NOTE: Order is important. You can't lazy loading lexima.vim.
