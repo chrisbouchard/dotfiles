@@ -6,8 +6,9 @@ let g:loaded_python_provider = 1
 " ********** PLUGIN SETTINGS **********
 
 let g:airline_powerline_fonts = 1
-let g:gruvbox_improved_warnings=1
-let g:gruvbox_italic=1
+let g:gruvbox_improved_warnings = 1
+let g:gruvbox_italic = 1
+let g:indent_blankline_char = '│'
 let g:rustfmt_autosave = 1  " TODO: Is this being used?
 let g:suda_smart_edit = 1
 
@@ -21,7 +22,6 @@ Plug 'gruvbox-community/gruvbox'
 
 " Features
 Plug 'AaronLasseigne/yank-code'
-Plug 'airblade/vim-gitgutter'
 Plug 'chrisbouchard/evaluate.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kergoth/vim-hilinks'
@@ -53,9 +53,23 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'norcalli/snippets.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+" Statusline support for LSP
+Plug 'nvim-lua/lsp-status.nvim'
+
+" Light-bulb indicator for LSP code actions
+Plug 'kosayoda/nvim-lightbulb'
+
 " Telescope (fuzzy picker) and extensions
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'gbrlsnchs/telescope-lsp-handlers.nvim'
+
+" Indentation lines
+" TODO: Switch back to master once Neovim 0.5 is released
+Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
+
+" Lua-based git marks
+" Also requires nvim-lua/plenary.nvim
+Plug 'lewis6991/gitsigns.nvim'
 
 call plug#end()
 
@@ -108,6 +122,7 @@ set title
 
 
 lua require('compe_config')
+lua require('gitsigns_config')
 lua require('lsp_config')
 lua require('snippets_config')
 lua require('telescope_config')
