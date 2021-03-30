@@ -121,12 +121,7 @@ set signcolumn=yes
 set title
 
 
-lua require('compe_config')
-lua require('gitsigns_config')
-lua require('lsp_config')
-lua require('snippets_config')
-lua require('telescope_config')
-lua require('treesitter_config')
+lua require 'config'
 
 
 " ********** MAPPINGS **********

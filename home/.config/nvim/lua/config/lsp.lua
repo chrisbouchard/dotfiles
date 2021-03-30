@@ -1,5 +1,9 @@
 local nvim_lsp = require('lspconfig')
 
+-- Status line integration
+local lsp_status = require('lsp-status')
+lsp_status.register_progress()
+
 -- Server overrides
 local servers = {
     bashls = {},
@@ -74,12 +78,14 @@ end
 -- Depends on snippets.nvim
 -- Copied from https://github.com/neovim/nvim-lspconfig/wiki/Snippets-support
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local base_options = {
     capabilities = capabilities,
     on_attach = function(...)
         on_attach(...)
+        lsp_status.on_attach(...)
     end,
 }
 
