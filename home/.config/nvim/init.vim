@@ -13,67 +13,6 @@ let g:rustfmt_autosave = 1  " TODO: Is this being used?
 let g:suda_smart_edit = 1
 
 
-" ********** PLUGINS **********
-
-call plug#begin(stdpath('data') . '/plugged')
-
-" Colors
-Plug 'gruvbox-community/gruvbox'
-
-" Features
-Plug 'AaronLasseigne/yank-code'
-Plug 'chrisbouchard/evaluate.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'kergoth/vim-hilinks'
-Plug 'lambdalisue/suda.vim'
-Plug 'Lenovsky/nuake'
-Plug 'nixon/vim-vmath'
-Plug 'plytophogy/vim-virtualenv'
-Plug 'rliang/termedit.nvim'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'vim-airline/vim-airline'
-Plug 'wellle/targets.vim'
-Plug 'wesQ3/vim-windowswap'
-
-" Completion-related
-" TODO: Organize plugins.
-Plug 'cohama/lexima.vim'
-Plug 'JoosepAlviste/nvim-ts-context-commentstring'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'windwp/nvim-ts-autotag'
-
-Plug 'hrsh7th/nvim-compe'
-Plug 'neovim/nvim-lspconfig'
-Plug 'norcalli/snippets.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-" Statusline support for LSP
-Plug 'nvim-lua/lsp-status.nvim'
-
-" Light-bulb indicator for LSP code actions
-Plug 'kosayoda/nvim-lightbulb'
-
-" Telescope (fuzzy picker) and extensions
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'gbrlsnchs/telescope-lsp-handlers.nvim'
-
-" Indentation lines
-" TODO: Switch back to master once Neovim 0.5 is released
-Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
-
-" Lua-based git marks
-" Also requires nvim-lua/plenary.nvim
-Plug 'lewis6991/gitsigns.nvim'
-
-call plug#end()
-
-
 " ********** COLORSCHEME **********
 
 if has("termguicolors")
@@ -81,7 +20,6 @@ if has("termguicolors")
 endif
 
 set background=dark
-colorscheme gruvbox
 
 
 " ********** SETTINGS **********
@@ -119,9 +57,6 @@ set completeopt=menuone,noselect
 set signcolumn=yes
 
 set title
-
-
-lua require 'config'
 
 
 " ********** MAPPINGS **********
