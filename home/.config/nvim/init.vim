@@ -81,3 +81,10 @@ tnoremap <F4> <cmd>Nuake<CR>
 vnoremap <expr> ++ VMATH_YankAndAnalyse()
 nmap            ++ vip++
 
+
+" ********** COMMANDS **********
+
+" Command to load the Packer plugin spec and sync (clean and update) it. This
+" will also recompile the plugin auto-loading script.
+command PluginSync lua require'plugins'.sync()
+

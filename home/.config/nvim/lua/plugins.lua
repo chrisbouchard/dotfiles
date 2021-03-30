@@ -1,3 +1,6 @@
+-- Packer is an optional plugin, so make sure it's loaded.
+vim.cmd[[packadd packer]]
+
 local packer = require 'packer'
 
 return packer.startup(function()
