@@ -81,21 +81,3 @@ tnoremap <F4> <cmd>Nuake<CR>
 vnoremap <expr> ++ VMATH_YankAndAnalyse()
 nmap            ++ vip++
 
-
-" NOTE: Order is important. You can't lazy loading lexima.vim.
-" This note is from the Compe readme, but I'm not quite sure what it means.
-let g:lexima_no_default_rules = v:true
-call lexima#set_default_rules()
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm(lexima#expand('<LT>CR>', 'i'))
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-
-" Find files using Telescope command-line sugar.
-nnoremap <silent> <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <silent> <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <silent> <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <silent> <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <silent> <leader>fp <cmd>Telescope git_files<cr>
-

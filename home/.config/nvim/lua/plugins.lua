@@ -33,9 +33,9 @@ return packer.startup(function()
     -- Auto-pairs
     use {
         'cohama/lexima.vim',
-        -- run = function()
-        --     require 'config.lexima'
-        -- end,
+        run = function()
+            require 'config.lexima'
+        end,
     }
 
     -- TreeSitter and plugins
@@ -54,6 +54,8 @@ return packer.startup(function()
     -- Completion interface
     use {
         'hrsh7th/nvim-compe',
+        -- Compe must be configured after Lexima, because the order of the
+        -- mappings matters.
         after = 'lexima.vim',
         run = function()
             require 'config.compe'
