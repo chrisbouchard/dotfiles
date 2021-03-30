@@ -6,7 +6,9 @@ local packer = require 'packer'
 return packer.startup(function()
     -- Color scheme (vimscript)
     use {
-        'gruvbox-community/gruvbox',
+        -- TODO: Switch back to gruvbox-community/gruvbox when they add
+        -- treesitter support.
+        'npxbr/gruvbox',
         config = function ()
             vim.cmd [[:colorscheme gruvbox]]
         end,
