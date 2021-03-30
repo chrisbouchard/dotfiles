@@ -4,7 +4,9 @@ return packer.startup(function()
     -- Color scheme (vimscript)
     use {
         'gruvbox-community/gruvbox',
-        run = [[:colorscheme gruvbox]],
+        config = function ()
+            vim.cmd [[:colorscheme gruvbox]]
+        end,
     }
 
     -- TODO: Organize? Dependencies? Configuration?
@@ -30,7 +32,7 @@ return packer.startup(function()
     -- Auto-pairs
     use {
         'cohama/lexima.vim',
-        run = function()
+        config = function()
             require 'config.lexima'
         end,
     }
@@ -42,9 +44,9 @@ return packer.startup(function()
             'JoosepAlviste/nvim-ts-context-commentstring',
             'windwp/nvim-ts-autotag',
         },
-        run = function()
+        run = [[:TSUpdate]],
+        config = function()
             require 'config.treesitter'
-            vim.cmd [[TSUpdate]]
         end,
     }
 
@@ -54,7 +56,7 @@ return packer.startup(function()
         -- Compe must be configured after Lexima, because the order of the
         -- mappings matters.
         after = 'lexima.vim',
-        run = function()
+        config = function()
             require 'config.compe'
         end,
     }
@@ -65,7 +67,7 @@ return packer.startup(function()
         requires = {
             'kosayoda/nvim-lightbulb',
         },
-        run = function()
+        config = function()
             require 'config.lsp'
         end,
     }
@@ -73,7 +75,7 @@ return packer.startup(function()
     -- Support snippets for LSP completion
     use {
         'norcalli/snippets.nvim',
-        run = function()
+        config = function()
             require 'config.snippets'
         end,
     }
@@ -81,7 +83,7 @@ return packer.startup(function()
     -- Statusline support for LSP
     use {
         'nvim-lua/lsp-status.nvim',
-        -- run = function()
+        -- config = function()
         --     require 'config.lsp_status'
         -- end,
     }
@@ -94,7 +96,7 @@ return packer.startup(function()
             'nvim-lua/plenary.nvim',
             'nvim-lua/popup.nvim',
         },
-        run = function()
+        config = function()
             require 'config.telescope'
         end,
     }
@@ -103,7 +105,7 @@ return packer.startup(function()
     use {
         'lukas-reineke/indent-blankline.nvim',
         branch = 'lua',
-        -- run = function()
+        -- config = function()
         --     require 'config.indent_blankline'
         -- end,
     }
@@ -114,7 +116,7 @@ return packer.startup(function()
         requires = {
             'nvim-lua/plenary.nvim'
         },
-        run = function()
+        config = function()
             require 'config.gitsigns'
         end,
     }
