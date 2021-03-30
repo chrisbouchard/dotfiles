@@ -1,9 +1,6 @@
 local packer = require 'packer'
 
 return packer.startup(function()
-    -- Packer itself
-    use 'wbthomason/packer.nvim'
-
     -- Color scheme (vimscript)
     use {
         'gruvbox-community/gruvbox',
