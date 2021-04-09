@@ -69,29 +69,47 @@ return packer.startup(function()
     -- Pre-packaged LSP configurations
     use {
         'neovim/nvim-lspconfig',
-        requires = {
-            'kosayoda/nvim-lightbulb',
-        },
         config = function()
-            require 'config.lsp'
+            require('config.lsp').setup()
         end,
     }
 
     -- Support snippets for LSP completion
     use {
         'norcalli/snippets.nvim',
+        after = 'nvim-lspconfig',
         config = function()
-            require 'config.snippets'
+            require('config.snippets').setup()
         end,
     }
 
     -- Statusline support for LSP
     use {
         'nvim-lua/lsp-status.nvim',
-        -- config = function()
-        --     require 'config.lsp_status'
-        -- end,
+        after = 'nvim-lspconfig',
+        config = function()
+            require('config.lsp-status').setup()
+        end,
     }
+
+    -- Show lightbulb icon when LSP actions are available
+    use {
+        'kosayoda/nvim-lightbulb',
+        after = 'nvim-lspconfig',
+        config = function()
+            require('config.lightbulb').setup()
+        end,
+    }
+
+    -- Rust-specific LSP configuration
+    use {
+        'kosayoda/rust-tools.nvim',
+        after = 'nvim-lspconfig',
+        config = function()
+            require('config.rust-tools').setup()
+        end,
+    }
+
 
     -- Pop-up fuzzy-finder
     use {

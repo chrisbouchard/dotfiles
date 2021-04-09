@@ -82,6 +82,13 @@ vnoremap <expr> ++ VMATH_YankAndAnalyse()
 nmap            ++ vip++
 
 
+" ********** LSP **********
+
+" The LSP server defintions are already set up. We just need to add them to
+" the lspconfig table.
+lua require 'lsp'
+
+
 " ********** COMMANDS **********
 
 " Command to load the Packer plugin spec and sync (clean and update) it. This

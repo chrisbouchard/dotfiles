@@ -1,11 +1,7 @@
-local nvim_lsp = require('lspconfig')
-
--- Status line integration
-local lsp_status = require('lsp-status')
-lsp_status.register_progress()
+local M = {}
 
 -- Server overrides
-local servers = {
+M.servers = {
     bashls = {},
     cssls = {},
     html = {},
@@ -17,9 +13,12 @@ local servers = {
     vimls = {},
 }
 
+M.base_options = {}
+
+
 -- Lifted from https://github.com/neovim/nvim-lspconfig
 -- TODO: Customize key mappings
-local on_attach = function(client, bufnr)
+function M.base_options.on_attach(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -64,33 +63,15 @@ local on_attach = function(client, bufnr)
             augroup END
         ]], false)
     end
-
-    if client.resolved_capabilities.code_action then
-        vim.api.nvim_exec([[
-            augroup lsp_code_action_lightbulb
-                autocmd! * <buffer>
-                autocmd CursorHold <buffer> lua require'nvim-lightbulb'.update_lightbulb()
-            augroup END
-        ]], false)
-    end
 end
 
--- Depends on snippets.nvim
--- Copied from https://github.com/neovim/nvim-lspconfig/wiki/Snippets-support
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities)
-capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local base_options = {
-    capabilities = capabilities,
-    on_attach = function(...)
-        on_attach(...)
-        lsp_status.on_attach(...)
-    end,
-}
-
-for server, server_options in pairs(servers) do
-    local options = vim.tbl_deep_extend('force', base_options, server_options)
-    nvim_lsp[server].setup(options)
+function M.setup()
+    -- Delay calling this in case the user configures LSP
+    M.base_options.capabilities = vim.lsp.protocol.make_client_capabilities()
+    return M
 end
+
+
+return M
 
