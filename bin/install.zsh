@@ -6,8 +6,6 @@ repo_dir=$HOME/.homesick/repos
 # Names of repositories we want to install
 repo_names=(
     # Other utilities that my dotfiles use (via symlink)
-    # TODO: Delete once we switch to packer
-    junegunn/vim-plug
     lukechilds/zsh-nvm
     nvm-sh/nvm
     rbenv/rbenv
