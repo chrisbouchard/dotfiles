@@ -9,6 +9,9 @@ return packer.startup(function()
         -- TODO: Switch back to gruvbox-community/gruvbox when they add
         -- treesitter support.
         'npxbr/gruvbox.nvim',
+        requires = {
+            "rktjmp/lush.nvim"
+        },
         config = function ()
             vim.cmd [[:colorscheme gruvbox]]
         end,
