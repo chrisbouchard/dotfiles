@@ -1,5 +1,5 @@
 -- Packer is an optional plugin, so make sure it's loaded.
-vim.cmd[[packadd packer]]
+vim.cmd [[packadd 'packer.nvim']]
 
 local packer = require 'packer'
 
@@ -8,7 +8,7 @@ return packer.startup(function()
     use {
         -- TODO: Switch back to gruvbox-community/gruvbox when they add
         -- treesitter support.
-        'npxbr/gruvbox',
+        'npxbr/gruvbox.nvim',
         config = function ()
             vim.cmd [[:colorscheme gruvbox]]
         end,
@@ -103,7 +103,7 @@ return packer.startup(function()
 
     -- Rust-specific LSP configuration
     use {
-        'kosayoda/rust-tools.nvim',
+        'simrat39/rust-tools.nvim',
         after = 'nvim-lspconfig',
         config = function()
             require('config.rust-tools').setup()
