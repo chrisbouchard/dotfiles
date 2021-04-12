@@ -19,6 +19,8 @@ dnf_packages=(
     chrome-gnome-shell
     figlet
     fzf
+    gcc
+    gcc-c++
     gnome-shell-extension-appindicator
     gnome-shell-extension-caffeine
     gnome-shell-extension-disconnect-wifi
@@ -26,6 +28,7 @@ dnf_packages=(
     gnome-tweaks
     httpie
     ImageMagick
+    make
     neovide
     neovim
     podman
