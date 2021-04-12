@@ -9,45 +9,40 @@ dnf_repos=(
 
 dnf_coprs=(
     agriffis/neovim-nightly
+    chrisbouchard/neovide-nightly
 )
 
 dnf_packages=(
-    @development-tools
     autossh
     bat
     buildah
     chrome-gnome-shell
-    cmake
     figlet
     fzf
-    g++
     gnome-shell-extension-appindicator
-    gnome-tweak-tool
+    gnome-shell-extension-caffeine
+    gnome-shell-extension-disconnect-wifi
+    gnome-shell-extension-refresh-wifi
+    gnome-tweaks
     httpie
     ImageMagick
-    make
+    neovide
     neovim
     podman
     python-neovim
     restic
     ripgrep
     rpkg
-    texlive-scheme-full
     thefuck
     tmux
-    wine
     wireguard-tools
 )
 
 flatpak_flathub_packages=(
-    chat.rocket.RocketChat
     com.discordapp.Discord
     com.dropbox.Client
     com.github.tchx84.Flatseal
-    com.mojang.Minecraft
     com.slack.Slack
-    com.valvesoftware.Steam
-    org.freedesktop.Platform.ffmpeg
     org.gimp.GIMP
     org.inkscape.Inkscape
     org.keepassxc.KeePassXC
@@ -104,20 +99,11 @@ step_start 'Installing packages from Flathub'
 step_end
 
 
-step_start 'Installing Firefox Developer Edition'
-
-    flatpak remote-add --from org.mozilla.FirefoxRepo \
-        https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxRepo.flatpakrepo
-    flatpak install -y org.mozilla.FirefoxRepo org.mozilla.FirefoxDevEdition
-
-step_end
-
-
 step_start 'Installing Mullvad VPN'
 
     wget --output-document=$HOME/Downloads/mullvad-latest.rpm \
         https://mullvad.net/download/app/rpm/latest
-    sudo dnf install -y ~/Downloads/mullvad-latest.rpm
+    sudo dnf install -y $HOME/Downloads/mullvad-latest.rpm
 
 step_end
 
