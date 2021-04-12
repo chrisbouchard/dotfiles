@@ -94,6 +94,8 @@ step_end
 
 step_start 'Installing packages from Flathub'
 
+    flatpak remote-add --if-not-exists flathub \
+        https://flathub.org/repo/flathub.flatpakrepo
     flatpak install -y flathub $flatpak_flathub_packages
 
 step_end

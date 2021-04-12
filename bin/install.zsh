@@ -120,7 +120,9 @@ then
 
         # https://rustup.rs/
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
-            sh -s -- -y --no-modify-path --profile complete
+            sh -s -- -y --no-modify-path
+        # Put cargo on the path
+        source $HOME/.cargo/env
         # Skip self-update because we just installed it.
         rustup install --no-self-update nightly
         rustup component add --toolchain nightly rust-analyzer-preview
