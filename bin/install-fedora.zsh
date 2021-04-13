@@ -90,7 +90,7 @@ step_end
 
 step_start 'Installing packages from DNF'
 
-    sudo dnf update
+    sudo dnf update -y --refresh
     sudo dnf install -y $dnf_packages
 
 step_end
