@@ -5,6 +5,7 @@ M.servers = {
     bashls = {},
     cssls = {},
     html = {},
+    phpactor = {},
     pyls = {},
     rust_analyzer = {
         cmd = { "rustup", "run", "nightly", "rust-analyzer" }
