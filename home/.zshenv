@@ -41,6 +41,10 @@ then
     export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git"
 fi
 
+# Composer wants to install binaries in ~/.config/composer, which is weird.
+# Let's just put them in ~/.composer.
+export COMPOSER_HOME=$(realpath $HOME/.composer)
+
 # Preferred setup for nvim-gtk
 export NVIM_GTK_NO_HEADERBAR=1
 export NVIM_GTK_PREFER_DARK_THEME=1
