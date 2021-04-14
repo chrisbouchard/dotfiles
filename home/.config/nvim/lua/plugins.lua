@@ -1,10 +1,14 @@
 -- Packer is an optional plugin, so make sure it's loaded.
 vim.cmd [[packadd 'packer.nvim']]
 
+if vim._update_package_paths ~= nil then
+    vim._update_package_paths()
+end
+
 local packer = require 'packer'
 
 return packer.startup(function()
-    -- Color scheme (vimscript)
+    -- Gruvbox color scheme (vimscript)
     use {
         -- TODO: Switch back to gruvbox-community/gruvbox when they add
         -- treesitter support.
@@ -13,6 +17,8 @@ return packer.startup(function()
             "rktjmp/lush.nvim"
         },
         config = function ()
+            vim.g.gruvbox_improved_warnings = 1
+            vim.g.gruvbox_italic = 1
             vim.cmd [[:colorscheme gruvbox]]
         end,
     }
@@ -33,7 +39,7 @@ return packer.startup(function()
     use 'tpope/vim-repeat'
     use 'tpope/vim-surround'
     use 'tpope/vim-unimpaired'
-    use 'vim-airline/vim-airline'
+    -- use 'vim-airline/vim-airline'
     use 'wellle/targets.vim'
     use 'wesQ3/vim-windowswap'
 
@@ -104,14 +110,15 @@ return packer.startup(function()
         end,
     }
 
-    -- Rust-specific LSP configuration
-    use {
-        'simrat39/rust-tools.nvim',
-        after = 'nvim-lspconfig',
-        config = function()
-            require('config.rust-tools').setup()
-        end,
-    }
+    -- TODO: Disable until I figure out how to avoid calling `lsp_config.rust_analyzer.setup` twice
+    -- -- Rust-specific LSP configuration
+    -- use {
+    --     'simrat39/rust-tools.nvim',
+    --     after = 'nvim-lspconfig',
+    --     config = function()
+    --         require('config.rust-tools').setup()
+    --     end,
+    -- }
 
 
     -- Pop-up fuzzy-finder
@@ -138,12 +145,19 @@ return packer.startup(function()
 
     -- Show signs for git changes
     use {
-        'lewis6991/gitsigns.nvim',
-        requires = {
-            'nvim-lua/plenary.nvim'
+        'airblade/vim-gitgutter',
+        config = function()
+            vim.g.gitgutter_map_keys = 0
+        end,
+    }
+
+    use {
+        'hoob3rt/lualine.nvim',
+        after = {
+            'lsp-status.nvim'
         },
         config = function()
-            require 'config.gitsigns'
+            require('config.lualine').setup()
         end,
     }
 end)

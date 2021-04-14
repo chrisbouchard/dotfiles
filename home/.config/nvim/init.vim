@@ -6,8 +6,6 @@ let g:loaded_python_provider = 1
 " ********** PLUGIN SETTINGS **********
 
 let g:airline_powerline_fonts = 1
-let g:gruvbox_improved_warnings = 1
-let g:gruvbox_italic = 1
 let g:indent_blankline_char = '│'
 let g:rustfmt_autosave = 1  " TODO: Is this being used?
 let g:suda_smart_edit = 1
@@ -93,5 +91,10 @@ lua require 'lsp'
 
 " Command to load the Packer plugin spec and sync (clean and update) it. This
 " will also recompile the plugin auto-loading script.
-command PluginSync lua require'plugins'.sync()
+function PluginSync()
+    lua package.loaded['plugins'] = nil
+    lua require('plugins').sync()
+endfunction
+
+command PluginSync :call PluginSync()
 
