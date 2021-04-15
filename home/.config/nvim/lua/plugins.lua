@@ -160,5 +160,14 @@ return packer.startup(function()
             require('config.lualine').setup()
         end,
     }
+
+    use {
+        'stephpy/vim-php-cs-fixer',
+        config = function ()
+            -- TODO: Extract to config
+            vim.g.php_cs_fixer_enable_default_mapping = 0
+            vim.cmd [[autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()]]
+        end,
+    }
 end)
 
