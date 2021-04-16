@@ -17,6 +17,7 @@ dnf_packages=(
     bat
     buildah
     chrome-gnome-shell
+    fd-find
     figlet
     fzf
     gcc
