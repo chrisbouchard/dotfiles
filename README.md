@@ -5,9 +5,7 @@ My various configuration files, arranged to be cloned and symlinked by
 assumes the following external dependencies, which are not currently installed
 by the install script:
 
-* Powerline
-* Restic
-* ZSH
+* zsh (I usually install using `dnf`)
 
 
 ## Bootstrapping
@@ -16,28 +14,12 @@ Download and run `bin/install.zsh`, or run it directly from GitHub:
 
     $ curl https://raw.githubusercontent.com/chrisbouchard/dotfiles/master/bin/install.zsh | zsh
 
+If you are on Fedora, you can also run `bin/install-fedora.zsh` for my
+Fedora-specific setup. This script is _not_ able install zsh, since the script
+itself is written in zsh.
 
-## Setting up Restic Backups
-
-This setup includes Systemd services to create daily external backups, using
-[Restic][restic] in a [Backblaze B2][backblaze-b2] bucket. After bootstrapping,
-create the following `.conf` file based on the existing `.conf.sample` file:
-
-* `~/.config/systemd/user/restic-.service.d/local.conf`
-
-Then run
-
-    $ systemctl --user daemon-reload
-
-to load the services and timers into Systemd.
-
-These backup services are based on the ones described in [_Automate backups
-with restic and systemd_ in Fedora Magazine][automate-backups], but modified to
-fit my setup.
+    $ curl https://raw.githubusercontent.com/chrisbouchard/dotfiles/master/bin/install-fedora.zsh | zsh
 
 
-[automate-backups]: https://fedoramagazine.org/automate-backups-with-restic-and-systemd/
-[backblaze-b2]: https://www.backblaze.com/b2/cloud-storage.html
 [homeshick]: https://github.com/andsens/homeshick
-[restic]: https://restic.net/
 
