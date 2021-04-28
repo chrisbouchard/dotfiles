@@ -169,5 +169,15 @@ return packer.startup(function()
             vim.cmd [[autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()]]
         end,
     }
+
+    use {
+        'Chiel92/vim-autoformat',
+        config = function ()
+            vim.g.autoformat_autoindent = 0
+            vim.g.autoformat_retab = 0
+            vim.g.autoformat_remove_trailing_spaces = 0
+            vim.cmd [[autocmd BufWrite * :Autoformat]]
+        end,
+    }
 end)
 
