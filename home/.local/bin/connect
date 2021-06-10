@@ -47,7 +47,14 @@ do
     esac
 done
 
+if (( $# > 0 ))
+then
+    ssh_args=($@)
+else
+    ssh_args=('vps1')
+fi
+
 # TODO: Use the echo port?
-autossh -M0 -t $@ -- \
+autossh -M0 -t $ssh_args[@] -- \
     tmux new-session -A -s $session_name
 
