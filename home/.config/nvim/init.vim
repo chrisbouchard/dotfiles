@@ -98,3 +98,5 @@ endfunction
 
 command PluginSync :call PluginSync()
 
+command -bar -count=80 VFix vertical botright <count> split | setl wfw
+
