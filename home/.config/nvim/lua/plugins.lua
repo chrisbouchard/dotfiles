@@ -161,22 +161,31 @@ return packer.startup(function()
         end,
     }
 
+    -- use {
+    --     'stephpy/vim-php-cs-fixer',
+    --     config = function ()
+    --         -- TODO: Extract to config
+    --         vim.g.php_cs_fixer_enable_default_mapping = 0
+    --         vim.cmd [[autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()]]
+    --     end,
+    -- }
+
     use {
-        'stephpy/vim-php-cs-fixer',
+        'sbdchd/neoformat',
         config = function ()
-            -- TODO: Extract to config
-            vim.g.php_cs_fixer_enable_default_mapping = 0
-            vim.cmd [[autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()]]
+            vim.cmd [[
+                augroup fmt
+                    autocmd!
+                    autocmd BufWritePre * Neoformat
+                augroup END
+            ]]
         end,
     }
 
     use {
-        'Chiel92/vim-autoformat',
+        'vimlab/split-term.vim',
         config = function ()
-            vim.g.autoformat_autoindent = 0
-            vim.g.autoformat_retab = 0
-            vim.g.autoformat_remove_trailing_spaces = 0
-            vim.cmd [[autocmd BufWrite * :Autoformat]]
+            vim.g.disable_key_mappings = 1
         end,
     }
 end)
