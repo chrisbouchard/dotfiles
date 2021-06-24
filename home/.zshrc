@@ -59,3 +59,11 @@ source $ZSH/oh-my-zsh.sh
 # obnoxious, so let's disable it again.
 unsetopt share_history
 
+source-export() {
+    [[ -f $1 ]] || exit 1
+
+    set -a
+    source $1
+    set +a
+}
+
