@@ -186,5 +186,12 @@ return packer.startup(function()
             vim.g.disable_key_mappings = 1
         end,
     }
+
+    use {
+        'vim-test/vim-test',
+        config = function()
+            require('config.vim-test').setup()
+        end,
+    }
 end)
 
