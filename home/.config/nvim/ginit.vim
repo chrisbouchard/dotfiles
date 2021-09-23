@@ -1,4 +1,4 @@
-set guifont=Iosevka\ SS09:h14
+set guifont=Iosevka\ SS09:h11
 
 if exists('g:fvim_loaded')
     FVimCursorSmoothMove v:true
