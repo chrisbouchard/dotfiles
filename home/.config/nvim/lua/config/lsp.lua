@@ -8,7 +8,25 @@ M.servers = {
     cssls = {},
     html = {},
     phpactor = {},
-    pyls = {},
+    pylsp = {
+        cmd = { "pylsp", "-v" },
+        settings = {
+            pylsp = {
+                configurationSources = { 'flake8' },
+                plugins = {
+                    pylsp_flake8 = {
+                        enabled = true,
+                    },
+                    pylsp_mypy = {
+                        enabled = true,
+                        live_mode = false,
+                        dmypy = true,
+                        strict = false,
+                    },
+                },
+            },
+        },
+    },
     rust_analyzer = {
         cmd = { "rustup", "run", "nightly", "rust-analyzer" }
     },
