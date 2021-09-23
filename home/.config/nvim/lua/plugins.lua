@@ -136,7 +136,6 @@ return packer.startup(function()
     -- Indent guides using virtual text
     use {
         'lukas-reineke/indent-blankline.nvim',
-        branch = 'lua',
         -- config = function()
         --     require 'config.indent_blankline'
         -- end,
