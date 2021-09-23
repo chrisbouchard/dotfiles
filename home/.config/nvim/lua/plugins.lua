@@ -1,9 +1,3 @@
--- Packer is an optional plugin, so make sure it's loaded.
-vim.cmd [[packadd 'packer.nvim']]
-
--- Ensure that lua modules in packages are available.
-vim.cmd [[packloadall]]
-
 local packer = require 'packer'
 
 return packer.startup(function()
