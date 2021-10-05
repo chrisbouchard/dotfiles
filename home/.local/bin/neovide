@@ -5,6 +5,8 @@ filter_warnings() {
         --regexp='^Ignored client type property:'
 }
 
+export WINIT_UNIX_BACKEND=x11
+
 exec /usr/bin/neovide --geometry=140x40 $@ |&
     filter_warnings >&2
 
