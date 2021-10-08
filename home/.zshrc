@@ -44,7 +44,6 @@ plugins=(
   sdkman
   tmux
   vi-mode
-  zsh_reload
   zsh-syntax-highlighting
   # Powerline (must be last because it will inspect ZSH settings)
   powerline
