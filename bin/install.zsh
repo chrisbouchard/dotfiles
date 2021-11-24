@@ -11,6 +11,7 @@ repo_names=(
     rbenv/rbenv
     rbenv/ruby-build
     robbyrussell/oh-my-zsh
+    syl20bnr/spacemacs
     Tarrasch/zsh-bd
     tmux-plugins/tpm
     vlevit/notify-send.sh
