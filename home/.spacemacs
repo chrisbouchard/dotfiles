@@ -544,12 +544,13 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  (add-to-list 'default-frame-alist '(height . 40))
-  (add-to-list 'default-frame-alist '(width . 140))
-  (set-fontset-font "fontset-default"
-                    '(#xe000 . #xe07d)
-                    "FreeMonoTengwar")
-  (setq lsp-ui-doc-show-with-cursor nil))
+  (when (display-graphic-p)
+    (add-to-list 'default-frame-alist '(height . 40))
+    (add-to-list 'default-frame-alist '(width . 140))
+    (set-fontset-font "fontset-default"
+                      '(#xe000 . #xe07d)
+                      "FreeMonoTengwar")
+    (setq lsp-ui-doc-show-with-cursor nil)))
 
 
 ;; Do not write anything past this comment. This is where Emacs will
