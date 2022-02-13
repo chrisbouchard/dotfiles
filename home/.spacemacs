@@ -33,16 +33,6 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(emacs-lisp
-     (erc :variables
-          erc-server-list
-          '(("irc.freenode.net"
-             :port "6697"
-             :ssl t
-             :nick "javajunkie314")
-            ("irc.libera.chat"
-             :port "6697"
-             :ssl t
-             :nick "javajunkie314")))
      git
      (helm :variables
            projectile-indexing-method 'hybrid)
