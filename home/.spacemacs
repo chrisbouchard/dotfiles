@@ -44,7 +44,8 @@ This function should only modify configuration layer settings."
              :ssl t
              :nick "javajunkie314")))
      git
-     helm
+     (helm :variables
+           projectile-indexing-method 'hybrid)
      javascript
      (lsp :variables
           lsp-rust-server 'rust-analyzer
@@ -561,6 +562,8 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (with-eval-after-load 'helm
+    (add-to-list 'projectile-globally-ignored-directories ".yarn"))
   (when (display-graphic-p)
     (add-to-list 'default-frame-alist '(height . 40))
     (add-to-list 'default-frame-alist '(width . 140))
