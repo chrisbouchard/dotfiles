@@ -1,0 +1,1 @@
+IRB.conf[:USE_MULTILINE] = false if ENV['INSIDE_EMACS']
