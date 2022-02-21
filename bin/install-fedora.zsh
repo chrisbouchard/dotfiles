@@ -22,24 +22,27 @@ dnf_packages=(
     fzf
     gcc
     gcc-c++
-    gnome-shell-extension-appindicator
-    gnome-shell-extension-caffeine
-    gnome-shell-extension-disconnect-wifi
-    gnome-shell-extension-refresh-wifi
     gnome-tweaks
     httpie
     ImageMagick
+    keepassxc
     make
     neovide
     neovim
     podman
     python-neovim
+    python3-pip
     restic
     ripgrep
     rpkg
     thefuck
     tmux
     wireguard-tools
+)
+
+dnf_remove_packages=(
+    PackageKit-command-not-found
+    gnome-software
 )
 
 flatpak_flathub_packages=(
@@ -49,7 +52,6 @@ flatpak_flathub_packages=(
     com.slack.Slack
     org.gimp.GIMP
     org.inkscape.Inkscape
-    org.keepassxc.KeePassXC
     org.signal.Signal
     org.videolan.VLC
 )
@@ -93,6 +95,14 @@ step_start 'Installing packages from DNF'
 
     sudo dnf update -y --refresh
     sudo dnf install -y $dnf_packages
+
+step_end
+
+
+step_start 'Removing unnecessary packages from DNF'
+
+sudo dnf update -y --refresh
+sudo dnf remove -y $dnf_remove_packages
 
 step_end
 
