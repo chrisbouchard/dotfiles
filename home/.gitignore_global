@@ -6,3 +6,6 @@
 # IntelliJ directory-based configuration
 .idea
 
+# NVM directory override files
+.nvmrc
+
