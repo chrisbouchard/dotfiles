@@ -43,6 +43,7 @@ This function should only modify configuration layer settings."
           lsp-rust-analyzer-display-chaining-hints t
           lsp-rust-analyzer-proc-macro-enable t
           lsp-rust-analyzer-server-display-inlay-hints t)
+     nginx
      (python :variables
              python-backend 'lsp
              python-format-on-save t
