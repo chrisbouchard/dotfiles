@@ -36,20 +36,29 @@ This function should only modify configuration layer settings."
      git
      (helm :variables
            projectile-indexing-method 'hybrid)
-     javascript
+     html
+     import-js
+     (javascript :variables
+                 javascript-backend 'lsp
+                 javascript-import-tool 'import-js
+                 javascript-lsp-linter nil)
      (lsp :variables
           lsp-rust-server 'rust-analyzer
           lsp-rust-analyzer-cargo-watch-command "clippy"
           lsp-rust-analyzer-display-chaining-hints t
           lsp-rust-analyzer-proc-macro-enable t
           lsp-rust-analyzer-server-display-inlay-hints t)
+     markdown
      nginx
+     (php :variables
+          php-backend 'lsp)
      (python :variables
-             python-backend 'lsp
+             python-backend 'pyright
              python-format-on-save t
              python-formatter 'black
              python-test-runner 'pytest)
      react
+     restclient
      (ruby :variables
            ;; Prefer Robe to Solargraph LSP. Robe uses Ruby introspection.
            ruby-backend 'robe
@@ -61,8 +70,13 @@ This function should only modify configuration layer settings."
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
+     sphinx
      systemd
      treemacs
+     (typescript :variables
+                 typescript-backend 'lsp
+                 typescript-linter 'eslint
+                 typescript-lsp-linter nil)
      vimscript
      yaml)
 
@@ -564,8 +578,11 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (fset 'evil-visual-update-x-selection 'ignore)
   (with-eval-after-load 'helm
     (add-to-list 'projectile-globally-ignored-directories ".yarn"))
+  (with-eval-after-load 'lsp-mode
+    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]vendor\\'"))
   (when (display-graphic-p)
     (add-to-list 'default-frame-alist '(height . 40))
     (add-to-list 'default-frame-alist '(width . 140))
