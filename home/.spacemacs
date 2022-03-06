@@ -69,7 +69,8 @@ This function should only modify configuration layer settings."
            rust-format-on-save t)
      (shell :variables
             shell-default-height 30
-            shell-default-position 'bottom)
+            shell-default-position 'bottom
+            shell-default-shell 'vterm)
      sphinx
      systemd
      treemacs
