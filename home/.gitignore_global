@@ -9,3 +9,7 @@
 # NVM directory override files
 .nvmrc
 
+# TypeScript LSP log files
+.log/tsserver.log
+.log/ti-*.log
+
