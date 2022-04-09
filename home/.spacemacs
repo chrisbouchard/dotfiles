@@ -592,6 +592,9 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (fset 'evil-visual-update-x-selection 'ignore)
   (add-hook 'after-save-hook #'local/rubocop-fix)
+  (add-hook 'editorconfig-after-apply-functions
+            (lambda (props)
+              (setq lisp-indent-offset nil)))
   (with-eval-after-load 'helm
     (add-to-list 'projectile-globally-ignored-directories ".yarn"))
   (with-eval-after-load 'lsp-mode
