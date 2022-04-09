@@ -62,7 +62,6 @@ This function should only modify configuration layer settings."
      (ruby :variables
            ;; Prefer Robe to Solargraph LSP. Robe uses Ruby introspection.
            ruby-backend 'robe
-           ruby-prettier-on-save t
            ruby-version-manager 'rbenv)
      ruby-on-rails
      (rust :variables
@@ -550,6 +549,11 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil then byte-compile some of Spacemacs files.
    dotspacemacs-byte-compile nil))
 
+(defun local/rubocop-fix ()
+  "Run RuboCop to fix the current buffer."
+  (when (eq major-mode 'ruby-mode)
+    (shell-command-to-string (format "rubocop --auto-correct -- %s" buffer-file-name))))
+
 (defun dotspacemacs/user-env ()
   "Environment variables setup.
 This function defines the environment variables for your Emacs session. By
@@ -587,6 +591,7 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (fset 'evil-visual-update-x-selection 'ignore)
+  (add-hook 'after-save-hook #'local/rubocop-fix)
   (with-eval-after-load 'helm
     (add-to-list 'projectile-globally-ignored-directories ".yarn"))
   (with-eval-after-load 'lsp-mode
