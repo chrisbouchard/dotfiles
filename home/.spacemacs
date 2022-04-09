@@ -595,11 +595,11 @@ before packages are loaded."
   (with-eval-after-load 'helm
     (add-to-list 'projectile-globally-ignored-directories ".yarn"))
   (with-eval-after-load 'lsp-mode
-    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]vendor\\'"))
+    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]vendor\\'")
+    (setq lsp-ui-doc-show-with-cursor nil))
   (when (display-graphic-p)
     (add-to-list 'default-frame-alist '(height . 48))
     (add-to-list 'default-frame-alist '(width . 120))
     (set-fontset-font "fontset-default"
                       '(#xe000 . #xe07d)
-                      "FreeMonoTengwar")
-    (setq lsp-ui-doc-show-with-cursor nil)))
+                      "FreeMonoTengwar")))
