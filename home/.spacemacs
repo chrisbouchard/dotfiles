@@ -573,7 +573,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; override it to use an untracked file.
   (setq custom-file "~/.emacs.d/.cache/local-custom.el")
   ;; Create the file if it does not exist, then load it.
-  (write-region "" nil custom-file)
+  (write-region "" nil custom-file t)
   (load custom-file))
 
 
