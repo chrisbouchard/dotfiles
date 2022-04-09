@@ -1,5 +1,8 @@
 # vim: set ft=gitignore
 
+# Emacs directory local scripts
+.dir-locals.el
+
 # Direnv files
 .envrc
 
