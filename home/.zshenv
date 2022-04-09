@@ -26,8 +26,8 @@ fi
 
 # export DISPLAY=${DISPLAY:-':0'}
 export PAGER=$(which less)
-export VISUAL=${VISUAL:-nvim}
-export EDITOR=${EDITOR:-nvim}
+export VISUAL=${VISUAL:-emacs}
+export EDITOR=${EDITOR:-emacs}
 
 # Set JAVA_HOME if we can get it automatically from Java
 if which javac &>/dev/null
