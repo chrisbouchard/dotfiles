@@ -47,6 +47,7 @@ This function should only modify configuration layer settings."
             latex-build-comman 'latexmk
             latex-build-engine 'xetex)
      (lsp :variables
+          lsp-lens-enable nil
           lsp-rust-server 'rust-analyzer
           lsp-rust-analyzer-cargo-watch-command "clippy"
           lsp-rust-analyzer-display-chaining-hints t
