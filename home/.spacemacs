@@ -35,6 +35,7 @@ This function should only modify configuration layer settings."
    '(emacs-lisp
      git
      (helm :variables
+           helm-use-fuzzy 'source
            projectile-indexing-method 'hybrid)
      html
      import-js
