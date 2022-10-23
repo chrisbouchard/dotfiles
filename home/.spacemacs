@@ -43,6 +43,9 @@ This function should only modify configuration layer settings."
                  javascript-backend 'lsp
                  javascript-import-tool 'import-js
                  javascript-lsp-linter nil)
+     (latex :variables
+            latex-build-comman 'latexmk
+            latex-build-engine 'xetex)
      (lsp :variables
           lsp-rust-server 'rust-analyzer
           lsp-rust-analyzer-cargo-watch-command "clippy"
