@@ -40,3 +40,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[url "git@github.com:"]
+	pushInsteadOf = https://github.com/
+[url "git@git.sr.ht:"]
+	pushInsteadOf = https://git.sr.ht/
