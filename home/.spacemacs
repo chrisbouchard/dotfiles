@@ -596,6 +596,8 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (require 'git-commit)
+  (global-git-commit-mode t)
   (fset 'evil-visual-update-x-selection 'ignore)
   (add-hook 'after-save-hook #'local/rubocop-fix)
   (add-hook 'editorconfig-after-apply-functions
