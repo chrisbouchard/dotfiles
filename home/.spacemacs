@@ -70,6 +70,7 @@ This function should only modify configuration layer settings."
            ruby-version-manager 'rbenv)
      ruby-on-rails
      (rust :variables
+           lsp-rust-server 'rust-analyzer
            rust-format-on-save t)
      (shell :variables
             shell-default-height 30
