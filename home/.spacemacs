@@ -32,7 +32,8 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(emacs-lisp
+   '(auto-completion
+     emacs-lisp
      git
      (helm :variables
            helm-use-fuzzy 'source
@@ -41,7 +42,6 @@ This function should only modify configuration layer settings."
      import-js
      (javascript :variables
                  javascript-backend 'lsp
-                 javascript-import-tool 'import-js
                  javascript-lsp-linter nil)
      (latex :variables
             latex-build-comman 'latexmk
@@ -58,9 +58,10 @@ This function should only modify configuration layer settings."
      (php :variables
           php-backend 'lsp)
      (python :variables
-             python-backend 'pyright
+             python-backend 'lsp
              python-format-on-save t
              python-formatter 'black
+             python-poetry-activate t
              python-test-runner 'pytest)
      react
      restclient
@@ -78,6 +79,7 @@ This function should only modify configuration layer settings."
             shell-default-shell 'vterm)
      sphinx
      systemd
+     theming
      treemacs
      (typescript :variables
                  typescript-backend 'lsp
@@ -110,7 +112,10 @@ This function should only modify configuration layer settings."
    ;; installs only the used packages but won't delete unused ones. `all'
    ;; installs *all* packages supported by Spacemacs and never uninstalls them.
    ;; (default is `used-only')
-   dotspacemacs-install-packages 'used-only))
+   dotspacemacs-install-packages 'used-only)
+  (when (spacemacs/system-is-mac)
+    (append dotspacemacs-configuration-layers
+            '(osx))))
 
 (defun dotspacemacs/init ()
   "Initialization:
@@ -213,6 +218,13 @@ It should only modify the values of Spacemacs settings."
    ;; If the value is nil then no banner is displayed. (default 'official)
    dotspacemacs-startup-banner 'official
 
+   ;; Scale factor controls the scaling (size) of the startup banner. Default
+   ;; value is `auto' for scaling the logo automatically to fit all buffer
+   ;; contents, to a maximum of the full image height and a minimum of 3 line
+   ;; heights. If set to a number (int or float) it is used as a constant
+   ;; scaling factor for the default logo size.
+   dotspacemacs-startup-banner-scale 'auto
+
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
    ;; Possible values for list-type are:
@@ -283,7 +295,7 @@ It should only modify the values of Spacemacs settings."
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
    dotspacemacs-default-font '("Iosevka SS09"
-                               :size 10.0
+                               :size 12.0
                                :weight normal
                                :width normal)
 
@@ -389,8 +401,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-maximized-at-startup nil
 
    ;; If non-nil the frame is undecorated when Emacs starts up. Combine this
-   ;; variable with `dotspacemacs-maximized-at-startup' in OSX to obtain
-   ;; borderless fullscreen. (default nil)
+   ;; variable with `dotspacemacs-maximized-at-startup' to obtain fullscreen
+   ;; without external boxes. Also disables the internal border. (default nil)
    dotspacemacs-undecorated-at-startup nil
 
    ;; A value from the range (0..100), in increasing opacity, which describes
@@ -402,6 +414,11 @@ It should only modify the values of Spacemacs settings."
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
    dotspacemacs-inactive-transparency 90
+
+   ;; A value from the range (0..100), in increasing opacity, which describes the
+   ;; transparency level of a frame background when it's active or selected. Transparency
+   ;; can be toggled through `toggle-background-transparency'. (default 90)
+   dotspacemacs-background-transparency 90
 
    ;; If non-nil show the titles of transient states. (default t)
    dotspacemacs-show-transient-state-title t
@@ -512,7 +529,9 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil - same as frame-title-format)
    dotspacemacs-icon-title-format nil
 
-   ;; Show trailing whitespace (default t)
+   ;; Color highlight trailing whitespace in all prog-mode and text-mode derived
+   ;; modes such as c++-mode, python-mode, emacs-lisp, html-mode, rst-mode etc.
+   ;; (default t)
    dotspacemacs-show-trailing-whitespace t
 
    ;; Delete whitespace while saving buffer. Possible values are `all'
@@ -608,9 +627,12 @@ before packages are loaded."
   (with-eval-after-load 'lsp-mode
     (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]vendor\\'")
     (setq lsp-ui-doc-show-with-cursor nil))
+  (setq theming-modifications
+        '((spacemacs-dark (fixed-pitch :family "Iosevka SS09"))
+          (spacemacs-light (fixed-pitch :family "Iosevka SS09"))))
   (when (display-graphic-p)
     (add-to-list 'default-frame-alist '(height . 48))
-    (add-to-list 'default-frame-alist '(width . 120))
+    (add-to-list 'default-frame-alist '(width . 140))
     (set-fontset-font "fontset-default"
                       '(#xe000 . #xe07d)
                       "FreeMonoTengwar")))
