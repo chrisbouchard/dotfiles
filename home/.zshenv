@@ -17,6 +17,12 @@ then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# For SeatGeek's letsgo
+if [[ -x $HOME/.letsgo/bin/letsgo ]]
+then
+    source $HOME/.letsgo/config/shell/zsh/setup.environment.sh
+fi
+
 # export LANG=en_US.UTF-8
 
 if [ $(umask) = '000' ]
@@ -56,4 +62,3 @@ fi
 
 # # NVM requires $NVM_DIR not to be a symlink, so we'll use the resolved path.
 # export NVM_DIR=$(realpath $HOME/.nvm)
-

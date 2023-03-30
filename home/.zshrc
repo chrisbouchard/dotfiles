@@ -74,6 +74,13 @@ source-export() {
     set +a
 }
 
+# For SeatGeek's letsgo
+# TODO: Move to an OMZ plugin?
+if [[ -x $HOME/.letsgo/bin/letsgo ]]
+then
+    source $HOME/.letsgo/config/shell/zsh/setup.completion.sh
+fi
+
 if [[ -e $HOME/.zshrc.local ]]
 then
     source $HOME/.zshrc.local
