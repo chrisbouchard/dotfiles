@@ -12,6 +12,9 @@
 # NVM directory override files
 .nvmrc
 
+# Asdf local version files
+.tool-versions
+
 # TypeScript LSP log files
 .log/tsserver.log
 .log/ti-*.log

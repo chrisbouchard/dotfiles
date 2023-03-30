@@ -24,6 +24,15 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 
+# Asdf hasn't been hooked up yet, so this will be the system Python
+ZSH_POWERLINE_PYTHON="$(which python3)"
+
+ZSH_POWERLINE_ADDITIONAL_PACKAGES=(
+    powerline-gitstatus
+    powerline-inject
+    powerline-pyenv
+)
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -34,16 +43,15 @@ plugins=(
   ng
   npm
   # Functional
+  asdf
   bd
   direnv
   gpg-agent
   homeshick
   fzf
-  nvm
-  rbenv
-  sdkman
   tmux
   vi-mode
+  zsh-letsgo
   zsh-syntax-highlighting
   # Powerline (must be last because it will inspect ZSH settings)
   powerline
@@ -66,3 +74,7 @@ source-export() {
     set +a
 }
 
+if [[ -e $HOME/.zshrc.local ]]
+then
+    source $HOME/.zshrc.local
+fi
