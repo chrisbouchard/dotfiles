@@ -1,7 +1,9 @@
 [user]
 	email = chris@upliftinglemma.net
 	name = Chris Bouchard
-	signingkey = 5993C7C995C99E57ADEEF6AD702A573BA274105E
+	signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPSwazdSkZ8zqvQZ0SMEKVyAsR14wgatC9UGzctGjeXo"
+[include]
+	path = ~/.gitconfig.local
 [core]
 	abbrev = 8
 	excludesfile = ~/.gitignore_global
@@ -9,25 +11,15 @@
 	default = simple
 [color]
 	ui = true
-[diff]
-	tool = vimdiff
-[difftool]
-	prompt = false
 [merge]
 	ff = false
 	tool = vimdiff
-[mergetool]
-	prompt = true
-[mergetool "vimdiff"]
-	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [commit]
 	gpgsign = true
 [gpg]
-	program = gpg2
+	format = ssh
 [rerere]
 	enabled = 1
-[include]
-	path = ~/.gitconfig.local
 [alias]
 	find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
 	show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
@@ -40,7 +32,9 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[url "git@github.com:"]
-	pushInsteadOf = https://github.com/
 [url "git@git.sr.ht:"]
 	pushInsteadOf = https://git.sr.ht/
+[url "git@github.com:"]
+	pushInsteadOf = https://github.com/
+[url "git@gitlab.com:"]
+	pushInsteadOf = https://gitlab.com/
