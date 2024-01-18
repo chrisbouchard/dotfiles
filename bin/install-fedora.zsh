@@ -1,15 +1,10 @@
-#!/bin/env zsh
+#!/usr/bin/env zsh
 
 fedora_version=$(rpm -E %fedora)
 
 dnf_repos=(
     https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$fedora_version.noarch.rpm
     https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$fedora_version.noarch.rpm
-)
-
-dnf_coprs=(
-    agriffis/neovim-nightly
-    chrisbouchard/neovide-nightly
 )
 
 dnf_packages=(
@@ -25,14 +20,8 @@ dnf_packages=(
     gnome-tweaks
     httpie
     ImageMagick
-    keepassxc
     make
-    neovide
-    neovim
     podman
-    python-neovim
-    python3-pip
-    restic
     ripgrep
     rpkg
     thefuck
@@ -83,11 +72,6 @@ step_start 'Adding required DNF repositories'
 
     sudo dnf install -y $dnf_repos
 
-    for dnf_copr in $dnf_coprs
-    do
-        sudo dnf copr enable -y $dnf_copr
-    done
-
 step_end
 
 
@@ -114,13 +98,3 @@ step_start 'Installing packages from Flathub'
     flatpak install -y flathub $flatpak_flathub_packages
 
 step_end
-
-
-step_start 'Installing Mullvad VPN'
-
-    wget --output-document=$HOME/Downloads/mullvad-latest.rpm \
-        https://mullvad.net/download/app/rpm/latest
-    sudo dnf install -y $HOME/Downloads/mullvad-latest.rpm
-
-step_end
-

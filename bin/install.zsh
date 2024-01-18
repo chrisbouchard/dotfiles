@@ -1,4 +1,4 @@
-#!/bin/env zsh
+#!/usr/bin/env zsh
 
 # Directory where Homeshick will install its repositories
 repo_dir=$HOME/.homesick/repos
@@ -6,10 +6,7 @@ repo_dir=$HOME/.homesick/repos
 # Names of repositories we want to install
 repo_names=(
     # Other utilities that my dotfiles use (via symlink)
-    lukechilds/zsh-nvm
-    nvm-sh/nvm
-    rbenv/rbenv
-    rbenv/ruby-build
+    asdf-vm/asdf
     robbyrussell/oh-my-zsh
     syl20bnr/spacemacs
     Tarrasch/zsh-bd
@@ -21,15 +18,6 @@ repo_names=(
     # My dotfiles
     chrisbouchard/dotfiles
 )
-
-pip_packages=(
-    powerline-gitstatus
-    powerline-inject
-    powerline-pyenv
-    powerline-status
-    pyls
-)
-
 
 # Function to print a colored message at the start of each step.
 step_start() {
@@ -103,31 +91,3 @@ then
 
     step_end
 fi
-
-
-if command_exists pip3
-then
-    step_start 'Installing packages from Pip'
-
-        pip3 install --user $pip_packages
-
-    step_end
-fi
-
-
-if ! command_exists rustup
-then
-    step_start 'Installing from Rustup'
-
-        # https://rustup.rs/
-        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
-            sh -s -- -y --no-modify-path
-        # Put cargo on the path
-        source $HOME/.cargo/env
-        # Skip self-update because we just installed it.
-        rustup install --no-self-update nightly
-        rustup component add --toolchain nightly rust-analyzer-preview
-
-    step_end
-fi
-
