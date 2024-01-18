@@ -32,14 +32,20 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(auto-completion
+   `(auto-completion
+     (csharp :variables
+             csharp-backend 'lsp)
      emacs-lisp
+     emoji
+     eww
      git
-     (helm :variables
-           helm-use-fuzzy 'source
-           projectile-indexing-method 'hybrid)
+     go
+     ; (helm :variables
+     ;       helm-use-fuzzy 'source
+     ;       projectile-indexing-method 'hybrid)
      html
      import-js
+     ivy
      (javascript :variables
                  javascript-backend 'lsp
                  javascript-lsp-linter nil)
@@ -47,28 +53,52 @@ This function should only modify configuration layer settings."
             latex-build-comman 'latexmk
             latex-build-engine 'xetex)
      (lsp :variables
+          ;; Disable the ruff client by default. Ruff is on our PATH because
+          ;; asdf created a shim for it, but not every project actually uses
+          ;; ruff, so we'll configure it per project with directory locals.
+          lsp-disabled-clients '(ruff-lsp)
+          ;; Shut down workspaces when the last file closes.
+          lsp-keep-workspace-alive nil
           lsp-lens-enable nil
+
+          ;; Client-specific configurations...
+          ;;lsp-csharp-server-path "~/.local/bin/asdf-omnisharp"
+          lsp-pylsp-plugins-black-enabled t
+          lsp-pylsp-plugins-jedi-environment ".venv"
+          lsp-pylsp-rename-backend 'rope
           lsp-rust-server 'rust-analyzer
           lsp-rust-analyzer-cargo-watch-command "clippy"
           lsp-rust-analyzer-display-chaining-hints t
           lsp-rust-analyzer-proc-macro-enable t
           lsp-rust-analyzer-server-display-inlay-hints t)
-     markdown
+     (markdown :variables
+               markdown-command '("pandoc" "--from=gfm" "--to=html5"))
      nginx
+     (org :variables
+          org-agenda-files '("~/org")
+          org-enable-github-support t
+          org-enable-notifications t
+          org-enable-roam-support t
+          org-projectile-file "TODOs.org"
+          org-start-notification-daemon-on-startup t
+          org-startup-folded t
+          org-startup-indented t)
      (php :variables
           php-backend 'lsp)
      (python :variables
              python-backend 'lsp
+             python-fill-column 88
              python-format-on-save t
-             python-formatter 'black
-             python-poetry-activate t
+             python-formatter 'lsp
              python-test-runner 'pytest)
      react
      restclient
      (ruby :variables
            ;; Prefer Robe to Solargraph LSP. Robe uses Ruby introspection.
            ruby-backend 'robe
-           ruby-version-manager 'rbenv)
+           ruby-insert-encoding-magic-comment nil
+           ruby-version-manager 'rbenv
+           rubocop-autocorrect-on-save t)
      ruby-on-rails
      (rust :variables
            lsp-rust-server 'rust-analyzer
@@ -76,18 +106,24 @@ This function should only modify configuration layer settings."
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom
-            shell-default-shell 'vterm)
+            shell-default-shell 'eshell)
      sphinx
+     (sql :variables
+          sql-capitalize-keywords t
+          sql-auto-indent nil)
+     syntax-checking
      systemd
      theming
+     tree-sitter
      treemacs
      (typescript :variables
                  typescript-backend 'lsp
                  typescript-linter 'eslint
                  typescript-lsp-linter nil)
      vimscript
-     yaml)
-
+     yaml
+     ,@(when (spacemacs/system-is-mac)
+         '(osx)))
 
    ;; List of additional packages that will be installed without being wrapped
    ;; in a layer (generally the packages are installed only and should still be
@@ -97,7 +133,14 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages
+   '((asdf :location (recipe :fetcher github :repo "tabfugnic/asdf.el"))
+     editorconfig
+     git-commit
+     ivy-prescient
+     prescient
+     ;; exec-path-from-shell
+     )
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -112,17 +155,14 @@ This function should only modify configuration layer settings."
    ;; installs only the used packages but won't delete unused ones. `all'
    ;; installs *all* packages supported by Spacemacs and never uninstalls them.
    ;; (default is `used-only')
-   dotspacemacs-install-packages 'used-only)
-  (when (spacemacs/system-is-mac)
-    (append dotspacemacs-configuration-layers
-            '(osx))))
+   dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
   "Initialization:
 This function is called at the very beginning of Spacemacs startup,
 before layer configuration.
 It should only modify the values of Spacemacs settings."
-  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+  ;; (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
@@ -235,7 +275,8 @@ It should only modify the values of Spacemacs settings."
    ;; pair of numbers, e.g. `(recents-by-project . (7 .  5))', where the first
    ;; number is the project limit and the second the limit on the recent files
    ;; within a project.
-   dotspacemacs-startup-lists '((recents . 5)
+   dotspacemacs-startup-lists '((todos . 5)
+                                (recents . 5)
                                 (projects . 7))
 
    ;; True if the home buffer should respond to resize events. (default t)
@@ -262,7 +303,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil, *scratch* buffer will be persistent. Things you write down in
    ;; *scratch* buffer will be saved and restored automatically.
-   dotspacemacs-scratch-buffer-persistent nil
+   dotspacemacs-scratch-buffer-persistent t
 
    ;; If non-nil, `kill-buffer' on *scratch* buffer
    ;; will bury it instead of killing.
@@ -275,8 +316,7 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light)
+   dotspacemacs-themes '(spacemacs-dark spacemacs-light)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -285,7 +325,7 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(vim-powerline)
+   dotspacemacs-mode-line-theme '(all-the-icons :separator arrow)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -393,7 +433,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX. (default nil)
-   dotspacemacs-fullscreen-use-non-native nil
+   dotspacemacs-fullscreen-use-non-native t
 
    ;; If non-nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
@@ -485,7 +525,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil, start an Emacs server if one is not already running.
    ;; (default nil)
-   dotspacemacs-enable-server nil
+   dotspacemacs-enable-server t
 
    ;; Set the emacs server socket location.
    ;; If nil, uses whatever the Emacs default is, otherwise a directory path
@@ -523,11 +563,11 @@ It should only modify the values of Spacemacs settings."
    ;; performance issues, instead of calculating the frame title by
    ;; `spacemacs/title-prepare' all the time.
    ;; (default "%I@%S")
-   dotspacemacs-frame-title-format "%a"
+   dotspacemacs-frame-title-format "%F - %a"
 
    ;; Format specification for setting the icon title format
    ;; (default nil - same as frame-title-format)
-   dotspacemacs-icon-title-format nil
+   dotspacemacs-icon-title-format "%f"
 
    ;; Color highlight trailing whitespace in all prog-mode and text-mode derived
    ;; modes such as c++-mode, python-mode, emacs-lisp, html-mode, rst-mode etc.
@@ -574,18 +614,14 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil then byte-compile some of Spacemacs files.
    dotspacemacs-byte-compile nil))
 
-(defun local/rubocop-fix ()
-  "Run RuboCop to fix the current buffer."
-  (when (eq major-mode 'ruby-mode)
-    (shell-command-to-string (format "rubocop --auto-correct -- %s" buffer-file-name))))
 
 (defun dotspacemacs/user-env ()
   "Environment variables setup.
 This function defines the environment variables for your Emacs session. By
 default it calls `spacemacs/load-spacemacs-env' which loads the environment
 variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
-See the header of this file for more information."
-  (spacemacs/load-spacemacs-env))
+See the header of this file for more information.")
+
 
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
@@ -596,10 +632,9 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; Emacs will save customization information by appending it to a script. By
   ;; default, it's this script, but this script is under version control. So we
   ;; override it to use an untracked file.
-  (setq custom-file "~/.emacs.d/.cache/local-custom.el")
-  ;; Create the file if it does not exist, then load it.
-  (write-region "" nil custom-file t)
-  (load custom-file))
+  (expand-file-name ".cache/local-custom.el" user-emacs-directory)
+  (setq custom-file (expand-file-name ".cache/local-custom.el" user-emacs-directory))
+  (load custom-file t))
 
 
 (defun dotspacemacs/user-load ()
@@ -615,24 +650,107 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  (require 'git-commit)
-  (global-git-commit-mode t)
-  (fset 'evil-visual-update-x-selection 'ignore)
-  (add-hook 'after-save-hook #'local/rubocop-fix)
-  (add-hook 'editorconfig-after-apply-functions
-            (lambda (props)
-              (setq lisp-indent-offset nil)))
-  (with-eval-after-load 'helm
-    (add-to-list 'projectile-globally-ignored-directories ".yarn"))
-  (with-eval-after-load 'lsp-mode
-    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]vendor\\'")
-    (setq lsp-ui-doc-show-with-cursor nil))
+  ;; Enable global git commit mode. This has to happen very early because the
+  ;; file is specified on the command line. But it can't happen so early that
+  ;; the git-commit package isn't available. Here after Spacemacs has started up
+  ;; seems to work.
+  (use-package git-commit
+    :config
+    (global-git-commit-mode t))
+
+  ;; Configure emacs to use EWW as its browser. We can still use SPC m v x to
+  ;; open in an external browser.
+  (setq browse-url-browser-function #'eww-browse-url)
+
+  ;; ;; Disable evil mode's default of updating the clipboard on visual selection.
+  ;; (fset 'evil-visual-update-x-selection #'ignore)
+
+  ;; Configure the a Tengwar font for the appropriate private-use Unicode
+  ;; codepoints.
+  (set-fontset-font "fontset-default" '(#xe000 . #xe07d) "FreeMonoTengwar")
+
+  ;; Configure the Spacemacs theme in a way that we can't do via layer
+  ;; variables.
   (setq theming-modifications
         '((spacemacs-dark (fixed-pitch :family "Iosevka SS09"))
           (spacemacs-light (fixed-pitch :family "Iosevka SS09"))))
-  (when (display-graphic-p)
-    (add-to-list 'default-frame-alist '(height . 48))
-    (add-to-list 'default-frame-alist '(width . 140))
-    (set-fontset-font "fontset-default"
-                      '(#xe000 . #xe07d)
-                      "FreeMonoTengwar")))
+
+  (use-package alert
+    :config
+    (setq alert-default-style
+          (if (spacemacs/system-is-mac)
+              'osx-notifier
+            'notifications)))
+
+  (use-package asdf
+    :config
+    ;; Enable asdf, which updates emacs's path to include the asdf shims.
+    (asdf-enable))
+
+  (use-package counsel-projectile
+    :config
+    (counsel-projectile-modify-action
+     'counsel-projectile-switch-project-action
+     '((default counsel-projectile-switch-project-action-dired)))
+    )
+
+  (use-package editorconfig
+    :config
+    ;; Enable the editorconfig minor mode for all buffers.
+    (editorconfig-mode)
+    :custom
+    ;; Prevent editorconfig from touching lisp-indent-offset
+    ;; TODO: We may need to be more selective and instead use
+    ;;   editorconfig-exclude-regexps if we need to edit a lisp project with a
+    ;;   nonstandard .editorconfig.
+    (editorconfig-lisp-use-default-indent t))
+
+  (use-package markdown-mode
+    :mode ("\\.md\\'" . gfm-mode)
+    :commands (markdown-mode gfm-mode))
+
+  (use-package org-projectile
+    :after org-agenda
+    :config
+    ;; Add project TODOs to the agenda. Copied from the Spacemacs docs for the
+    ;; org layer.
+    ;; TODO: Why use mapcar and a lambda? Is there a nicer way to say this?
+    (mapcar '(lambda (file)
+               (when (file-exists-p file)
+                 (push file org-agenda-files)))
+            (org-projectile-todo-files)))
+
+  (use-package prescient
+    :config
+    ;; Configure Emacs to use prescient for all completions
+    (push 'prescient completion-styles))
+
+  (use-package ivy-prescient
+    :after counsel
+    :config
+    (ivy-prescient-mode 1))
+
+  (use-package projectile
+    :custom
+    (projectile-switch-project-action #'projectile-commander)
+    (projectile-find-dir-includes-top-level t))
+
+  ;; TODO: Remove these if we're happy using ivy instead of helm.
+
+  ; (use-package helm-ag
+  ;   :defer t
+  ;   :custom
+  ;   (helm-ag-base-command "rg --no-heading --line-number --color never")
+  ;   (helm-ag-success-exit-status '(0 2)))
+
+  ; (use-package helm-projectile
+  ;   :defer t
+  ;   :config
+  ;   (setq projectile-switch-project-action #'projectile-dired))
+
+  (use-package spaceline-all-the-icons
+    :defer t
+    :custom
+    (spaceline-all-the-icons-clock-always-visible nil)
+    (spaceline-all-the-icons-highlight-file-name t)
+    (spaceline-all-the-icons-highlight-file-name-face)))

@@ -11,9 +11,10 @@
 	default = simple
 [color]
 	ui = true
+[diff]
+	algorithm = histogram
 [merge]
 	ff = false
-	tool = vimdiff
 [commit]
 	gpgsign = true
 [gpg]

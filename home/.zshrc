@@ -24,14 +24,16 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 
-# Asdf hasn't been hooked up yet, so this will be the system Python
-ZSH_POWERLINE_PYTHON="$(which python3)"
+# # Asdf hasn't been hooked up yet, so this will be the system Python
+# ZSH_POWERLINE_PYTHON="$(which python3)"
+#
+# ZSH_POWERLINE_ADDITIONAL_PACKAGES=(
+#     powerline-gitstatus
+#     powerline-inject
+#     powerline-pyenv
+# )
 
-ZSH_POWERLINE_ADDITIONAL_PACKAGES=(
-    powerline-gitstatus
-    powerline-inject
-    powerline-pyenv
-)
+ZSH_THEME=candy
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -53,8 +55,8 @@ plugins=(
   vi-mode
   zsh-letsgo
   zsh-syntax-highlighting
-  # Powerline (must be last because it will inspect ZSH settings)
-  powerline
+  # # Powerline (must be last because it will inspect ZSH settings)
+  # powerline
 )
 
 # alias homesick="homeshick"

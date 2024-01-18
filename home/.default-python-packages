@@ -1,3 +1,13 @@
-python-lsp-server[rope]
-pylsp-mypy
-pylsp-rope
+# python-lsp-server[rope]
+# pyls-isort
+# pylsp-mypy
+# pylsp-rope
+# python-lsp-black
+# 
+# importmagic
+# epc
+# 
+# # TODO: API needs these for mypy. Not sure yet how to let it find them in the
+# # virtual environment.
+# pydantic >= 1.10, < 2.0
+# sqlalchemy-stubs
