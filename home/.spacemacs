@@ -767,7 +767,15 @@ before packages are loaded."
 
 (defun user/configure-frame (&optional frame)
   "Configure FRAME's frame parameters, or selected frame if nil."
-  (interactive)
+  (interactive (list (user/read-frame)))
   (when (display-graphic-p frame)
     (modify-frame-parameters frame '((width . 140)
                                      (height . 64)))))
+
+(defun user/read-frame (&optional default)
+  (let ((collection (make-frame-names-alist))
+         (history '(frame-name-history . 2))
+         (default (cond ((framep default) (frame-parameter default 'name))
+                         ((stringp default) default)
+                         (t (frame-parameter nil 'name)))))
+    (completing-read "Frame: " collection nil t nil history default)))
