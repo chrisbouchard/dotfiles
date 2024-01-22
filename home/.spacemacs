@@ -634,7 +634,14 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; override it to use an untracked file.
   (expand-file-name ".cache/local-custom.el" user-emacs-directory)
   (setq custom-file (expand-file-name ".cache/local-custom.el" user-emacs-directory))
-  (load custom-file t))
+  (load custom-file t)
+
+  ;; Configure graphical frames. First set up a hook for any future frames, and
+  ;; then configure all existing frames -- usually just the initial frame, if
+  ;; emacs isn't running as a server.
+  (add-hook 'after-make-frame-functions #'user/configure-frame)
+  (dolist (frame (frame-list))
+    (user/configure-frame frame)))
 
 
 (defun dotspacemacs/user-load ()
@@ -754,3 +761,13 @@ before packages are loaded."
     (spaceline-all-the-icons-clock-always-visible nil)
     (spaceline-all-the-icons-highlight-file-name t)
     (spaceline-all-the-icons-highlight-file-name-face)))
+
+
+;;; USER-DEFINED FUNCTIONS
+
+(defun user/configure-frame (&optional frame)
+  "Configure FRAME's frame parameters, or selected frame if nil."
+  (interactive)
+  (when (display-graphic-p frame)
+    (modify-frame-parameters frame '((width . 140)
+                                     (height . 64)))))
