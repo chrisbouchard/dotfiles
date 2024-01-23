@@ -765,17 +765,28 @@ before packages are loaded."
 
 ;;; USER-DEFINED FUNCTIONS
 
-(defun user/configure-frame (&optional frame)
-  "Configure FRAME's frame parameters, or selected frame if nil."
-  (interactive (list (user/read-frame)))
-  (when (display-graphic-p frame)
-    (modify-frame-parameters frame '((width . 140)
-                                     (height . 64)))))
+(defvar user/frame-parameters
+  '((display-graphic-p . ((width . 140) (height . 64))))
+  "Configuration for new frames.
 
-(defun user/read-frame (&optional default)
-  (let ((collection (make-frame-names-alist))
-         (history '(frame-name-history . 2))
-         (default (cond ((framep default) (frame-parameter default 'name))
-                         ((stringp default) default)
-                         (t (frame-parameter nil 'name)))))
-    (completing-read "Frame: " collection nil t nil history default)))
+The value is an alist whose keys are frame predicates and whose keys are frame
+parameter alists.")
+
+(defun user/configure-frame (&optional frame print-message)
+  "Configure FRAME's frame parameters, or selected frame if nil."
+  (interactive (list (user/--read-frame) t))
+  (when print-message
+    (message "Configuring frame %s" (frame-parameter frame 'name)))
+  (let ((parameters (cl-loop for (predicate . parameters) in user/frame-parameters
+                             if (funcall predicate frame)
+                             append parameters)))
+    (modify-frame-parameters frame parameters)))
+
+(defun user/--read-frame (&optional prompt default)
+  (let* ((frames (cl-loop for frame being the frames
+                          collect `(,(frame-parameter frame 'name) . ,frame)))
+         (default (or default (selected-frame)))
+         (completion-default (frame-parameter default 'name))
+         (prompt (or prompt (format-prompt "Select Frame" completion-default))))
+    (let ((name (completing-read prompt frames nil t nil 'frame-name-history default)))
+      (alist-get name frames nil nil #'string=))))
