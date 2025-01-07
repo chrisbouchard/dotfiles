@@ -53,10 +53,7 @@ plugins=(
   fzf
   tmux
   vi-mode
-  zsh-letsgo
   zsh-syntax-highlighting
-  # # Powerline (must be last because it will inspect ZSH settings)
-  # powerline
 )
 
 # alias homesick="homeshick"
@@ -81,6 +78,19 @@ source-export() {
 if [[ -x $HOME/.letsgo/bin/letsgo ]]
 then
     source $HOME/.letsgo/config/shell/zsh/setup.completion.sh
+fi
+
+# For 1Password Shell Plugins
+# https://developer.1password.com/docs/cli/shell-plugins
+if [[ -e $HOME/.config/op/plugins.sh ]]
+then
+    source $HOME/.config/op/plugins.sh
+fi
+
+# For Emacs EAT Package
+if [[ -n $EAT_SHELL_INTEGRATION_DIR ]]
+then 
+    source $EAT_SHELL_INTEGRATION_DIR/zsh
 fi
 
 if [[ -e $HOME/.zshrc.local ]]

@@ -42,8 +42,12 @@ export PAGER=$(which less)
 export VISUAL=${VISUAL:-emacs}
 export EDITOR=${EDITOR:-emacs}
 
+export DOTNET_ROOT=${DOTNET_ROOT:-/opt/homebrew/opt/dotnet/libexec}
+
 # If fd is installed, use it for fzf because it's faster than the built-in find command.
 if which fd &>/dev/null
 then
     export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git"
 fi
+
+
