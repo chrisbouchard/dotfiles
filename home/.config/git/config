@@ -1,0 +1,62 @@
+# Global git config -*- mode: gitconfig; indent-tabs-mode: t -*-
+#
+
+[user]
+	email = chris@upliftinglemma.net
+	name = Chris Bouchard
+	signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPSwazdSkZ8zqvQZ0SMEKVyAsR14wgatC9UGzctGjeXo"
+
+[branch]
+	sort = -creatordate
+[color]
+	ui = true
+[commit]
+	gpgsign = true
+[checkout]
+	defaultRemote = origin
+	workers = -1
+[core]
+	abbrev = 8
+	fsmonitor = true
+[diff]
+	algorithm = histogram
+[fetch]
+	fsckobjects = true
+	parallel = 0
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[gpg]
+	format = ssh
+[init]
+	defaultBranch = main
+[log]
+	date = iso
+[merge]
+	conflictstyle = diff3
+	ff = false
+[pull]
+	ff = only
+[push]
+	default = current
+[rebase]
+	# TODO: Turn this back to error if we can teach magit to use "drop" in
+	# interactive rebase.
+	missingCommitsCheck = warn
+[rerere]
+	enabled = 1
+[tag]
+	sort = -creatordate
+[transfer]
+	fsckobjects = true
+[url "git@git.sr.ht:"]
+	pushInsteadOf = https://git.sr.ht/
+[url "git@github.com:"]
+	pushInsteadOf = https://github.com/
+[url "git@gitlab.com:"]
+	pushInsteadOf = https://gitlab.com/
+
+[include]
+	path = ./config.local

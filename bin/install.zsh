@@ -8,12 +8,12 @@ repo_names=(
     # Other utilities that my dotfiles use (via symlink)
     asdf-vm/asdf
     robbyrussell/oh-my-zsh
-    syl20bnr/spacemacs
     Tarrasch/zsh-bd
     tmux-plugins/tpm
-    vlevit/notify-send.sh
-    wbthomason/packer.nvim
     zsh-users/zsh-syntax-highlighting
+
+    # My Emacs config
+    'https://git.sr.ht/~chrisbouchard/emacs.d'
 
     # My dotfiles
     chrisbouchard/dotfiles

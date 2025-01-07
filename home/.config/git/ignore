@@ -1,4 +1,5 @@
-# vim: set ft=gitignore
+# Global git ignore rules -*- mode: gitignore; indent-tabs-mode: t -*-
+#
 
 # Emacs directory local scripts
 .dir-locals.el
@@ -19,3 +20,5 @@
 .log/tsserver.log
 .log/ti-*.log
 
+# Poetry in-project virtual environments
+.venv
