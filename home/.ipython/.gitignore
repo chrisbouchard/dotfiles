@@ -1,8 +1,0 @@
-extensions
-nbextensions
-profile_*/db
-profile_*/history.sqlite
-profile_*/log
-profile_*/pid
-profile_*/security
-
