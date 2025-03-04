@@ -24,15 +24,6 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 
-# # Asdf hasn't been hooked up yet, so this will be the system Python
-# ZSH_POWERLINE_PYTHON="$(which python3)"
-#
-# ZSH_POWERLINE_ADDITIONAL_PACKAGES=(
-#     powerline-gitstatus
-#     powerline-inject
-#     powerline-pyenv
-# )
-
 ZSH_THEME=candy
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -51,8 +42,6 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-# alias homesick="homeshick"
-
 source $ZSH/oh-my-zsh.sh
 
 # Oh-My-ZSH turns on history sharing by default, which means all shells update
@@ -67,13 +56,6 @@ source-export() {
     source $1
     set +a
 }
-
-# For SeatGeek's letsgo
-# TODO: Move to an OMZ plugin?
-if [[ -x $HOME/.letsgo/bin/letsgo ]]
-then
-    source $HOME/.letsgo/config/shell/zsh/setup.completion.sh
-fi
 
 # For 1Password Shell Plugins
 # https://developer.1password.com/docs/cli/shell-plugins

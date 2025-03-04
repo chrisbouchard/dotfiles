@@ -17,10 +17,9 @@ then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# For SeatGeek's letsgo
-if [[ -x $HOME/.letsgo/bin/letsgo ]]
+if [[ -e $HOME/.cargo/env ]]
 then
-    source $HOME/.letsgo/config/shell/zsh/setup.environment.sh
+    source $HOME/.cargo/env
 fi
 
 # export LANG=en_US.UTF-8
@@ -32,11 +31,11 @@ then
 fi
 
 # export DISPLAY=${DISPLAY:-':0'}
-export PAGER=$(which less)
+export PAGER=${PAGER:-less}
 export VISUAL=${VISUAL:-emacs}
 export EDITOR=${EDITOR:-emacs}
 
-export DOTNET_ROOT=${DOTNET_ROOT:-/opt/homebrew/opt/dotnet/libexec}
+export MAUDE_LIB=$HOME/.local/lib/maude
 
 # If fd is installed, use it for fzf because it's faster than the built-in find command.
 if which fd &>/dev/null
