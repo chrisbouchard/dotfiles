@@ -40,18 +40,13 @@ ZSH_THEME=candy
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  # Autocompletion
-  pip
-  ng
-  npm
-  # Functional
-  asdf
-  bd
-  direnv
+  fzf
   gpg-agent
   homeshick
-  fzf
-  tmux
+  mise
+  ng
+  npm
+  pip
   vi-mode
   zsh-syntax-highlighting
 )

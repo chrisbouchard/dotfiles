@@ -1,12 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-# Have ASDF prepend its shims to the path so they have the highest priority.
-export ASDF_FORCE_PREPEND=yes
-
-# Have asdf-golang look in go.mod for a Go version.
-export ASDF_GOLANG_MOD_VERSION_ENABLED=true
-
 # Work-around until GNOME stops overriding $PATH
 if ! [[ $PATH = *$HOME/.local/bin* ]] then
     source $HOME/.config/environment.d/10-path.conf

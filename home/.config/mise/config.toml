@@ -1,0 +1,14 @@
+[tools]
+# Needed for mise shell completion.
+usage = "latest"
+
+# Language support.
+java = "temurin"
+node = "latest"
+poetry = "latest"
+python = "latest"
+ruby = "latest"
+
+[settings]
+experimental = true
+
