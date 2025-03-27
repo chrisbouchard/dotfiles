@@ -30,6 +30,11 @@
 	required = true
 [gpg]
 	format = ssh
+[gpg "ssh"]
+	# On MacOS, change this to:
+	#     /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+	# TODO: Can I tell Git to use a particular SSH agent instead?
+	program = "/opt/1Password/op-ssh-sign"
 [init]
 	defaultBranch = main
 [log]

@@ -49,14 +49,6 @@ source $ZSH/oh-my-zsh.sh
 # obnoxious, so let's disable it again.
 unsetopt share_history
 
-source-export() {
-    [[ -f $1 ]] || exit 1
-
-    set -a
-    source $1
-    set +a
-}
-
 # For 1Password Shell Plugins
 # https://developer.1password.com/docs/cli/shell-plugins
 if [[ -e $HOME/.config/op/plugins.sh ]]
@@ -74,3 +66,11 @@ if [[ -e $HOME/.zshrc.local ]]
 then
     source $HOME/.zshrc.local
 fi
+
+source-export() {
+    [[ -f $1 ]] || exit 1
+
+    setopt allexport
+    source $1
+    unsetopt allexport
+}
